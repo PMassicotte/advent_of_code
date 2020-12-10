@@ -1,0 +1,9 @@
+---
+title: "The advent of Code"
+description: |
+  Just my quick attempts to solve the Advent of Code puzzles using R :)
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
