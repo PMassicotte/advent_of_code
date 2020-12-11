@@ -1,5 +1,5 @@
 ---
-title: "Day #1"
+title: "Day 01"
 description: |
   Advent of code 2020 day 1
 author:
@@ -88,7 +88,5 @@ df <- df %>%
 df
 ```
 
-## Answer
-
-The answer is `r format(pull(df, total), scientifi = FALSE)`.
+**Answer:** `r format(pull(df, total), scientifi = FALSE)`
 

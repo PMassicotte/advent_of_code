@@ -1,0 +1,169 @@
+---
+title: "Day 04"
+description: |
+  Advent of code 2020 day 4
+author:
+  - name: Philippe Massicotte
+date: 12-11-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(here)
+```
+
+## Context
+
+https://adventofcode.com/2020/day/4
+
+<small>
+You arrive at the airport only to realize that you grabbed your North Pole Credentials instead of your passport. While these documents are extremely similar, North Pole Credentials aren't issued by a country and therefore aren't actually valid documentation for travel in most of the world.
+
+It seems like you're not the only one having problems, though; a very long line has formed for the automatic passport scanners, and the delay could upset your travel itinerary.
+
+Due to some questionable network security, you realize you might be able to solve both of these problems at the same time.
+
+The automatic passport scanners are slow because they're having trouble detecting which passports have all required fields. The expected fields are as follows:
+
+```
+byr (Birth Year)
+iyr (Issue Year)
+eyr (Expiration Year)
+hgt (Height)
+hcl (Hair Color)
+ecl (Eye Color)
+pid (Passport ID)
+cid (Country ID)
+```
+
+Passport data is validated in batch files (your puzzle input). Each passport is represented as a sequence of key:value pairs separated by spaces or newlines. Passports are separated by blank lines.
+
+Here is an example batch file containing four passports:
+
+```
+ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
+byr:1937 iyr:2017 cid:147 hgt:183cm
+
+iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884
+hcl:#cfa07d byr:1929
+
+hcl:#ae17e1 iyr:2013
+eyr:2024
+ecl:brn pid:760753108 byr:1931
+hgt:179cm
+
+hcl:#cfa07d eyr:2025 pid:166559648
+iyr:2011 ecl:brn hgt:59in
+```
+</small>
+
+## Read the passport information
+
+```{r read_input}
+file <- here("data", "input", "day4.txt")
+
+x <- read_lines(file)
+
+xx <- str_split(x, " ") %>%
+  unlist() %>%
+  paste(collapse = " ") %>%
+  str_split("  ") %>%
+  unlist()
+
+df <- xx %>%
+  str_split(" ") %>%
+  set_names(1:length(.)) %>%
+  # unlist() %>%
+  enframe(name = "passport") %>%
+  mutate(passport = parse_number(passport)) %>%
+  unnest(value) %>%
+  separate(value, into = c("field", "value"), sep = ":") %>%
+  arrange(passport)
+```
+
+This gives us a total of 291 passports.
+
+```{r}
+df %>%
+  pivot_wider(names_from = field, values_from = value) %>%
+  rmarkdown::paged_table()
+```
+
+# Part 1
+
+```{r}
+expected_fields <- c(
+  "byr",
+  "iyr",
+  "eyr",
+  "hgt",
+  "hcl",
+  "ecl",
+  "pid"
+)
+
+filtered_passport <- df %>%
+  group_by(passport) %>%
+  filter(all(expected_fields %in% field)) %>%
+  ungroup()
+
+filtered_passport %>%
+  pivot_wider(names_from = field, values_from = value) %>%
+  rmarkdown::paged_table()
+```
+
+**Answer:** `r length(unique(filtered_passport$passport))`
+
+## Part 2
+
+The second part consists in filtering the remaining passports with stricter rules.
+
+<small>
+You can continue to ignore the cid field, but each other field has strict rules about what values are valid for automatic validation:
+
+```
+byr (Birth Year) - four digits; at least 1920 and at most 2002.
+iyr (Issue Year) - four digits; at least 2010 and at most 2020.
+eyr (Expiration Year) - four digits; at least 2020 and at most 2030.
+hgt (Height) - a number followed by either cm or in:
+If cm, the number must be at least 150 and at most 193.
+If in, the number must be at least 59 and at most 76.
+hcl (Hair Color) - a # followed by exactly six characters 0-9 or a-f.
+ecl (Eye Color) - exactly one of: amb blu brn gry grn hzl oth.
+pid (Passport ID) - a nine-digit number, including leading zeroes.
+cid (Country ID) - ignored, missing or not.
+```
+</small>
+
+```{r}
+filtered_passport <- filtered_passport %>%
+  pivot_wider(names_from = field, values_from = value) %>% 
+  mutate(across(c(byr, iyr, eyr), parse_number))
+
+filtered_passport <- filtered_passport %>%
+  filter(between(byr, 1920, 2002)) %>%
+  filter(between(iyr, 2010, 2020)) %>%
+  filter(between(eyr, 2020, 2030)) %>%
+  filter(str_detect(hgt, "^\\d+(cm|in)$")) %>%
+  extract(
+    hgt,
+    into = c("hgt", "hgt_unit"),
+    regex = "(\\d+)(.*)",
+    convert = TRUE
+  ) %>%
+  filter((between(hgt, 150, 193) & hgt_unit == "cm") |
+    (between(hgt, 59, 76) & hgt_unit == "in")) %>% 
+  filter(str_detect(hcl, "^#[0-9a-f]{6}")) %>% 
+  filter(ecl %in% c("amb", "blu", "brn", "gry", "grn", "hzl", "oth")) %>% 
+  filter(str_detect(pid, "^\\d{9}$")) 
+
+filtered_passport %>%
+  rmarkdown::paged_table()
+```
+
+**Answer:** `r nrow(filtered_passport)`

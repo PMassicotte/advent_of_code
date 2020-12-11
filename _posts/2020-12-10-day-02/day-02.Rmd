@@ -1,5 +1,5 @@
 ---
-title: "Day #2"
+title: "Day 02"
 description: |
   Advent of code 2020 day 2
 author:
