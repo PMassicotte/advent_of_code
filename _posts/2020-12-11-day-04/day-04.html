@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"NULL"}
+  {"type":"character","attributes":{},"value":["day-04_files/anchor-4.2.2/anchor.min.js","day-04_files/bowser-1.9.3/bowser.min.js","day-04_files/distill-2.2.21/template.v2.js","day-04_files/header-attrs-2.5/header-attrs.js","day-04_files/jquery-1.11.3/jquery.min.js","day-04_files/pagedtable-1.1/css/pagedtable.css","day-04_files/pagedtable-1.1/js/pagedtable.js","day-04_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1515,6 +1515,16 @@ iyr:2011 ecl:brn hgt:59in</code></pre>
 </div>
 </div>
 <h1 id="part-1">Part 1</h1>
+<p><small> The automatic passport scanners are slow because they’re having trouble detecting which passports have all required fields. The expected fields are as follows:</p>
+<pre><code>byr (Birth Year)
+iyr (Issue Year)
+eyr (Expiration Year)
+hgt (Height)
+hcl (Hair Color)
+ecl (Eye Color)
+pid (Passport ID)
+cid (Country ID)</code></pre>
+<p></small></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='va'>expected_fields</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
@@ -1592,7 +1602,7 @@ cid (Country ID) - ignored, missing or not.</code></pre>
 </div>
 </div>
 <p><strong>Answer:</strong> 194</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
