@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron');
+@import url('https://fonts.googleapis.com/css2?family=Open Sans');
 @import url('https://fonts.googleapis.com/css2?family=Poppins');
 @import url('https://fonts.googleapis.com/css2?family=Fira Mono');
 
@@ -32,7 +32,7 @@ html {
   /*-- Specify custom fonts ~~~ must be imported above   --*/
   --heading-font:    Poppins;
   --mono-font:       Fira Mono;
-  --body-font:       Orbitron;
+  --body-font:       Open Sans;
   --navbar-font:     sans-serif;  /* websites + blogs only */
 }
 
