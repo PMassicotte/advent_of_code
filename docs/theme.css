@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron');
 @import url('https://fonts.googleapis.com/css2?family=Poppins');
+@import url('https://fonts.googleapis.com/css2?family=Fira Mono');
+
 /* base variables */
 
 /* Edit the CSS properties in this file to create a custom
@@ -27,9 +30,9 @@ html {
   --aside-color:     rgba(0, 0, 0, 0.6);
   --fig-cap-color:   rgba(0, 0, 0, 0.6);
   /*-- Specify custom fonts ~~~ must be imported above   --*/
-  --heading-font:    sans-serif;
-  --mono-font:       monospace;
-  --body-font:       Poppins;
+  --heading-font:    Poppins;
+  --mono-font:       Fira Mono;
+  --body-font:       Orbitron;
   --navbar-font:     sans-serif;  /* websites + blogs only */
 }
 
@@ -75,4 +78,3 @@ d-appendix {
 
 /*-- Additional custom styles --*/
 /* Add any additional CSS rules below                      */
-

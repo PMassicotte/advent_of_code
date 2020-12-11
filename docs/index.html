@@ -2062,7 +2062,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   /*-- Additional custom styles --*/
   /* Add any additional CSS rules below                      */
   </style>
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Poppins');
+  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Orbitron');
+  @import url('https://fonts.googleapis.com/css2?family=Poppins');
+  @import url('https://fonts.googleapis.com/css2?family=Fira Mono');
+
   /* base variables */
 
   /* Edit the CSS properties in this file to create a custom
@@ -2091,9 +2094,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     --aside-color:     rgba(0, 0, 0, 0.6);
     --fig-cap-color:   rgba(0, 0, 0, 0.6);
     /*-- Specify custom fonts ~~~ must be imported above   --*/
-    --heading-font:    sans-serif;
-    --mono-font:       monospace;
-    --body-font:       Poppins;
+    --heading-font:    Poppins;
+    --mono-font:       Fira Mono;
+    --body-font:       Orbitron;
     --navbar-font:     sans-serif;  /* websites + blogs only */
   }
 
@@ -2138,8 +2141,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   }
 
   /*-- Additional custom styles --*/
-  /* Add any additional CSS rules below                      */
-  </style>
+  /* Add any additional CSS rules below                      */</style>
   <style type="text/css">
   /* base style */
 
@@ -2460,6 +2462,23 @@ function init_posts_list() {
 <div class="posts-container posts-apply-limit l-page">
 <div class="posts-list">
 <h1 class="posts-list-caption" data-caption="Advent of Code">Advent of Code</h1>
+<a href="posts/2020-12-11-day-3/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":[]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 11, 2020</div>
+<div class="dt-authors">
+<div class="dt-author">Philippe Massicotte</div>
+</div>
+</div>
+<div class="thumbnail">
+<img/>
+</div>
+<div class="description">
+<h2>Day #3</h2>
+<div class="dt-tags"></div>
+<p>Advent of code 2020 day 3</p>
+</div>
+</a>
 <a href="posts/2020-12-10-day-1/" class="post-preview">
 <script class="post-metadata" type="text/json">{"categories":[]}</script>
 <div class="metadata">
@@ -2510,6 +2529,8 @@ function init_posts_list() {
 
 
 <div class="d-article">
+<p><br></p>
+<p>Solving the <a href="https://adventofcode.com/">Advent of Code puzzles</a> one day at a time.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
