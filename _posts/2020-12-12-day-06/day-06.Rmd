@@ -92,7 +92,7 @@ df %>%
 
 ## Part 1
 
-Count the number of unique question per group.
+Count the number of unique questions per group.
 
 ```{r}
 n <- df %>% 
