@@ -1,7 +1,7 @@
 ---
-title: "Day 04"
+title: "Advent of code 2020 day 4"
 description: |
-  Advent of code 2020 day 4
+  --- Day 4: Passport Processing ---
 author:
   - name: Philippe Massicotte
 date: 12-11-2020

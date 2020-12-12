@@ -1,7 +1,7 @@
 ---
-title: "Day 01"
+title: "Advent of code 2020 day 1"
 description: |
-  Advent of code 2020 day 1
+  --- Day 1: Report Repair ---
 author:
   - name: Philippe Massicotte
 date: 12-10-2020

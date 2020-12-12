@@ -1,7 +1,7 @@
 ---
-title: "Day 02"
+title: "Advent of code 2020 day 2"
 description: |
-  Advent of code 2020 day 2
+  --- Day 2: Password Philosophy ---
 author:
   - name: Philippe Massicotte
 date: 12-10-2020

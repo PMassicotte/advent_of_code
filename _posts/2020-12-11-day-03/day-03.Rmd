@@ -1,7 +1,7 @@
 ---
-title: "Day 03"
+title: "Advent of code 2020 day 3"
 description: |
-  Advent of code 2020 day 3
+  --- Day 3: Toboggan Trajectory ---
 author:
   - name: Philippe Massicotte
 date: 12-11-2020

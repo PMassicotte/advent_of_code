@@ -85,37 +85,37 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>Advent of code 2020 day 2</title>
+  <title>Advent of code 2020 day 5</title>
 
-  <meta property="description" itemprop="description" content="--- Day 2: Password Philosophy ---"/>
+  <meta property="description" itemprop="description" content="--- Day 5: Binary Boarding ---"/>
 
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2020-12-10"/>
-  <meta property="article:created" itemprop="dateCreated" content="2020-12-10"/>
+  <meta property="article:published" itemprop="datePublished" content="2020-12-11"/>
+  <meta property="article:created" itemprop="dateCreated" content="2020-12-11"/>
   <meta name="article:author" content="Philippe Massicotte"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Advent of code 2020 day 2"/>
+  <meta property="og:title" content="Advent of code 2020 day 5"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="--- Day 2: Password Philosophy ---"/>
+  <meta property="og:description" content="--- Day 5: Binary Boarding ---"/>
   <meta property="og:locale" content="en_US"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Advent of code 2020 day 2"/>
-  <meta property="twitter:description" content="--- Day 2: Password Philosophy ---"/>
+  <meta property="twitter:title" content="Advent of code 2020 day 5"/>
+  <meta property="twitter:description" content="--- Day 5: Binary Boarding ---"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Advent of code 2020 day 2"]},{"type":"character","attributes":{},"value":["--- Day 2: Password Philosophy ---\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Philippe Massicotte"]}]}]},{"type":"character","attributes":{},"value":["12-10-2020"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Advent of code 2020 day 5"]},{"type":"character","attributes":{},"value":["--- Day 5: Binary Boarding ---\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Philippe Massicotte"]}]}]},{"type":"character","attributes":{},"value":["12-11-2020"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["day-02_files/anchor-4.2.2/anchor.min.js","day-02_files/bowser-1.9.3/bowser.min.js","day-02_files/distill-2.2.21/template.v2.js","day-02_files/header-attrs-2.5/header-attrs.js","day-02_files/jquery-1.11.3/jquery.min.js","day-02_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["day-05_files/anchor-4.2.2/anchor.min.js","day-05_files/bowser-1.9.3/bowser.min.js","day-05_files/distill-2.2.21/template.v2.js","day-05_files/header-attrs-2.5/header-attrs.js","day-05_files/jquery-1.11.3/jquery.min.js","day-05_files/pagedtable-1.1/css/pagedtable.css","day-05_files/pagedtable-1.1/js/pagedtable.js","day-05_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1403,12 +1403,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="day-02_files/header-attrs-2.5/header-attrs.js"></script>
-  <script src="day-02_files/jquery-1.11.3/jquery.min.js"></script>
-  <script src="day-02_files/anchor-4.2.2/anchor.min.js"></script>
-  <script src="day-02_files/bowser-1.9.3/bowser.min.js"></script>
-  <script src="day-02_files/webcomponents-2.0.0/webcomponents.js"></script>
-  <script src="day-02_files/distill-2.2.21/template.v2.js"></script>
+  <script src="day-05_files/header-attrs-2.5/header-attrs.js"></script>
+  <script src="day-05_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="day-05_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="day-05_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="day-05_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="day-05_files/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
   <!--/radix_placeholder_site_in_header-->
 
@@ -1420,7 +1420,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Advent of code 2020 day 2","description":"--- Day 2: Password Philosophy ---","authors":[{"author":"Philippe Massicotte","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2020-12-10T00:00:00.000-05:00","citationText":"Massicotte, 2020"}
+{"title":"Advent of code 2020 day 5","description":"--- Day 5: Binary Boarding ---","authors":[{"author":"Philippe Massicotte","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2020-12-11T00:00:00.000-05:00","citationText":"Massicotte, 2020"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1430,134 +1430,176 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Advent of code 2020 day 2</h1>
+<h1>Advent of code 2020 day 5</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>— Day 2: Password Philosophy —</p></p>
+<p><p>— Day 5: Binary Boarding —</p></p>
 </div>
 
 <div class="d-byline">
   Philippe Massicotte  
   
-<br/>12-10-2020
+<br/>12-11-2020
 </div>
 
 <div class="d-article">
 <h2 id="context">Context</h2>
-<p><a href="https://adventofcode.com/2020/day/2" class="uri">https://adventofcode.com/2020/day/2</a></p>
-<p><small> Your flight departs in a few days from the coastal airport; the easiest way down to the coast from here is via toboggan.</p>
-<p>The shopkeeper at the North Pole Toboggan Rental Shop is having a bad day. “Something’s wrong with our computers; we can’t log in!” You ask if you can take a look.</p>
-<p>Their password database seems to be a little corrupted: some of the passwords wouldn’t have been allowed by the Official Toboggan Corporate Policy that was in effect when they were chosen.</p>
-<p>To try to debug the problem, they have created a list (your puzzle input) of passwords (according to the corrupted database) and the corporate policy when that password was set.</p>
-<p>For example, suppose you have the following list:</p>
-<p>1-3 a: abcde 1-3 b: cdefg 2-9 c: ccccccccc Each line gives the password policy and then the password. The password policy indicates the lowest and highest number of times a given letter must appear for the password to be valid. For example, 1-3 a means that the password must contain a at least 1 time and at most 3 times.</p>
-<p>In the above example, 2 passwords are valid. The middle password, cdefg, is not; it contains no instances of b, but needs at least 1. The first and third passwords are valid: they contain one a or nine c, both within the limits of their respective policies.</p>
-<p>How many passwords are valid according to their policies? </small></p>
-<h2 id="read-the-input-passwords">Read the input passwords</h2>
+<p><a href="https://.com/2020/day/5" class="uri">https://.com/2020/day/5</a></p>
+<p><small> You board your plane only to discover a new problem: you dropped your boarding pass! You aren’t sure which seat is yours, and all of the flight attendants are busy with the flood of people that suddenly made it through passport control.</p>
+<p>You write a quick program to use your phone’s camera to scan all of the nearby boarding passes (your puzzle input); perhaps you can find your seat through process of elimination.</p>
+<p>Instead of zones or groups, this airline uses binary space partitioning to seat people. A seat might be specified like FBFBBFFRLR, where F means “front”, B means “back”, L means “left”, and R means “right”.</p>
+<p>The first 7 characters will either be F or B; these specify exactly one of the 128 rows on the plane (numbered 0 through 127). Each letter tells you which half of a region the given seat is in. Start with the whole list of rows; the first letter indicates whether the seat is in the front (0 through 63) or the back (64 through 127). The next letter indicates which half of that region the seat is in, and so on until you’re left with exactly one row.</p>
+<p>For example, consider just the first seven characters of FBFBBFFRLR:</p>
+<pre><code>- Start by considering the whole range, rows 0 through 127.
+- F means to take the lower half, keeping rows 0 through 63.
+- B means to take the upper half, keeping rows 32 through 63.
+- F means to take the lower half, keeping rows 32 through 47.
+- B means to take the upper half, keeping rows 40 through 47.
+- B keeps rows 44 through 47.
+- F keeps rows 44 through 45.</code></pre>
+<p>The final F keeps the lower of the two, row 44. The last three characters will be either L or R; these specify exactly one of the 8 columns of seats on the plane (numbered 0 through 7). The same process as above proceeds again, this time with only three steps. L means to keep the lower half, while R means to keep the upper half.</p>
+<p>For example, consider just the last 3 characters of FBFBBFFRLR:</p>
+<pre><code>- Start by considering the whole range, columns 0 through 7.
+- R means to take the upper half, keeping columns 4 through 7.
+- L means to take the lower half, keeping columns 4 through 5.
+- The final R keeps the upper of the two, column 5.</code></pre>
+<p>So, decoding FBFBBFFRLR reveals that it is the seat at row 44, column 5.</p>
+<p>Every seat also has a unique seat ID: multiply the row by 8, then add the column. In this example, the seat has ID 44 * 8 + 5 = 357.</p>
+<p>Here are some other boarding passes:</p>
+<pre><code>- BFFFBBFRRR: row 70, column 7, seat ID 567.
+- FFFBBBFRRR: row 14, column 7, seat ID 119.
+- BBFFBBFRLL: row 102, column 4, seat ID 820.</code></pre>
+<p>As a sanity check, look through your list of boarding passes. What is the highest seat ID on a boarding pass? </small></p>
+<p>Here I am going to create a recursive function that splits the index vector into the upper or lower half.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>file</span> <span class='op'>&lt;-</span> <span class='fu'>here</span><span class='op'>(</span><span class='st'>"data"</span>, <span class='st'>"input"</span>, <span class='st'>"day2.txt"</span><span class='op'>)</span>
+<pre><code><span class='va'>find_index</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>letter</span>, <span class='va'>index_range</span><span class='op'>)</span> <span class='op'>{</span>
 
-<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>read_lines</span><span class='op'>(</span><span class='va'>file</span><span class='op'>)</span> 
+  <span class='co'># F: the lower half</span>
+  <span class='co'># B: the upper half</span>
 
-<span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'>tibble</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+  <span class='va'>l</span> <span class='op'>&lt;-</span> <span class='fu'>str_sub</span><span class='op'>(</span><span class='va'>letter</span>, <span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span>
 
-<span class='va'>df</span>
+  <span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>index_range</span><span class='op'>)</span> <span class='op'>==</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='va'>index_range</span><span class='op'>)</span>
+  <span class='op'>}</span>
+
+  <span class='kw'>if</span> <span class='op'>(</span><span class='va'>l</span> <span class='op'>==</span> <span class='st'>"F"</span> <span class='op'>|</span> <span class='va'>l</span> <span class='op'>==</span> <span class='st'>"L"</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='va'>start</span> <span class='op'>&lt;-</span> <span class='fl'>1</span>
+    <span class='va'>end</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>ceiling</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>index_range</span><span class='op'>)</span> <span class='op'>/</span> <span class='fl'>2</span><span class='op'>)</span>
+    <span class='va'>index_range</span> <span class='op'>&lt;-</span> <span class='va'>index_range</span><span class='op'>[</span><span class='va'>start</span><span class='op'>:</span><span class='va'>end</span><span class='op'>]</span>
+  <span class='op'>}</span> <span class='kw'>else</span> <span class='kw'>if</span> <span class='op'>(</span><span class='va'>l</span> <span class='op'>==</span> <span class='st'>"B"</span> <span class='op'>|</span> <span class='va'>l</span> <span class='op'>==</span> <span class='st'>"R"</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='va'>start</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>floor</a></span><span class='op'>(</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>index_range</span><span class='op'>)</span> <span class='op'>/</span> <span class='fl'>2</span><span class='op'>)</span> <span class='op'>+</span> <span class='fl'>1</span><span class='op'>)</span>
+    <span class='va'>end</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>index_range</span><span class='op'>)</span>
+    <span class='va'>index_range</span> <span class='op'>&lt;-</span> <span class='va'>index_range</span><span class='op'>[</span><span class='va'>start</span><span class='op'>:</span><span class='va'>end</span><span class='op'>]</span>
+  <span class='op'>}</span>
+
+  <span class='co'># print(start)</span>
+  <span class='co'># print(end)</span>
+
+  <span class='fu'>find_index</span><span class='op'>(</span><span class='fu'>str_sub</span><span class='op'>(</span><span class='va'>letter</span>, <span class='fl'>2</span>, <span class='va'>end</span><span class='op'>)</span>, <span class='va'>index_range</span><span class='op'>)</span>
+<span class='op'>}</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 1,000 x 1
-   x                         
-   &lt;chr&gt;                     
- 1 4-6 b: bbbdbtbbbj         
- 2 1-6 g: ggvggbgggstg       
- 3 1-4 s: lssss              
- 4 13-14 v: hvvcvvvvvvvvvsvvv
- 5 3-5 m: lcmmm              
- 6 3-4 t: stht               
- 7 5-6 b: dbkbhb             
- 8 4-7 p: ppfppppq           
- 9 4-5 j: jjjjj              
-10 3-12 s: sskssssssssss     
-# … with 990 more rows</code></pre>
 </div>
-<h2 id="prepare-the-data">Prepare the data</h2>
+<p>Find the row and column numbers.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='va'>df</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>separate</span><span class='op'>(</span><span class='va'>x</span>, into <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"policy"</span>, <span class='st'>"password"</span><span class='op'>)</span>, sep <span class='op'>=</span> <span class='st'>":"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>mutate</span><span class='op'>(</span><span class='fu'>across</span><span class='op'>(</span><span class='fu'>where</span><span class='op'>(</span><span class='va'>is.character</span><span class='op'>)</span>, <span class='va'>str_squish</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>separate</span><span class='op'>(</span><span class='va'>policy</span>, into <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"min"</span>, <span class='st'>"max"</span>, <span class='st'>"letter"</span><span class='op'>)</span>, sep <span class='op'>=</span> <span class='st'>"-| "</span>, convert <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<pre><code><span class='va'>find_seat_id</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>row_range</span>, <span class='va'>col_range</span><span class='op'>)</span> <span class='op'>{</span>
 
-<span class='va'>df</span>
+  <span class='va'>i</span> <span class='op'>&lt;-</span> <span class='fu'>str_sub</span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>1</span>, <span class='fl'>7</span><span class='op'>)</span>
+  <span class='va'>i</span> <span class='op'>&lt;-</span> <span class='fu'>find_index</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>index_range</span><span class='op'>)</span>
+
+  <span class='va'>j</span> <span class='op'>&lt;-</span> <span class='fu'>str_sub</span><span class='op'>(</span><span class='va'>x</span>, <span class='op'>-</span><span class='fl'>3</span>, <span class='op'>-</span><span class='fl'>1</span><span class='op'>)</span>
+  <span class='va'>j</span> <span class='op'>&lt;-</span> <span class='fu'>find_index</span><span class='op'>(</span><span class='va'>j</span>, <span class='va'>col_range</span><span class='op'>)</span>
+
+  <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='va'>i</span> <span class='op'>*</span> <span class='fl'>8</span> <span class='op'>+</span> <span class='va'>j</span><span class='op'>)</span>
+<span class='op'>}</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 1,000 x 4
-     min   max letter password         
-   &lt;int&gt; &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;            
- 1     4     6 b      bbbdbtbbbj       
- 2     1     6 g      ggvggbgggstg     
- 3     1     4 s      lssss            
- 4    13    14 v      hvvcvvvvvvvvvsvvv
- 5     3     5 m      lcmmm            
- 6     3     4 t      stht             
- 7     5     6 b      dbkbhb           
- 8     4     7 p      ppfppppq         
- 9     4     5 j      jjjjj            
-10     3    12 s      sskssssssssss    
-# … with 990 more rows</code></pre>
 </div>
-<h2 id="verify-passwords-part-1">Verify passwords (part 1)</h2>
+<h2 id="get-the-seat-ids">Get the seat IDs</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>df</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>mutate</span><span class='op'>(</span>count <span class='op'>=</span> <span class='fu'>str_count</span><span class='op'>(</span><span class='va'>password</span>, <span class='va'>letter</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>rowwise</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='fu'>between</span><span class='op'>(</span><span class='va'>count</span>, <span class='va'>min</span>, <span class='va'>max</span><span class='op'>)</span><span class='op'>)</span>
+<pre><code><span class='va'>index_range</span> <span class='op'>&lt;-</span> <span class='fl'>0</span><span class='op'>:</span><span class='fl'>127</span>
+<span class='va'>col_range</span> <span class='op'>&lt;-</span> <span class='fl'>0</span><span class='op'>:</span><span class='fl'>7</span>
+
+<span class='fu'>find_seat_id</span><span class='op'>(</span><span class='st'>"FBFBBFFRLR"</span>, <span class='va'>row_range</span>, <span class='va'>col_range</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 454 x 5
-# Rowwise: 
-     min   max letter password            count
-   &lt;int&gt; &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;               &lt;int&gt;
- 1     1     4 s      lssss                   4
- 2    13    14 v      hvvcvvvvvvvvvsvvv      14
- 3     3     5 m      lcmmm                   3
- 4     4     7 p      ppfppppq                6
- 5     4     5 j      jjjjj                   5
- 6     3    12 s      sskssssssssss          12
- 7    12    18 l      tllllllllllllplllbl    16
- 8     1     2 n      nbnj                    2
- 9     6     9 n      nnnnnnnnb               8
-10     8    18 d      ddtdddddddwvdfdsdd     13
-# … with 444 more rows</code></pre>
+<pre><code>[1] 357</code></pre>
+<div class="sourceCode">
+<pre><code><span class='fu'>find_seat_id</span><span class='op'>(</span><span class='st'>"BFFFBBFRRR"</span>, <span class='va'>row_range</span>, <span class='va'>col_range</span><span class='op'>)</span>
+</code></pre>
 </div>
-<h2 id="verify-passwords-part-2">Verify passwords (part 2)</h2>
+<pre><code>[1] 567</code></pre>
+<div class="sourceCode">
+<pre><code><span class='fu'>find_seat_id</span><span class='op'>(</span><span class='st'>"FFFBBBFRRR"</span>, <span class='va'>row_range</span>, <span class='va'>col_range</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 119</code></pre>
+<div class="sourceCode">
+<pre><code><span class='fu'>find_seat_id</span><span class='op'>(</span><span class='st'>"BBFFBBFRLL"</span>, <span class='va'>row_range</span>, <span class='va'>col_range</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 820</code></pre>
+</div>
+<h2 id="read-the-seat-numbers">Read the seat numbers</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>df</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>mutate</span><span class='op'>(</span>location_1 <span class='op'>=</span> <span class='fu'>str_sub</span><span class='op'>(</span><span class='va'>password</span>, <span class='va'>min</span>, <span class='va'>min</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>mutate</span><span class='op'>(</span>location_2 <span class='op'>=</span> <span class='fu'>str_sub</span><span class='op'>(</span><span class='va'>password</span>, <span class='va'>max</span>, <span class='va'>max</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>rowwise</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>(</span><span class='va'>letter</span> <span class='op'>==</span> <span class='va'>location_1</span> <span class='op'>|</span> <span class='va'>letter</span> <span class='op'>==</span> <span class='va'>location_2</span><span class='op'>)</span> <span class='op'>&amp;</span> <span class='op'>(</span><span class='va'>location_1</span> <span class='op'>!=</span> <span class='va'>location_2</span><span class='op'>)</span><span class='op'>)</span>
+<pre><code><span class='va'>file</span> <span class='op'>&lt;-</span> <span class='fu'>here</span><span class='op'>(</span><span class='st'>"data"</span>, <span class='st'>"input"</span>, <span class='st'>"day5.txt"</span><span class='op'>)</span>
+
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>read_lines</span><span class='op'>(</span><span class='va'>file</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>20</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 649 x 6
-# Rowwise: 
-     min   max letter password            location_1 location_2
-   &lt;int&gt; &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;               &lt;chr&gt;      &lt;chr&gt;     
- 1     1     6 g      ggvggbgggstg        g          b         
- 2     1     4 s      lssss               l          s         
- 3    13    14 v      hvvcvvvvvvvvvsvvv   v          s         
- 4     3     4 t      stht                h          t         
- 5     5     6 b      dbkbhb              h          b         
- 6     3    12 s      sskssssssssss       k          s         
- 7    14    15 z      zrndzbmrzzpzzqzj    q          z         
- 8    12    18 l      tllllllllllllplllbl l          b         
- 9     1     2 n      nbnj                n          b         
-10     6     9 n      nnnnnnnnb           n          b         
-# … with 639 more rows</code></pre>
+<pre><code> [1] &quot;FBBFBBBRLL&quot; &quot;FBBFFBFLLL&quot; &quot;BFFFFFFLRL&quot; &quot;FBFBFFFLRR&quot; &quot;BBBFBFBRLL&quot;
+ [6] &quot;BFBBFFBRLL&quot; &quot;BBFFFFBRLL&quot; &quot;BFBFBBBLRR&quot; &quot;FFBBFBFLLR&quot; &quot;FBBBBFBRRR&quot;
+[11] &quot;FFBFBBFRLR&quot; &quot;FBBFFFFRRR&quot; &quot;BFBFFBFRRL&quot; &quot;FFFBBFFLLL&quot; &quot;FFFFBBFLLL&quot;
+[16] &quot;FFBFFBBRLL&quot; &quot;FBBBBBFLRR&quot; &quot;FFFBFFFLRR&quot; &quot;FBBBBBFRLR&quot; &quot;BFFBFFBLRL&quot;</code></pre>
 </div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h2 id="extract-all-the-seat-ids">Extract all the seat IDs</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>seatids</span> <span class='op'>&lt;-</span> <span class='fu'>map_dbl</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  <span class='va'>find_seat_id</span>,
+  row_range <span class='op'>=</span> <span class='va'>row_range</span>,
+  col_range <span class='op'>=</span> <span class='va'>col_range</span>
+<span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>seatids</span>, <span class='fl'>20</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code> [1] 444 400 514 323 940 716 780 699 209 495 181 391 662  96  48 156
+[17] 499  67 501 586</code></pre>
+</div>
+<p>Find the highest seat ID.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span><span class='op'>(</span><span class='va'>seatids</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 944</code></pre>
+</div>
+<h2 id="part-2">Part 2</h2>
+<p><small> Ding! The “fasten seat belt” signs have turned on. Time to find your seat.</p>
+<p>It’s a completely full flight, so your seat should be the only missing boarding pass in your list. However, there’s a catch: some of the seats at the very front and back of the plane don’t exist on this aircraft, so they’ll be missing from your list as well.</p>
+<p>Your seat wasn’t at the very front or back, though; the seats with IDs +1 and -1 from yours will be in your list.</p>
+<p>What is the ID of your seat? </small></p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>seatids_sorted</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sort.html'>sort</a></span><span class='op'>(</span><span class='va'>seatids</span><span class='op'>)</span>
+
+<span class='va'>i</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/which.html'>which</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/diff.html'>diff</a></span><span class='op'>(</span><span class='va'>seatids_sorted</span><span class='op'>)</span> <span class='op'>!=</span> <span class='fl'>1</span><span class='op'>)</span>
+
+<span class='va'>seatids_sorted</span><span class='op'>[</span><span class='va'>i</span><span class='op'>]</span> <span class='op'>+</span> <span class='fl'>1</span> <span class='co'># Do not forget, it is 0 based!</span>
+</code></pre>
+</div>
+<pre><code>[1] 554</code></pre>
+</div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

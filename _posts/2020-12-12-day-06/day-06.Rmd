@@ -1,0 +1,131 @@
+---
+title: "Advent of code 2020 day 6"
+description: |
+  --- Day 6: Custom Customs ---
+author:
+  - name: Philippe Massicotte
+date: 12-12-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(here)
+```
+
+## Context
+
+https://adventofcode.com/2020/day/6
+
+<small>
+As your flight approaches the regional airport where you'll switch to a much larger plane, customs declaration forms are distributed to the passengers.
+
+The form asks a series of 26 yes-or-no questions marked a through z. All you need to do is identify the questions for which anyone in your group answers "yes". Since your group is just you, this doesn't take very long.
+
+However, the person sitting next to you seems to be experiencing a language barrier and asks if you can help. For each of the people in their group, you write down the questions for which they answer "yes", one per line. For example:
+
+```
+abcx
+abcy
+abcz
+```
+
+In this group, there are 6 questions to which anyone answered "yes": a, b, c, x, y, and z. (Duplicate answers to the same question don't count extra; each question counts at most once.)
+
+Another group asks for your help, then another, and eventually you've collected answers from every group on the plane (your puzzle input). Each group's answers are separated by a blank line, and within each group, each person's answers are on a single line. For example:
+
+```
+abc
+
+a
+b
+c
+
+ab
+ac
+
+a
+a
+a
+a
+
+b
+```
+
+This list represents answers from five groups:
+
+```
+- The first group contains one person who answered "yes" to 3 questions: a, b, and c.
+- The second group contains three people; combined, they answered "yes" to 3 questions: a, b, and c.
+- The third group contains two people; combined, they answered "yes" to 3 questions: a, b, and c.
+- The fourth group contains four people; combined, they answered "yes" to only 1 question, a.
+- The last group contains one person who answered "yes" to only 1 question, b.
+```
+In this example, the sum of these counts is 3 + 3 + 3 + 1 + 1 = 11.
+
+For each group, count the number of questions to which anyone answered "yes". What is the sum of those counts?
+</small>
+
+## Read the customs declaration
+
+```{r}
+file <- here("data", "input", "day6.txt")
+
+df <- read_file(file)
+
+df <- df %>% 
+  str_split("\n\n") %>% 
+  unlist() %>% 
+  set_names(1:length(.)) %>% 
+  enframe(name = "group", value = "question") %>% 
+  separate_rows(question, sep = "\n") %>% 
+  rowid_to_column(var = "person_id")
+
+df %>% 
+  rmarkdown::paged_table()
+
+```
+
+## Part 1
+
+Count the number of unique question per group.
+
+```{r}
+n <- df %>% 
+  mutate(question_splited = str_split(question, "")) %>% 
+  unnest(question_splited) %>% 
+  group_by(group) %>% 
+  distinct(question_splited) %>% 
+  summarise(n = n()) %>% 
+  pull(n)
+
+head(n, 20)
+```
+
+**Answer:** `r sum(n)`
+
+## Part 2
+
+Count the number of questions that have been answered by everyone in each group.
+
+```{r}
+n <- df %>% 
+  mutate(question_splited = str_split(question, "")) %>% 
+  unnest(question_splited) %>% 
+  group_by(group) %>% 
+  mutate(n_person_in_group = n_distinct(person_id)) %>% 
+  add_count(question_splited) %>% 
+  filter(n_person_in_group == n) %>% 
+  distinct(group, question_splited, n) %>% 
+  summarise(n = n()) %>% 
+  pull(n)
+
+
+head(n, 20)
+```
+
+**Answer:** `r sum(n)`
