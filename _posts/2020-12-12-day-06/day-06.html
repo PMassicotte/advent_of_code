@@ -1403,7 +1403,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="day-06_files/header-attrs-2.5/header-attrs.js"></script>
+  <script src="day-06_files/header-attrs-2.6/header-attrs.js"></script>
   <link href="day-06_files/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
   <script src="day-06_files/pagedtable-1.1/js/pagedtable.js"></script>
   <script src="day-06_files/jquery-1.11.3/jquery.min.js"></script>
@@ -1445,40 +1445,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 
 <div class="d-article">
-<h2 id="context">Context</h2>
 <p><a href="https://adventofcode.com/2020/day/6" class="uri">https://adventofcode.com/2020/day/6</a></p>
-<p><small> As your flight approaches the regional airport where you’ll switch to a much larger plane, customs declaration forms are distributed to the passengers.</p>
-<p>The form asks a series of 26 yes-or-no questions marked a through z. All you need to do is identify the questions for which anyone in your group answers “yes”. Since your group is just you, this doesn’t take very long.</p>
-<p>However, the person sitting next to you seems to be experiencing a language barrier and asks if you can help. For each of the people in their group, you write down the questions for which they answer “yes”, one per line. For example:</p>
-<pre><code>abcx
-abcy
-abcz</code></pre>
-<p>In this group, there are 6 questions to which anyone answered “yes”: a, b, c, x, y, and z. (Duplicate answers to the same question don’t count extra; each question counts at most once.)</p>
-<p>Another group asks for your help, then another, and eventually you’ve collected answers from every group on the plane (your puzzle input). Each group’s answers are separated by a blank line, and within each group, each person’s answers are on a single line. For example:</p>
-<pre><code>abc
-
-a
-b
-c
-
-ab
-ac
-
-a
-a
-a
-a
-
-b</code></pre>
-<p>This list represents answers from five groups:</p>
-<pre><code>- The first group contains one person who answered &quot;yes&quot; to 3 questions: a, b, and c.
-- The second group contains three people; combined, they answered &quot;yes&quot; to 3 questions: a, b, and c.
-- The third group contains two people; combined, they answered &quot;yes&quot; to 3 questions: a, b, and c.
-- The fourth group contains four people; combined, they answered &quot;yes&quot; to only 1 question, a.
-- The last group contains one person who answered &quot;yes&quot; to only 1 question, b.</code></pre>
-<p>In this example, the sum of these counts is 3 + 3 + 3 + 1 + 1 = 11.</p>
-<p>For each group, count the number of questions to which anyone answered “yes”. What is the sum of those counts? </small></p>
-<h2 id="read-the-customs-declaration">Read the customs declaration</h2>
+<h2 id="read-the-input-data">Read the input data</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='va'>file</span> <span class='op'>&lt;-</span> <span class='fu'>here</span><span class='op'>(</span><span class='st'>"data"</span>, <span class='st'>"input"</span>, <span class='st'>"day6.txt"</span><span class='op'>)</span>
@@ -1543,7 +1511,7 @@ b</code></pre>
 <pre><code> [1]  4  6  1  3 13  5  1  7  5  3  7  2  6  9  2  5  4 14  1  4</code></pre>
 </div>
 <p><strong>Answer:</strong> 2947</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

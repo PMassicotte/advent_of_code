@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["day-05_files/anchor-4.2.2/anchor.min.js","day-05_files/bowser-1.9.3/bowser.min.js","day-05_files/distill-2.2.21/template.v2.js","day-05_files/header-attrs-2.5/header-attrs.js","day-05_files/jquery-1.11.3/jquery.min.js","day-05_files/pagedtable-1.1/css/pagedtable.css","day-05_files/pagedtable-1.1/js/pagedtable.js","day-05_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["day-05_files/anchor-4.2.2/anchor.min.js","day-05_files/bowser-1.9.3/bowser.min.js","day-05_files/distill-2.2.21/template.v2.js","day-05_files/header-attrs-2.5/header-attrs.js","day-05_files/header-attrs-2.6/header-attrs.js","day-05_files/jquery-1.11.3/jquery.min.js","day-05_files/pagedtable-1.1/css/pagedtable.css","day-05_files/pagedtable-1.1/js/pagedtable.js","day-05_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1403,7 +1403,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="day-05_files/header-attrs-2.5/header-attrs.js"></script>
+  <script src="day-05_files/header-attrs-2.6/header-attrs.js"></script>
   <script src="day-05_files/jquery-1.11.3/jquery.min.js"></script>
   <script src="day-05_files/anchor-4.2.2/anchor.min.js"></script>
   <script src="day-05_files/bowser-1.9.3/bowser.min.js"></script>
@@ -1443,33 +1443,22 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 
 <div class="d-article">
-<h2 id="context">Context</h2>
-<p><a href="https://.com/2020/day/5" class="uri">https://.com/2020/day/5</a></p>
-<p><small> You board your plane only to discover a new problem: you dropped your boarding pass! You aren’t sure which seat is yours, and all of the flight attendants are busy with the flood of people that suddenly made it through passport control.</p>
-<p>You write a quick program to use your phone’s camera to scan all of the nearby boarding passes (your puzzle input); perhaps you can find your seat through process of elimination.</p>
-<p>Instead of zones or groups, this airline uses binary space partitioning to seat people. A seat might be specified like FBFBBFFRLR, where F means “front”, B means “back”, L means “left”, and R means “right”.</p>
-<p>The first 7 characters will either be F or B; these specify exactly one of the 128 rows on the plane (numbered 0 through 127). Each letter tells you which half of a region the given seat is in. Start with the whole list of rows; the first letter indicates whether the seat is in the front (0 through 63) or the back (64 through 127). The next letter indicates which half of that region the seat is in, and so on until you’re left with exactly one row.</p>
-<p>For example, consider just the first seven characters of FBFBBFFRLR:</p>
-<pre><code>- Start by considering the whole range, rows 0 through 127.
-- F means to take the lower half, keeping rows 0 through 63.
-- B means to take the upper half, keeping rows 32 through 63.
-- F means to take the lower half, keeping rows 32 through 47.
-- B means to take the upper half, keeping rows 40 through 47.
-- B keeps rows 44 through 47.
-- F keeps rows 44 through 45.</code></pre>
-<p>The final F keeps the lower of the two, row 44. The last three characters will be either L or R; these specify exactly one of the 8 columns of seats on the plane (numbered 0 through 7). The same process as above proceeds again, this time with only three steps. L means to keep the lower half, while R means to keep the upper half.</p>
-<p>For example, consider just the last 3 characters of FBFBBFFRLR:</p>
-<pre><code>- Start by considering the whole range, columns 0 through 7.
-- R means to take the upper half, keeping columns 4 through 7.
-- L means to take the lower half, keeping columns 4 through 5.
-- The final R keeps the upper of the two, column 5.</code></pre>
-<p>So, decoding FBFBBFFRLR reveals that it is the seat at row 44, column 5.</p>
-<p>Every seat also has a unique seat ID: multiply the row by 8, then add the column. In this example, the seat has ID 44 * 8 + 5 = 357.</p>
-<p>Here are some other boarding passes:</p>
-<pre><code>- BFFFBBFRRR: row 70, column 7, seat ID 567.
-- FFFBBBFRRR: row 14, column 7, seat ID 119.
-- BBFFBBFRLL: row 102, column 4, seat ID 820.</code></pre>
-<p>As a sanity check, look through your list of boarding passes. What is the highest seat ID on a boarding pass? </small></p>
+<p><a href="https://adventofcode.com/2020/day/5" class="uri">https://adventofcode.com/2020/day/5</a></p>
+<h2 id="read-the-input-data">Read the input data</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>file</span> <span class='op'>&lt;-</span> <span class='fu'>here</span><span class='op'>(</span><span class='st'>"data"</span>, <span class='st'>"input"</span>, <span class='st'>"day5.txt"</span><span class='op'>)</span>
+
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>read_lines</span><span class='op'>(</span><span class='va'>file</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>20</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code> [1] &quot;FBBFBBBRLL&quot; &quot;FBBFFBFLLL&quot; &quot;BFFFFFFLRL&quot; &quot;FBFBFFFLRR&quot; &quot;BBBFBFBRLL&quot;
+ [6] &quot;BFBBFFBRLL&quot; &quot;BBFFFFBRLL&quot; &quot;BFBFBBBLRR&quot; &quot;FFBBFBFLLR&quot; &quot;FBBBBFBRRR&quot;
+[11] &quot;FFBFBBFRLR&quot; &quot;FBBFFFFRRR&quot; &quot;BFBFFBFRRL&quot; &quot;FFFBBFFLLL&quot; &quot;FFFFBBFLLL&quot;
+[16] &quot;FFBFFBBRLL&quot; &quot;FBBBBBFLRR&quot; &quot;FFFBFFFLRR&quot; &quot;FBBBBBFRLR&quot; &quot;BFFBFFBLRL&quot;</code></pre>
+</div>
 <p>Here I am going to create a recursive function that splits the index vector into the upper or lower half.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -1494,14 +1483,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     <span class='va'>index_range</span> <span class='op'>&lt;-</span> <span class='va'>index_range</span><span class='op'>[</span><span class='va'>start</span><span class='op'>:</span><span class='va'>end</span><span class='op'>]</span>
   <span class='op'>}</span>
 
-  <span class='co'># print(start)</span>
-  <span class='co'># print(end)</span>
-
   <span class='fu'>find_index</span><span class='op'>(</span><span class='fu'>str_sub</span><span class='op'>(</span><span class='va'>letter</span>, <span class='fl'>2</span>, <span class='va'>end</span><span class='op'>)</span>, <span class='va'>index_range</span><span class='op'>)</span>
 <span class='op'>}</span>
 </code></pre>
 </div>
 </div>
+<h2 id="part-1">Part 1</h2>
 <p>Find the row and column numbers.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -1524,6 +1511,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <pre><code><span class='va'>index_range</span> <span class='op'>&lt;-</span> <span class='fl'>0</span><span class='op'>:</span><span class='fl'>127</span>
 <span class='va'>col_range</span> <span class='op'>&lt;-</span> <span class='fl'>0</span><span class='op'>:</span><span class='fl'>7</span>
 
+<span class='co'># Try with the test data to see if it works</span>
 <span class='fu'>find_seat_id</span><span class='op'>(</span><span class='st'>"FBFBBFFRLR"</span>, <span class='va'>row_range</span>, <span class='va'>col_range</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -1543,21 +1531,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </code></pre>
 </div>
 <pre><code>[1] 820</code></pre>
-</div>
-<h2 id="read-the-seat-numbers">Read the seat numbers</h2>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre><code><span class='va'>file</span> <span class='op'>&lt;-</span> <span class='fu'>here</span><span class='op'>(</span><span class='st'>"data"</span>, <span class='st'>"input"</span>, <span class='st'>"day5.txt"</span><span class='op'>)</span>
-
-<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>read_lines</span><span class='op'>(</span><span class='va'>file</span><span class='op'>)</span>
-
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>20</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code> [1] &quot;FBBFBBBRLL&quot; &quot;FBBFFBFLLL&quot; &quot;BFFFFFFLRL&quot; &quot;FBFBFFFLRR&quot; &quot;BBBFBFBRLL&quot;
- [6] &quot;BFBBFFBRLL&quot; &quot;BBFFFFBRLL&quot; &quot;BFBFBBBLRR&quot; &quot;FFBBFBFLLR&quot; &quot;FBBBBFBRRR&quot;
-[11] &quot;FFBFBBFRLR&quot; &quot;FBBFFFFRRR&quot; &quot;BFBFFBFRRL&quot; &quot;FFFBBFFLLL&quot; &quot;FFFFBBFLLL&quot;
-[16] &quot;FFBFFBBRLL&quot; &quot;FBBBBBFLRR&quot; &quot;FFFBFFFLRR&quot; &quot;FBBBBBFRLR&quot; &quot;BFFBFFBLRL&quot;</code></pre>
 </div>
 <h2 id="extract-all-the-seat-ids">Extract all the seat IDs</h2>
 <div class="layout-chunk" data-layout="l-body">
@@ -1584,10 +1557,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <pre><code>[1] 944</code></pre>
 </div>
 <h2 id="part-2">Part 2</h2>
-<p><small> Ding! The “fasten seat belt” signs have turned on. Time to find your seat.</p>
-<p>It’s a completely full flight, so your seat should be the only missing boarding pass in your list. However, there’s a catch: some of the seats at the very front and back of the plane don’t exist on this aircraft, so they’ll be missing from your list as well.</p>
-<p>Your seat wasn’t at the very front or back, though; the seats with IDs +1 and -1 from yours will be in your list.</p>
-<p>What is the ID of your seat? </small></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='va'>seatids_sorted</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sort.html'>sort</a></span><span class='op'>(</span><span class='va'>seatids</span><span class='op'>)</span>
@@ -1599,7 +1568,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <pre><code>[1] 554</code></pre>
 </div>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

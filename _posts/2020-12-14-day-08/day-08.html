@@ -1403,7 +1403,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="day-08_files/header-attrs-2.5/header-attrs.js"></script>
+  <script src="day-08_files/header-attrs-2.6/header-attrs.js"></script>
   <link href="day-08_files/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
   <script src="day-08_files/pagedtable-1.1/js/pagedtable.js"></script>
   <script src="day-08_files/jquery-1.11.3/jquery.min.js"></script>
@@ -1445,41 +1445,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 
 <div class="d-article">
-<h2 id="context">Context</h2>
 <p><a href="https://adventofcode.com/2020/day/8" class="uri">https://adventofcode.com/2020/day/8</a></p>
-<p><small> Your flight to the major airline hub reaches cruising altitude without incident. While you consider checking the in-flight menu for one of those drinks that come with a little umbrella, you are interrupted by the kid sitting next to you.</p>
-<p>Their handheld game console won’t turn on! They ask if you can take a look.</p>
-<p>You narrow the problem down to a strange infinite loop in the boot code (your puzzle input) of the device. You should be able to fix it, but first you need to be able to run the code in isolation.</p>
-<p>The boot code is represented as a text file with one instruction per line of text. Each instruction consists of an operation (acc, jmp, or nop) and an argument (a signed number like +4 or -20).</p>
-<ul>
-<li><p>acc increases or decreases a single global value called the accumulator by the value given in the argument. For example, acc +7 would increase the accumulator by 7. The accumulator starts at 0. After an acc instruction, the instruction immediately below it is executed next.</p></li>
-<li><p>jmp jumps to a new instruction relative to itself. The next instruction to execute is found using the argument as an offset from the jmp instruction; for example, jmp +2 would skip the next instruction, jmp +1 would continue to the instruction immediately below it, and jmp -20 would cause the instruction 20 lines above to be executed next.</p></li>
-<li><p>nop stands for No OPeration - it does nothing. The instruction immediately below it is executed next. For example, consider the following program:</p></li>
-</ul>
-<pre><code>nop +0
-acc +1
-jmp +4
-acc +3
-jmp -3
-acc -99
-acc +1
-jmp -4
-acc +6</code></pre>
-<p>These instructions are visited in this order:</p>
-<pre><code>nop +0  | 1
-acc +1  | 2, 8(!)
-jmp +4  | 3
-acc +3  | 6
-jmp -3  | 7
-acc -99 |
-acc +1  | 4
-jmp -4  | 5
-acc +6  |</code></pre>
-<p>First, the nop +0 does nothing. Then, the accumulator is increased from 0 to 1 (acc +1) and jmp +4 sets the next instruction to the other acc +1 near the bottom. After it increases the accumulator from 1 to 2, jmp -4 executes, setting the next instruction to the only acc +3. It sets the accumulator to 5, and jmp -3 causes the program to continue back at the first acc +1.</p>
-<p>This is an infinite loop: with this sequence of jumps, the program will run forever. The moment the program tries to run any instruction a second time, you know it will never terminate.</p>
-<p>Immediately before the program would run an instruction a second time, the value in the accumulator is 5.</p>
-<p>Run your copy of the boot code. Immediately before any instruction is executed a second time, what value is in the accumulator? </small></p>
-<h2 id="read-operations-sequence">Read operations sequence</h2>
+<h2 id="read-the-input-data">Read the input data</h2>
 <p>First lets read the data and turn it into a tibble.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -1533,14 +1500,9 @@ acc +6  |</code></pre>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='co'># accumulator &lt;- 0</span>
-<span class='co'># cur_operation_id &lt;- 1</span>
-
-<span class='va'>get_new_index</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span> <span class='op'>{</span>
+<pre><code><span class='va'>get_new_index</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span> <span class='op'>{</span>
   <span class='va'>cur_operation_id</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>$</span><span class='va'>cur_operation_id</span><span class='op'>)</span>
   <span class='va'>operation</span> <span class='op'>&lt;-</span> <span class='va'>df</span><span class='op'>$</span><span class='va'>operation</span><span class='op'>[</span><span class='va'>cur_operation_id</span><span class='op'>]</span>
-
-
 
   <span class='kw'>if</span> <span class='op'>(</span><span class='va'>operation</span> <span class='op'>==</span> <span class='st'>"nop"</span><span class='op'>)</span> <span class='op'>{</span>
     <span class='va'>df</span><span class='op'>$</span><span class='va'>visited</span><span class='op'>[</span><span class='va'>cur_operation_id</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='cn'>TRUE</span>
@@ -1567,8 +1529,7 @@ acc +6  |</code></pre>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='co'># debug(get_new_index)</span>
-<span class='kw'>while</span> <span class='op'>(</span><span class='op'>!</span><span class='va'>df</span><span class='op'>$</span><span class='va'>visited</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>$</span><span class='va'>cur_operation_id</span><span class='op'>)</span><span class='op'>]</span><span class='op'>)</span> <span class='op'>{</span>
+<pre><code><span class='kw'>while</span> <span class='op'>(</span><span class='op'>!</span><span class='va'>df</span><span class='op'>$</span><span class='va'>visited</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>$</span><span class='va'>cur_operation_id</span><span class='op'>)</span><span class='op'>]</span><span class='op'>)</span> <span class='op'>{</span>
   <span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'>get_new_index</span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span>
 <span class='op'>}</span>
 
@@ -1628,7 +1589,7 @@ acc +6  |</code></pre>
     <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>
   <span class='op'>}</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='va'>res</span> <span class='op'>%&gt;%</span> 
+<span class='va'>res</span> <span class='op'>%&gt;%</span>
   <span class='fu'>rmarkdown</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/rmarkdown/man/paged_table.html'>paged_table</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -1666,7 +1627,7 @@ acc +6  |</code></pre>
 </div>
 <pre><code>[1] 2304</code></pre>
 </div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

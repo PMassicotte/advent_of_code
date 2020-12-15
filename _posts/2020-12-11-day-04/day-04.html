@@ -1403,7 +1403,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="day-04_files/header-attrs-2.5/header-attrs.js"></script>
+  <script src="day-04_files/header-attrs-2.6/header-attrs.js"></script>
   <link href="day-04_files/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
   <script src="day-04_files/pagedtable-1.1/js/pagedtable.js"></script>
   <script src="day-04_files/jquery-1.11.3/jquery.min.js"></script>
@@ -1445,37 +1445,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 
 <div class="d-article">
-<h2 id="context">Context</h2>
 <p><a href="https://adventofcode.com/2020/day/4" class="uri">https://adventofcode.com/2020/day/4</a></p>
-<p><small> You arrive at the airport only to realize that you grabbed your North Pole Credentials instead of your passport. While these documents are extremely similar, North Pole Credentials aren’t issued by a country and therefore aren’t actually valid documentation for travel in most of the world.</p>
-<p>It seems like you’re not the only one having problems, though; a very long line has formed for the automatic passport scanners, and the delay could upset your travel itinerary.</p>
-<p>Due to some questionable network security, you realize you might be able to solve both of these problems at the same time.</p>
-<p>The automatic passport scanners are slow because they’re having trouble detecting which passports have all required fields. The expected fields are as follows:</p>
-<pre><code>byr (Birth Year)
-iyr (Issue Year)
-eyr (Expiration Year)
-hgt (Height)
-hcl (Hair Color)
-ecl (Eye Color)
-pid (Passport ID)
-cid (Country ID)</code></pre>
-<p>Passport data is validated in batch files (your puzzle input). Each passport is represented as a sequence of key:value pairs separated by spaces or newlines. Passports are separated by blank lines.</p>
-<p>Here is an example batch file containing four passports:</p>
-<pre><code>ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
-byr:1937 iyr:2017 cid:147 hgt:183cm
-
-iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884
-hcl:#cfa07d byr:1929
-
-hcl:#ae17e1 iyr:2013
-eyr:2024
-ecl:brn pid:760753108 byr:1931
-hgt:179cm
-
-hcl:#cfa07d eyr:2025 pid:166559648
-iyr:2011 ecl:brn hgt:59in</code></pre>
-<p></small></p>
-<h2 id="read-the-passport-information">Read the passport information</h2>
+<h2 id="read-the-input-data">Read the input data</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='va'>file</span> <span class='op'>&lt;-</span> <span class='fu'>here</span><span class='op'>(</span><span class='st'>"data"</span>, <span class='st'>"input"</span>, <span class='st'>"day4.txt"</span><span class='op'>)</span>
@@ -1515,16 +1486,6 @@ iyr:2011 ecl:brn hgt:59in</code></pre>
 </div>
 </div>
 <h1 id="part-1">Part 1</h1>
-<p><small> The automatic passport scanners are slow because they’re having trouble detecting which passports have all required fields. The expected fields are as follows:</p>
-<pre><code>byr (Birth Year)
-iyr (Issue Year)
-eyr (Expiration Year)
-hgt (Height)
-hcl (Hair Color)
-ecl (Eye Color)
-pid (Passport ID)
-cid (Country ID)</code></pre>
-<p></small></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='va'>expected_fields</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
@@ -1556,18 +1517,6 @@ cid (Country ID)</code></pre>
 <p><strong>Answer:</strong> 235</p>
 <h2 id="part-2">Part 2</h2>
 <p>The second part consists in filtering the remaining passports with stricter rules.</p>
-<p><small> You can continue to ignore the cid field, but each other field has strict rules about what values are valid for automatic validation:</p>
-<pre><code>byr (Birth Year) - four digits; at least 1920 and at most 2002.
-iyr (Issue Year) - four digits; at least 2010 and at most 2020.
-eyr (Expiration Year) - four digits; at least 2020 and at most 2030.
-hgt (Height) - a number followed by either cm or in:
-If cm, the number must be at least 150 and at most 193.
-If in, the number must be at least 59 and at most 76.
-hcl (Hair Color) - a # followed by exactly six characters 0-9 or a-f.
-ecl (Eye Color) - exactly one of: amb blu brn gry grn hzl oth.
-pid (Passport ID) - a nine-digit number, including leading zeroes.
-cid (Country ID) - ignored, missing or not.</code></pre>
-<p></small></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='va'>filtered_passport</span> <span class='op'>&lt;-</span> <span class='va'>filtered_passport</span> <span class='op'>%&gt;%</span>
@@ -1602,7 +1551,7 @@ cid (Country ID) - ignored, missing or not.</code></pre>
 </div>
 </div>
 <p><strong>Answer:</strong> 194</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
