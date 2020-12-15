@@ -6,14 +6,14 @@
       "description": "Just my quick attempts to solve the Advent of Code puzzles using R :)",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2020-12-12T07:59:12-05:00"
+      "last_modified": "2020-12-15T08:28:35-05:00"
     },
     {
       "path": "index.html",
       "title": "Advent of Code",
       "author": [],
       "contents": "\n\nSolving the Advent of Code puzzles one day at a time.\n\n\n\n",
-      "last_modified": "2020-12-12T07:59:12-05:00"
+      "last_modified": "2020-12-15T08:28:35-05:00"
     }
   ],
   "collections": ["posts/posts.json"]

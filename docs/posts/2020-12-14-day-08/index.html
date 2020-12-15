@@ -1,0 +1,2598 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { color: #20794d; } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #20794d; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
+  <!--radix_placeholder_meta_tags-->
+<title>Advent of Code: Advent of code 2020 day 8</title>
+
+<meta property="description" itemprop="description" content="--- Day 8: Handheld Halting ---"/>
+
+
+<!--  https://schema.org/Article -->
+<meta property="article:published" itemprop="datePublished" content="2020-12-14"/>
+<meta property="article:created" itemprop="dateCreated" content="2020-12-14"/>
+<meta name="article:author" content="Philippe Massicotte"/>
+
+<!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+<meta property="og:title" content="Advent of Code: Advent of code 2020 day 8"/>
+<meta property="og:type" content="article"/>
+<meta property="og:description" content="--- Day 8: Handheld Halting ---"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:site_name" content="Advent of Code"/>
+
+<!--  https://dev.twitter.com/cards/types/summary -->
+<meta property="twitter:card" content="summary"/>
+<meta property="twitter:title" content="Advent of Code: Advent of code 2020 day 8"/>
+<meta property="twitter:description" content="--- Day 8: Handheld Halting ---"/>
+
+<!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+
+<script type="text/json" id="radix-rmarkdown-metadata">
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Advent of code 2020 day 8"]},{"type":"character","attributes":{},"value":["--- Day 8: Handheld Halting ---"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Philippe Massicotte"]}]}]},{"type":"character","attributes":{},"value":["12-14-2020"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+</script>
+<!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["day-08_files/anchor-4.2.2/anchor.min.js","day-08_files/bowser-1.9.3/bowser.min.js","day-08_files/distill-2.2.21/template.v2.js","day-08_files/header-attrs-2.5/header-attrs.js","day-08_files/jquery-1.11.3/jquery.min.js","day-08_files/pagedtable-1.1/css/pagedtable.css","day-08_files/pagedtable-1.1/js/pagedtable.js","day-08_files/webcomponents-2.0.0/webcomponents.js"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+<meta name="distill:offset" content="../.."/>
+
+<script type="application/javascript">
+
+  window.headroom_prevent_pin = false;
+
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+
+    // initialize headroom for banner
+    var header = $('header').get(0);
+    var headerHeight = header.offsetHeight;
+    var headroom = new Headroom(header, {
+      tolerance: 5,
+      onPin : function() {
+        if (window.headroom_prevent_pin) {
+          window.headroom_prevent_pin = false;
+          headroom.unpin();
+        }
+      }
+    });
+    headroom.init();
+    if(window.location.hash)
+      headroom.unpin();
+    $(header).addClass('headroom--transition');
+
+    // offset scroll location for banner on hash change
+    // (see: https://github.com/WickyNilliams/headroom.js/issues/38)
+    window.addEventListener("hashchange", function(event) {
+      window.scrollTo(0, window.pageYOffset - (headerHeight + 25));
+    });
+
+    // responsive menu
+    $('.distill-site-header').each(function(i, val) {
+      var topnav = $(this);
+      var toggle = topnav.find('.nav-toggle');
+      toggle.on('click', function() {
+        topnav.toggleClass('responsive');
+      });
+    });
+
+    // nav dropdowns
+    $('.nav-dropbtn').click(function(e) {
+      $(this).next('.nav-dropdown-content').toggleClass('nav-dropdown-active');
+      $(this).parent().siblings('.nav-dropdown')
+         .children('.nav-dropdown-content').removeClass('nav-dropdown-active');
+    });
+    $("body").click(function(e){
+      $('.nav-dropdown-content').removeClass('nav-dropdown-active');
+    });
+    $(".nav-dropdown").click(function(e){
+      e.stopPropagation();
+    });
+  });
+</script>
+
+<style type="text/css">
+
+/* Theme (user-documented overrideables for nav appearance) */
+
+.distill-site-nav {
+  color: rgba(255, 255, 255, 0.8);
+  background-color: #0F2E3D;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.distill-site-nav a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.distill-site-nav a:hover {
+  color: white;
+}
+
+@media print {
+  .distill-site-nav {
+    display: none;
+  }
+}
+
+.distill-site-header {
+
+}
+
+.distill-site-footer {
+
+}
+
+
+/* Site Header */
+
+.distill-site-header {
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 3;
+}
+
+.distill-site-header .nav-left {
+  display: inline-block;
+  margin-left: 8px;
+}
+
+@media screen and (max-width: 768px) {
+  .distill-site-header .nav-left {
+    margin-left: 0;
+  }
+}
+
+
+.distill-site-header .nav-right {
+  float: right;
+  margin-right: 8px;
+}
+
+.distill-site-header a,
+.distill-site-header .title {
+  display: inline-block;
+  text-align: center;
+  padding: 14px 10px 14px 10px;
+}
+
+.distill-site-header .title {
+  font-size: 18px;
+  min-width: 150px;
+}
+
+.distill-site-header .logo {
+  padding: 0;
+}
+
+.distill-site-header .logo img {
+  display: none;
+  max-height: 20px;
+  width: auto;
+  margin-bottom: -4px;
+}
+
+.distill-site-header .nav-image img {
+  max-height: 18px;
+  width: auto;
+  display: inline-block;
+  margin-bottom: -3px;
+}
+
+
+
+@media screen and (min-width: 1000px) {
+  .distill-site-header .logo img {
+    display: inline-block;
+  }
+  .distill-site-header .nav-left {
+    margin-left: 20px;
+  }
+  .distill-site-header .nav-right {
+    margin-right: 20px;
+  }
+  .distill-site-header .title {
+    padding-left: 12px;
+  }
+}
+
+
+.distill-site-header .nav-toggle {
+  display: none;
+}
+
+.nav-dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.nav-dropdown .nav-dropbtn {
+  border: none;
+  outline: none;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 16px 10px;
+  background-color: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+  margin-top: 1px;
+  z-index: 2;
+}
+
+.nav-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 200px;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 4px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+  z-index: 1;
+  margin-top: 2px;
+  white-space: nowrap;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.nav-dropdown-content hr {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav-dropdown-active {
+  display: block;
+}
+
+.nav-dropdown-content a, .nav-dropdown-content .nav-dropdown-header {
+  color: black;
+  padding: 6px 24px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.nav-dropdown-content .nav-dropdown-header {
+  display: block;
+  padding: 5px 24px;
+  padding-bottom: 0;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #999999;
+  white-space: nowrap;
+}
+
+.nav-dropdown:hover .nav-dropbtn {
+  color: white;
+}
+
+.nav-dropdown-content a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.nav-right .nav-dropdown-content {
+  margin-left: -45%;
+  right: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .distill-site-header a, .distill-site-header .nav-dropdown  {display: none;}
+  .distill-site-header a.nav-toggle {
+    float: right;
+    display: block;
+  }
+  .distill-site-header .title {
+    margin-left: 0;
+  }
+  .distill-site-header .nav-right {
+    margin-right: 0;
+  }
+  .distill-site-header {
+    overflow: hidden;
+  }
+  .nav-right .nav-dropdown-content {
+    margin-left: 0;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .distill-site-header.responsive {position: relative; min-height: 500px; }
+  .distill-site-header.responsive a.nav-toggle {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .distill-site-header.responsive a,
+  .distill-site-header.responsive .nav-dropdown {
+    display: block;
+    text-align: left;
+  }
+  .distill-site-header.responsive .nav-left,
+  .distill-site-header.responsive .nav-right {
+    width: 100%;
+  }
+  .distill-site-header.responsive .nav-dropdown {float: none;}
+  .distill-site-header.responsive .nav-dropdown-content {position: relative;}
+  .distill-site-header.responsive .nav-dropdown .nav-dropbtn {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+
+/* Site Footer */
+
+.distill-site-footer {
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  z-index: 3;
+  margin-top: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+/* Headroom */
+
+d-title {
+  padding-top: 6rem;
+}
+
+@media print {
+  d-title {
+    padding-top: 4rem;
+  }
+}
+
+.headroom {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.headroom--transition {
+  transition: all .4s ease-in-out;
+}
+
+.headroom--unpinned {
+  top: -100px;
+}
+
+.headroom--pinned {
+  top: 0;
+}
+
+</style>
+
+<link href="../../site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
+<link href="../../site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
+<script src="../../site_libs/headroom-0.9.4/headroom.min.js"></script>
+<script src="../../site_libs/autocomplete-0.37.1/autocomplete.min.js"></script>
+<script src="../../site_libs/fuse-6.4.1/fuse.min.js"></script>
+
+<script type="application/javascript">
+
+function getMeta(metaName) {
+  var metas = document.getElementsByTagName('meta');
+  for (let i = 0; i < metas.length; i++) {
+    if (metas[i].getAttribute('name') === metaName) {
+      return metas[i].getAttribute('content');
+    }
+  }
+  return '';
+}
+
+function offsetURL(url) {
+  var offset = getMeta('distill:offset');
+  return offset ? offset + '/' + url : url;
+}
+
+function createFuseIndex() {
+
+  // create fuse index
+  var options = {
+    keys: [
+      { name: 'title', weight: 20 },
+      { name: 'categories', weight: 15 },
+      { name: 'description', weight: 10 },
+      { name: 'contents', weight: 5 },
+    ],
+    ignoreLocation: true,
+    threshold: 0
+  };
+  var fuse = new window.Fuse([], options);
+
+  // fetch the main search.json
+  return fetch(offsetURL('search.json'))
+    .then(function(response) {
+      if (response.status == 200) {
+        return response.json().then(function(json) {
+          // index main articles
+          json.articles.forEach(function(article) {
+            fuse.add(article);
+          });
+          // download collections and index their articles
+          return Promise.all(json.collections.map(function(collection) {
+            return fetch(offsetURL(collection)).then(function(response) {
+              if (response.status === 200) {
+                return response.json().then(function(articles) {
+                  articles.forEach(function(article) {
+                    fuse.add(article);
+                  });
+                })
+              } else {
+                return Promise.reject(
+                  new Error('Unexpected status from search index request: ' +
+                            response.status)
+                );
+              }
+            });
+          })).then(function() {
+            return fuse;
+          });
+        });
+
+      } else {
+        return Promise.reject(
+          new Error('Unexpected status from search index request: ' +
+                      response.status)
+        );
+      }
+    });
+}
+
+window.document.addEventListener("DOMContentLoaded", function (event) {
+
+  // get search element (bail if we don't have one)
+  var searchEl = window.document.getElementById('distill-search');
+  if (!searchEl)
+    return;
+
+  createFuseIndex()
+    .then(function(fuse) {
+
+      // make search box visible
+      searchEl.classList.remove('hidden');
+
+      // initialize autocomplete
+      var options = {
+        autoselect: true,
+        hint: false,
+        minLength: 2,
+      };
+      window.autocomplete(searchEl, options, [{
+        source: function(query, callback) {
+          const searchOptions = {
+            isCaseSensitive: false,
+            shouldSort: true,
+            minMatchCharLength: 2,
+            limit: 10,
+          };
+          var results = fuse.search(query, searchOptions);
+          callback(results
+            .map(function(result) { return result.item; })
+            .filter(function(item) { return !!item.description; })
+          );
+        },
+        templates: {
+          suggestion: function(suggestion) {
+            var html = `
+              <div class="search-item">
+                <h3>${suggestion.title}</h3>
+                <div class="search-item-description">
+                  ${suggestion.description}
+                </div>
+                <div class="search-item-preview">
+                  <img src="${suggestion.preview ? offsetURL(suggestion.preview) : ''}"</img>
+                </div>
+              </div>
+            `;
+            return html;
+          }
+        }
+      }]).on('autocomplete:selected', function(event, suggestion) {
+        window.location.href = offsetURL(suggestion.path);
+      });
+      // remove inline display style on autocompleter (we want to
+      // manage responsive display via css)
+      $('.algolia-autocomplete').css("display", "");
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+
+});
+
+</script>
+
+<style type="text/css">
+
+/* Algolioa Autocomplete */
+
+.algolia-autocomplete {
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: sub;
+  background-color: white;
+  color: black;
+  padding: 6px;
+  padding-top: 8px;
+  padding-bottom: 0;
+  border-radius: 6px;
+  border: 1px #0F2E3D solid;
+  width: 180px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .distill-site-nav .algolia-autocomplete {
+    display: none;
+    visibility: hidden;
+  }
+  .distill-site-nav.responsive .algolia-autocomplete {
+    display: inline-block;
+    visibility: visible;
+  }
+  .distill-site-nav.responsive .algolia-autocomplete .aa-dropdown-menu {
+    margin-left: 0;
+    width: 400px;
+    max-height: 400px;
+  }
+}
+
+.algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
+  width: 90%;
+  outline: none;
+  border: none;
+}
+
+.algolia-autocomplete .aa-hint {
+  color: #999;
+}
+.algolia-autocomplete .aa-dropdown-menu {
+  width: 550px;
+  max-height: 70vh;
+  overflow-x: visible;
+  overflow-y: scroll;
+  padding: 5px;
+  margin-top: 3px;
+  margin-left: -150px;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid #999;
+  border-top: none;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
+  cursor: pointer;
+  padding: 5px 4px;
+  border-bottom: 1px solid #eee;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion:last-of-type {
+  border-bottom: none;
+  margin-bottom: 2px;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item {
+  overflow: hidden;
+  font-size: 0.8em;
+  line-height: 1.4em;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item h3 {
+  margin-block-start: 0;
+  margin-block-end: 5px;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-description {
+  display: inline-block;
+  overflow: hidden;
+  height: 2.8em;
+  width: 80%;
+  margin-right: 4%;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview {
+  display: inline-block;
+  width: 15%;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img {
+  height: 3em;
+  width: auto;
+  display: none;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img[src] {
+  display: initial;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
+  background-color: #eee;
+}
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
+  font-weight: bold;
+  font-style: normal;
+}
+
+</style>
+
+
+<!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+
+<style type="text/css">
+
+body {
+  background-color: white;
+}
+
+.pandoc-table {
+  width: 100%;
+}
+
+.pandoc-table>caption {
+  margin-bottom: 10px;
+}
+
+.pandoc-table th:not([align]) {
+  text-align: left;
+}
+
+.pagedtable-footer {
+  font-size: 15px;
+}
+
+d-byline .byline {
+  grid-template-columns: 2fr 2fr;
+}
+
+d-byline .byline h3 {
+  margin-block-start: 1.5em;
+}
+
+d-byline .byline .authors-affiliations h3 {
+  margin-block-start: 0.5em;
+}
+
+.authors-affiliations .orcid-id {
+  width: 16px;
+  height:16px;
+  margin-left: 4px;
+  margin-right: 4px;
+  vertical-align: middle;
+  padding-bottom: 2px;
+}
+
+d-title .dt-tags {
+  margin-top: 1em;
+  grid-column: text;
+}
+
+.dt-tags .dt-tag {
+  text-decoration: none;
+  display: inline-block;
+  color: rgba(0,0,0,0.6);
+  padding: 0em 0.4em;
+  margin-right: 0.5em;
+  margin-bottom: 0.4em;
+  font-size: 70%;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+d-article table.gt_table td,
+d-article table.gt_table th {
+  border-bottom: none;
+}
+
+.html-widget {
+  margin-bottom: 2.0em;
+}
+
+.l-screen-inset {
+  padding-right: 16px;
+}
+
+.l-screen .caption {
+  margin-left: 10px;
+}
+
+.shaded {
+  background: rgb(247, 247, 247);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.shaded .html-widget {
+  margin-bottom: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.shaded .shaded-content {
+  background: white;
+}
+
+.text-output {
+  margin-top: 0;
+  line-height: 1.5em;
+}
+
+.hidden {
+  display: none !important;
+}
+
+d-article {
+  padding-top: 2.5rem;
+  padding-bottom: 30px;
+}
+
+d-appendix {
+  padding-top: 30px;
+}
+
+d-article>p>img {
+  width: 100%;
+}
+
+d-article h2 {
+  margin: 1rem 0 1.5rem 0;
+}
+
+d-article h3 {
+  margin-top: 1.5rem;
+}
+
+d-article iframe {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 2.0em;
+  width: 100%;
+}
+
+/* Tweak code blocks */
+
+d-article div.sourceCode code,
+d-article pre code {
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
+d-article pre,
+d-article div.sourceCode,
+d-article div.sourceCode pre {
+  overflow: auto;
+}
+
+d-article div.sourceCode {
+  background-color: white;
+}
+
+d-article div.sourceCode pre {
+  padding-left: 10px;
+  font-size: 12px;
+  border-left: 2px solid rgba(0,0,0,0.1);
+}
+
+d-article pre {
+  font-size: 12px;
+  color: black;
+  background: none;
+  margin-top: 0;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+d-article pre a {
+  border-bottom: none;
+}
+
+d-article pre a:hover {
+  border-bottom: none;
+  text-decoration: underline;
+}
+
+@media(min-width: 768px) {
+
+d-article pre,
+d-article div.sourceCode,
+d-article div.sourceCode pre {
+  overflow: visible !important;
+}
+
+d-article div.sourceCode pre {
+  padding-left: 18px;
+  font-size: 14px;
+}
+
+d-article pre {
+  font-size: 14px;
+}
+
+}
+
+figure img.external {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+  padding: 18px;
+  box-sizing: border-box;
+}
+
+/* CSS for d-contents */
+
+.d-contents {
+  grid-column: text;
+  color: rgba(0,0,0,0.8);
+  font-size: 0.9em;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  padding-bottom: 0.5em;
+  margin-bottom: 1em;
+  padding-left: 0.25em;
+  justify-self: start;
+}
+
+@media(min-width: 1000px) {
+  .d-contents.d-contents-float {
+    height: 0;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    justify-self: center;
+    padding-right: 3em;
+    padding-left: 2em;
+  }
+}
+
+.d-contents nav h3 {
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+.d-contents li {
+  list-style-type: none
+}
+
+.d-contents nav > ul {
+  padding-left: 0;
+}
+
+.d-contents ul {
+  padding-left: 1em
+}
+
+.d-contents nav ul li {
+  margin-top: 0.6em;
+  margin-bottom: 0.2em;
+}
+
+.d-contents nav a {
+  font-size: 13px;
+  border-bottom: none;
+  text-decoration: none
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.d-contents nav a:hover {
+  text-decoration: underline solid rgba(0, 0, 0, 0.6)
+}
+
+.d-contents nav > ul > li > a {
+  font-weight: 600;
+}
+
+.d-contents nav > ul > li > ul {
+  font-weight: inherit;
+}
+
+.d-contents nav > ul > li > ul > li {
+  margin-top: 0.2em;
+}
+
+
+.d-contents nav ul {
+  margin-top: 0;
+  margin-bottom: 0.25em;
+}
+
+.d-article-with-toc h2:nth-child(2) {
+  margin-top: 0;
+}
+
+
+/* Figure */
+
+.figure {
+  position: relative;
+  margin-bottom: 2.5em;
+  margin-top: 1.5em;
+}
+
+.figure img {
+  width: 100%;
+}
+
+.figure .caption {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 12px;
+  line-height: 1.5em;
+}
+
+.figure img.external {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+  padding: 18px;
+  box-sizing: border-box;
+}
+
+.figure .caption a {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.figure .caption b,
+.figure .caption strong, {
+  font-weight: 600;
+  color: rgba(0, 0, 0, 1.0);
+}
+
+/* Citations */
+
+d-article .citation {
+  color: inherit;
+  cursor: inherit;
+}
+
+div.hanging-indent{
+  margin-left: 1em; text-indent: -1em;
+}
+
+
+/* Tweak 1000px media break to show more text */
+
+@media(min-width: 1000px) {
+  .base-grid,
+  distill-header,
+  d-title,
+  d-abstract,
+  d-article,
+  d-appendix,
+  distill-appendix,
+  d-byline,
+  d-footnote-list,
+  d-citation-list,
+  distill-footer {
+    grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+    grid-column-gap: 16px;
+  }
+
+  .grid {
+    grid-column-gap: 16px;
+  }
+
+  d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+  }
+  figure .caption, .figure .caption, figure figcaption {
+    font-size: 13px;
+  }
+}
+
+@media(min-width: 1180px) {
+  .base-grid,
+  distill-header,
+  d-title,
+  d-abstract,
+  d-article,
+  d-appendix,
+  distill-appendix,
+  d-byline,
+  d-footnote-list,
+  d-citation-list,
+  distill-footer {
+    grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+    grid-column-gap: 32px;
+  }
+
+  .grid {
+    grid-column-gap: 32px;
+  }
+}
+
+
+/* Get the citation styles for the appendix (not auto-injected on render since
+   we do our own rendering of the citation appendix) */
+
+d-appendix .citation-appendix,
+.d-appendix .citation-appendix {
+  font-size: 11px;
+  line-height: 15px;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  padding-left: 18px;
+  border: 1px solid rgba(0,0,0,0.1);
+  background: rgba(0, 0, 0, 0.02);
+  padding: 10px 18px;
+  border-radius: 3px;
+  color: rgba(150, 150, 150, 1);
+  overflow: hidden;
+  margin-top: -12px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Include appendix styles here so they can be overridden */
+
+d-appendix {
+  contain: layout style;
+  font-size: 0.8em;
+  line-height: 1.7em;
+  margin-top: 60px;
+  margin-bottom: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  color: rgba(0,0,0,0.5);
+  padding-top: 60px;
+  padding-bottom: 48px;
+}
+
+d-appendix h3 {
+  grid-column: page-start / text-start;
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 1em;
+  margin-bottom: 0;
+  color: rgba(0,0,0,0.65);
+}
+
+d-appendix h3 + * {
+  margin-top: 1em;
+}
+
+d-appendix ol {
+  padding: 0 0 0 15px;
+}
+
+@media (min-width: 768px) {
+  d-appendix ol {
+    padding: 0 0 0 30px;
+    margin-left: -30px;
+  }
+}
+
+d-appendix li {
+  margin-bottom: 1em;
+}
+
+d-appendix a {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+d-appendix > * {
+  grid-column: text;
+}
+
+d-appendix > d-footnote-list,
+d-appendix > d-citation-list,
+d-appendix > distill-appendix {
+  grid-column: screen;
+}
+
+/* Include footnote styles here so they can be overridden */
+
+d-footnote-list {
+  contain: layout style;
+}
+
+d-footnote-list > * {
+  grid-column: text;
+}
+
+d-footnote-list a.footnote-backlink {
+  color: rgba(0,0,0,0.3);
+  padding-left: 0.5em;
+}
+
+
+
+/* Anchor.js */
+
+.anchorjs-link {
+  /*transition: all .25s linear; */
+  text-decoration: none;
+  border-bottom: none;
+}
+*:hover > .anchorjs-link {
+  margin-left: -1.125em !important;
+  text-decoration: none;
+  border-bottom: none;
+}
+
+/* Social footer */
+
+.social_footer {
+  margin-top: 30px;
+  margin-bottom: 0;
+  color: rgba(0,0,0,0.67);
+}
+
+.disqus-comments {
+  margin-right: 30px;
+}
+
+.disqus-comment-count {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+#disqus_thread {
+  margin-top: 30px;
+}
+
+.article-sharing a {
+  border-bottom: none;
+  margin-right: 8px;
+}
+
+.article-sharing a:hover {
+  border-bottom: none;
+}
+
+.sidebar-section.subscribe {
+  font-size: 12px;
+  line-height: 1.6em;
+}
+
+.subscribe p {
+  margin-bottom: 0.5em;
+}
+
+
+.article-footer .subscribe {
+  font-size: 15px;
+  margin-top: 45px;
+}
+
+
+.sidebar-section.custom {
+  font-size: 12px;
+  line-height: 1.6em;
+}
+
+.custom p {
+  margin-bottom: 0.5em;
+}
+
+/* Styles for listing layout (hide title) */
+.layout-listing d-title, .layout-listing .d-title {
+  display: none;
+}
+
+/* Styles for posts lists (not auto-injected) */
+
+
+.posts-with-sidebar {
+  padding-left: 45px;
+  padding-right: 45px;
+}
+
+.posts-list .description h2,
+.posts-list .description p {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+.posts-list .description h2 {
+  font-weight: 700;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.posts-list h2.post-tag {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 12px;
+}
+.posts-list {
+  margin-top: 60px;
+  margin-bottom: 24px;
+}
+
+.posts-list .post-preview {
+  text-decoration: none;
+  overflow: hidden;
+  display: block;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 24px 0;
+}
+
+.post-preview-last {
+  border-bottom: none !important;
+}
+
+.posts-list .posts-list-caption {
+  grid-column: screen;
+  font-weight: 400;
+}
+
+.posts-list .post-preview h2 {
+  margin: 0 0 6px 0;
+  line-height: 1.2em;
+  font-style: normal;
+  font-size: 24px;
+}
+
+.posts-list .post-preview p {
+  margin: 0 0 12px 0;
+  line-height: 1.4em;
+  font-size: 16px;
+}
+
+.posts-list .post-preview .thumbnail {
+  box-sizing: border-box;
+  margin-bottom: 24px;
+  position: relative;
+  max-width: 500px;
+}
+.posts-list .post-preview img {
+  width: 100%;
+  display: block;
+}
+
+.posts-list .metadata {
+  font-size: 12px;
+  line-height: 1.4em;
+  margin-bottom: 18px;
+}
+
+.posts-list .metadata > * {
+  display: inline-block;
+}
+
+.posts-list .metadata .publishedDate {
+  margin-right: 2em;
+}
+
+.posts-list .metadata .dt-authors {
+  display: block;
+  margin-top: 0.3em;
+  margin-right: 2em;
+}
+
+.posts-list .dt-tags {
+  display: block;
+  line-height: 1em;
+}
+
+.posts-list .dt-tags .dt-tag {
+  display: inline-block;
+  color: rgba(0,0,0,0.6);
+  padding: 0.3em 0.4em;
+  margin-right: 0.2em;
+  margin-bottom: 0.4em;
+  font-size: 60%;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.posts-list img {
+  opacity: 1;
+}
+
+.posts-list img[data-src] {
+  opacity: 0;
+}
+
+.posts-more {
+  clear: both;
+}
+
+
+.posts-sidebar {
+  font-size: 16px;
+}
+
+.posts-sidebar h3 {
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.sidebar-section {
+  margin-bottom: 30px;
+}
+
+.categories ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.categories li {
+  color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 0;
+}
+
+.categories li>a {
+  border-bottom: none;
+}
+
+.categories li>a:hover {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.categories .active {
+  font-weight: 600;
+}
+
+.categories .category-count {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+
+@media(min-width: 768px) {
+  .posts-list .post-preview h2 {
+    font-size: 26px;
+  }
+  .posts-list .post-preview .thumbnail {
+    float: right;
+    width: 30%;
+    margin-bottom: 0;
+  }
+  .posts-list .post-preview .description {
+    float: left;
+    width: 45%;
+  }
+  .posts-list .post-preview .metadata {
+    float: left;
+    width: 20%;
+    margin-top: 8px;
+  }
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.5em;
+    font-size: 16px;
+  }
+  .posts-with-sidebar .posts-list {
+    float: left;
+    width: 75%;
+  }
+  .posts-with-sidebar .posts-sidebar {
+    float: right;
+    width: 20%;
+    margin-top: 60px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+}
+
+
+/* Improve display for browsers without grid (IE/Edge <= 15) */
+
+.downlevel {
+  line-height: 1.6em;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+}
+
+.downlevel .d-title {
+  padding-top: 6rem;
+  padding-bottom: 1.5rem;
+}
+
+.downlevel .d-title h1 {
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 1.1em;
+  margin: 0 0 0.5rem;
+}
+
+.downlevel .d-title p {
+  font-weight: 300;
+  font-size: 1.2rem;
+  line-height: 1.55em;
+  margin-top: 0;
+}
+
+.downlevel .d-byline {
+  padding-top: 0.8em;
+  padding-bottom: 0.8em;
+  font-size: 0.8rem;
+  line-height: 1.8em;
+}
+
+.downlevel .section-separator {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.downlevel .d-article {
+  font-size: 1.06rem;
+  line-height: 1.7em;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+
+.downlevel .d-appendix {
+  padding-left: 0;
+  padding-right: 0;
+  max-width: none;
+  font-size: 0.8em;
+  line-height: 1.7em;
+  margin-bottom: 0;
+  color: rgba(0,0,0,0.5);
+  padding-top: 40px;
+  padding-bottom: 48px;
+}
+
+.downlevel .footnotes ol {
+  padding-left: 13px;
+}
+
+.downlevel .base-grid,
+.downlevel .distill-header,
+.downlevel .d-title,
+.downlevel .d-abstract,
+.downlevel .d-article,
+.downlevel .d-appendix,
+.downlevel .distill-appendix,
+.downlevel .d-byline,
+.downlevel .d-footnote-list,
+.downlevel .d-citation-list,
+.downlevel .distill-footer,
+.downlevel .appendix-bottom,
+.downlevel .posts-container {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+@media(min-width: 768px) {
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+  padding-left: 150px;
+  padding-right: 150px;
+  max-width: 900px;
+}
+}
+
+.downlevel pre code {
+  display: block;
+  border-left: 2px solid rgba(0, 0, 0, .1);
+  padding: 0 0 0 20px;
+  font-size: 14px;
+}
+
+.downlevel code, .downlevel pre {
+  color: black;
+  background: none;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+.downlevel .posts-list .post-preview {
+  color: inherit;
+}
+
+
+
+</style>
+
+<script type="application/javascript">
+
+function is_downlevel_browser() {
+  if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                 window.navigator.userAgent)) {
+    return true;
+  } else {
+    return window.load_distill_framework === undefined;
+  }
+}
+
+// show body when load is complete
+function on_load_complete() {
+
+  // add anchors
+  if (window.anchors) {
+    window.anchors.options.placement = 'left';
+    window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+  }
+
+
+  // set body to visible
+  document.body.style.visibility = 'visible';
+
+  // force redraw for leaflet widgets
+  if (window.HTMLWidgets) {
+    var maps = window.HTMLWidgets.findAll(".leaflet");
+    $.each(maps, function(i, el) {
+      var map = this.getMap();
+      map.invalidateSize();
+      map.eachLayer(function(layer) {
+        if (layer instanceof L.TileLayer)
+          layer.redraw();
+      });
+    });
+  }
+
+  // trigger 'shown' so htmlwidgets resize
+  $('d-article').trigger('shown');
+}
+
+function init_distill() {
+
+  init_common();
+
+  // create front matter
+  var front_matter = $('<d-front-matter></d-front-matter>');
+  $('#distill-front-matter').wrap(front_matter);
+
+  // create d-title
+  $('.d-title').changeElementType('d-title');
+
+  // create d-byline
+  var byline = $('<d-byline></d-byline>');
+  $('.d-byline').replaceWith(byline);
+
+  // create d-article
+  var article = $('<d-article></d-article>');
+  $('.d-article').wrap(article).children().unwrap();
+
+  // move posts container into article
+  $('.posts-container').appendTo($('d-article'));
+
+  // create d-appendix
+  $('.d-appendix').changeElementType('d-appendix');
+
+  // flag indicating that we have appendix items
+  var appendix = $('.appendix-bottom').children('h3').length > 0;
+
+  // replace footnotes with <d-footnote>
+  $('.footnote-ref').each(function(i, val) {
+    appendix = true;
+    var href = $(this).attr('href');
+    var id = href.replace('#', '');
+    var fn = $('#' + id);
+    var fn_p = $('#' + id + '>p');
+    fn_p.find('.footnote-back').remove();
+    var text = fn_p.html();
+    var dtfn = $('<d-footnote></d-footnote>');
+    dtfn.html(text);
+    $(this).replaceWith(dtfn);
+  });
+  // remove footnotes
+  $('.footnotes').remove();
+
+  // move refs into #references-listing
+  $('#references-listing').replaceWith($('#refs'));
+
+  $('h1.appendix, h2.appendix').each(function(i, val) {
+    $(this).changeElementType('h3');
+  });
+  $('h3.appendix').each(function(i, val) {
+    var id = $(this).attr('id');
+    $('.d-contents a[href="#' + id + '"]').parent().remove();
+    appendix = true;
+    $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+  });
+
+  // show d-appendix if we have appendix content
+  $("d-appendix").css('display', appendix ? 'grid' : 'none');
+
+  // localize layout chunks to just output
+  $('.layout-chunk').each(function(i, val) {
+
+    // capture layout
+    var layout = $(this).attr('data-layout');
+
+    // apply layout to markdown level block elements
+    var elements = $(this).children().not('div.sourceCode, pre, script');
+    elements.each(function(i, el) {
+      var layout_div = $('<div class="' + layout + '"></div>');
+      if (layout_div.hasClass('shaded')) {
+        var shaded_content = $('<div class="shaded-content"></div>');
+        $(this).wrap(shaded_content);
+        $(this).parent().wrap(layout_div);
+      } else {
+        $(this).wrap(layout_div);
+      }
+    });
+
+
+    // unwrap the layout-chunk div
+    $(this).children().unwrap();
+  });
+
+  // remove code block used to force  highlighting css
+  $('.distill-force-highlighting-css').parent().remove();
+
+  // remove empty line numbers inserted by pandoc when using a
+  // custom syntax highlighting theme
+  $('code.sourceCode a:empty').remove();
+
+  // load distill framework
+  load_distill_framework();
+
+  // wait for window.distillRunlevel == 4 to do post processing
+  function distill_post_process() {
+
+    if (!window.distillRunlevel || window.distillRunlevel < 4)
+      return;
+
+    // hide author/affiliations entirely if we have no authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+    if (!have_authors)
+      $('d-byline').addClass('hidden');
+
+    // article with toc class
+    $('.d-contents').parent().addClass('d-article-with-toc');
+
+    // strip links that point to #
+    $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+
+    // add orcid ids
+    $('.authors-affiliations').find('.author').each(function(i, el) {
+      var orcid_id = front_matter.authors[i].orcidID;
+      if (orcid_id) {
+        var a = $('<a></a>');
+        a.attr('href', 'https://orcid.org/' + orcid_id);
+        var img = $('<img></img>');
+        img.addClass('orcid-id');
+        img.attr('alt', 'ORCID ID');
+        img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+        a.append(img);
+        $(this).append(a);
+      }
+    });
+
+    // hide elements of author/affiliations grid that have no value
+    function hide_byline_column(caption) {
+      $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+    }
+
+    // affiliations
+    var have_affiliations = false;
+    for (var i = 0; i<front_matter.authors.length; ++i) {
+      var author = front_matter.authors[i];
+      if (author.affiliation !== "&nbsp;") {
+        have_affiliations = true;
+        break;
+      }
+    }
+    if (!have_affiliations)
+      $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+
+    // published date
+    if (!front_matter.publishedDate)
+      hide_byline_column("Published");
+
+    // document object identifier
+    var doi = $('d-byline').find('h3:contains("DOI")');
+    var doi_p = doi.next().empty();
+    if (!front_matter.doi) {
+      // if we have a citation and valid citationText then link to that
+      if ($('#citation').length > 0 && front_matter.citationText) {
+        doi.html('Citation');
+        $('<a href="#citation"></a>')
+          .text(front_matter.citationText)
+          .appendTo(doi_p);
+      } else {
+        hide_byline_column("DOI");
+      }
+    } else {
+      $('<a></a>')
+         .attr('href', "https://doi.org/" + front_matter.doi)
+         .html(front_matter.doi)
+         .appendTo(doi_p);
+    }
+
+     // change plural form of authors/affiliations
+    if (front_matter.authors.length === 1) {
+      var grid = $('.authors-affiliations');
+      grid.children('h3:contains("Authors")').text('Author');
+      grid.children('h3:contains("Affiliations")').text('Affiliation');
+    }
+
+    // remove d-appendix and d-footnote-list local styles
+    $('d-appendix > style:first-child').remove();
+    $('d-footnote-list > style:first-child').remove();
+
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+
+    // clear polling timer
+    clearInterval(tid);
+
+    // show body now that everything is ready
+    on_load_complete();
+  }
+
+  var tid = setInterval(distill_post_process, 50);
+  distill_post_process();
+
+}
+
+function init_downlevel() {
+
+  init_common();
+
+   // insert hr after d-title
+  $('.d-title').after($('<hr class="section-separator"/>'));
+
+  // check if we have authors
+  var front_matter = JSON.parse($("#distill-front-matter").html());
+  var have_authors = front_matter.authors && front_matter.authors.length > 0;
+
+  // manage byline/border
+  if (!have_authors)
+    $('.d-byline').remove();
+  $('.d-byline').after($('<hr class="section-separator"/>'));
+  $('.d-byline a').remove();
+
+  // remove toc
+  $('.d-contents').remove();
+
+  // move appendix elements
+  $('h1.appendix, h2.appendix').each(function(i, val) {
+    $(this).changeElementType('h3');
+  });
+  $('h3.appendix').each(function(i, val) {
+    $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+  });
+
+
+  // inject headers into references and footnotes
+  var refs_header = $('<h3></h3>');
+  refs_header.text('References');
+  $('#refs').prepend(refs_header);
+
+  var footnotes_header = $('<h3></h3');
+  footnotes_header.text('Footnotes');
+  $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+
+  // move appendix-bottom entries to the bottom
+  $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+  $('.appendix-bottom').remove();
+
+  // remove appendix if it's empty
+  if ($('.d-appendix').children().length === 0)
+    $('.d-appendix').remove();
+
+  // prepend separator above appendix
+  $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+
+  // trim code
+  $('pre>code').each(function(i, val) {
+    $(this).html($.trim($(this).html()));
+  });
+
+  // move posts-container right before article
+  $('.posts-container').insertBefore($('.d-article'));
+
+  $('body').addClass('downlevel');
+
+  on_load_complete();
+}
+
+
+function init_common() {
+
+  // jquery plugin to change element types
+  (function($) {
+    $.fn.changeElementType = function(newType) {
+      var attrs = {};
+
+      $.each(this[0].attributes, function(idx, attr) {
+        attrs[attr.nodeName] = attr.nodeValue;
+      });
+
+      this.replaceWith(function() {
+        return $("<" + newType + "/>", attrs).append($(this).contents());
+      });
+    };
+  })(jQuery);
+
+  // prevent underline for linked images
+  $('a > img').parent().css({'border-bottom' : 'none'});
+
+  // mark non-body figures created by knitr chunks as 100% width
+  $('.layout-chunk').each(function(i, val) {
+    var figures = $(this).find('img, .html-widget');
+    if ($(this).attr('data-layout') !== "l-body") {
+      figures.css('width', '100%');
+    } else {
+      figures.css('max-width', '100%');
+      figures.filter("[width]").each(function(i, val) {
+        var fig = $(this);
+        fig.css('width', fig.attr('width') + 'px');
+      });
+
+    }
+  });
+
+  // auto-append index.html to post-preview links in file: protocol
+  // and in rstudio ide preview
+  $('.post-preview').each(function(i, val) {
+    if (window.location.protocol === "file:")
+      $(this).attr('href', $(this).attr('href') + "index.html");
+  });
+
+  // get rid of index.html references in header
+  if (window.location.protocol !== "file:") {
+    $('.distill-site-header a[href]').each(function(i,val) {
+      $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+    });
+  }
+
+  // add class to pandoc style tables
+  $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+  $('.kable-table').children('table').addClass('pandoc-table');
+
+  // add figcaption style to table captions
+  $('caption').parent('table').addClass("figcaption");
+
+  // initialize posts list
+  if (window.init_posts_list)
+    window.init_posts_list();
+
+  // implmement disqus comment link
+  $('.disqus-comment-count').click(function() {
+    window.headroom_prevent_pin = true;
+    $('#disqus_thread').toggleClass('hidden');
+    if (!$('#disqus_thread').hasClass('hidden')) {
+      var offset = $(this).offset();
+      $(window).resize();
+      $('html, body').animate({
+        scrollTop: offset.top - 35
+      });
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  if (is_downlevel_browser())
+    init_downlevel();
+  else
+    window.addEventListener('WebComponentsReady', init_distill);
+});
+
+</script>
+
+<style type="text/css">
+/* base variables */
+
+/* Edit the CSS properties in this file to create a custom
+   Distill theme. Only edit values in the right column
+   for each row; values shown are the CSS defaults.
+   To return any property to the default,
+   you may set its value to: unset
+   All rows must end with a semi-colon.                      */
+
+/* Optional: embed custom fonts here with `@import`          */
+/* This must remain at the top of this file.                 */
+
+
+
+html {
+  /*-- Main font sizes --*/
+  --title-size:      50px;
+  --body-size:       1.06rem;
+  --code-size:       14px;
+  --aside-size:      12px;
+  --fig-cap-size:    13px;
+  /*-- Main font colors --*/
+  --title-color:     #000000;
+  --header-color:    rgba(0, 0, 0, 0.8);
+  --body-color:      rgba(0, 0, 0, 0.8);
+  --aside-color:     rgba(0, 0, 0, 0.6);
+  --fig-cap-color:   rgba(0, 0, 0, 0.6);
+  /*-- Specify custom fonts ~~~ must be imported above   --*/
+  --heading-font:    sans-serif;
+  --mono-font:       monospace;
+  --body-font:       sans-serif;
+  --navbar-font:     sans-serif;  /* websites + blogs only */
+}
+
+/*-- ARTICLE METADATA --*/
+d-byline {
+  --heading-size:    0.6rem;
+  --heading-color:   rgba(0, 0, 0, 0.5);
+  --body-size:       0.8rem;
+  --body-color:      rgba(0, 0, 0, 0.8);
+}
+
+/*-- ARTICLE TABLE OF CONTENTS --*/
+.d-contents {
+  --heading-size:    18px;
+  --contents-size:   13px;
+}
+
+/*-- ARTICLE APPENDIX --*/
+d-appendix {
+  --heading-size:    15px;
+  --heading-color:   rgba(0, 0, 0, 0.65);
+  --text-size:       0.8em;
+  --text-color:      rgba(0, 0, 0, 0.5);
+}
+
+/*-- WEBSITE HEADER + FOOTER --*/
+/* These properties only apply to Distill sites and blogs  */
+
+.distill-site-header {
+  --title-size:       18px;
+  --text-color:       rgba(255, 255, 255, 0.8);
+  --text-size:        15px;
+  --hover-color:      white;
+  --bkgd-color:       #0F2E3D;
+}
+
+.distill-site-footer {
+  --text-color:       rgba(255, 255, 255, 0.8);
+  --text-size:        15px;
+  --hover-color:      white;
+  --bkgd-color:       #0F2E3D;
+}
+
+/*-- Additional custom styles --*/
+/* Add any additional CSS rules below                      */
+</style>
+<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Open Sans');
+@import url('https://fonts.googleapis.com/css2?family=Poppins');
+@import url('https://fonts.googleapis.com/css2?family=Fira Mono');
+
+/* base variables */
+
+/* Edit the CSS properties in this file to create a custom
+   Distill theme. Only edit values in the right column
+   for each row; values shown are the CSS defaults.
+   To return any property to the default,
+   you may set its value to: unset
+   All rows must end with a semi-colon.                      */
+
+/* Optional: embed custom fonts here with `@import`          */
+/* This must remain at the top of this file.                 */
+
+
+
+html {
+  /*-- Main font sizes --*/
+  --title-size:      50px;
+  --body-size:       1.06rem;
+  --code-size:       14px;
+  --aside-size:      12px;
+  --fig-cap-size:    13px;
+  /*-- Main font colors --*/
+  --title-color:     #000000;
+  --header-color:    rgba(0, 0, 0, 0.8);
+  --body-color:      rgba(0, 0, 0, 0.8);
+  --aside-color:     rgba(0, 0, 0, 0.6);
+  --fig-cap-color:   rgba(0, 0, 0, 0.6);
+  /*-- Specify custom fonts ~~~ must be imported above   --*/
+  --heading-font:    Poppins;
+  --mono-font:       Fira Mono;
+  --body-font:       Open Sans;
+  --navbar-font:     sans-serif;  /* websites + blogs only */
+}
+
+/*-- ARTICLE METADATA --*/
+d-byline {
+  --heading-size:    0.6rem;
+  --heading-color:   rgba(0, 0, 0, 0.5);
+  --body-size:       0.8rem;
+  --body-color:      rgba(0, 0, 0, 0.8);
+}
+
+/*-- ARTICLE TABLE OF CONTENTS --*/
+.d-contents {
+  --heading-size:    18px;
+  --contents-size:   13px;
+}
+
+/*-- ARTICLE APPENDIX --*/
+d-appendix {
+  --heading-size:    15px;
+  --heading-color:   rgba(0, 0, 0, 0.65);
+  --text-size:       0.8em;
+  --text-color:      rgba(0, 0, 0, 0.5);
+}
+
+/*-- WEBSITE HEADER + FOOTER --*/
+/* These properties only apply to Distill sites and blogs  */
+
+.distill-site-header {
+  --title-size:       18px;
+  --text-color:       rgba(255, 255, 255, 0.8);
+  --text-size:        15px;
+  --hover-color:      white;
+  --bkgd-color:       #0F2E3D;
+}
+
+.distill-site-footer {
+  --text-color:       rgba(255, 255, 255, 0.8);
+  --text-size:        15px;
+  --hover-color:      white;
+  --bkgd-color:       #0F2E3D;
+}
+
+/*-- Additional custom styles --*/
+/* Add any additional CSS rules below                      */</style>
+<style type="text/css">
+/* base style */
+
+/* FONT FAMILIES */
+
+:root {
+  --heading-default: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono-default: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  --body-default: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+body,
+.posts-list .post-preview p,
+.posts-list .description p {
+  font-family: var(--body-font), var(--body-default);
+}
+
+h1, h2, h3, h4, h5, h6,
+.posts-list .post-preview h2,
+.posts-list .description h2 {
+  font-family: var(--heading-font), var(--heading-default);
+}
+
+d-article div.sourceCode code,
+d-article pre code {
+	font-family: var(--mono-font), var(--mono-default);
+}
+
+
+/*-- TITLE --*/
+d-title h1,
+.posts-list > h1 {
+  color: var(--title-color, black);
+}
+
+d-title h1 {
+  font-size: var(--title-size, 50px);
+}
+
+/*-- HEADERS --*/
+d-article h1,
+d-article h2,
+d-article h3,
+d-article h4,
+d-article h5,
+d-article h6 {
+  color: var(--header-color, rgba(0, 0, 0, 0.8));
+}
+
+/*-- BODY --*/
+/* only text inside of <p> tags */
+d-article > p {
+  color: var(--body-color, rgba(0, 0, 0, 0.8));
+  font-size: var(--body-size, 1.06rem);
+}
+
+/*-- CODE --*/
+d-article div.sourceCode code,
+d-article pre code {
+	font-size: var(--code-size, 14px);
+}
+
+/*-- ASIDE --*/
+d-article aside {
+	font-size: var(--aside-size, 12px);
+	color: var(--aside-color, rgba(0, 0, 0, 0.6));
+}
+
+/*-- FIGURE CAPTIONS --*/
+figure .caption,
+figure figcaption,
+.figure .caption {
+	font-size: var(--fig-cap-size, 13px);
+	color: var(--fig-cap-color, rgba(0, 0, 0, 0.6));
+}
+
+/*-- METADATA --*/
+d-byline h3 {
+	font-size: var(--heading-size, 0.6rem);
+	color: var(--heading-color, rgba(0, 0, 0, 0.5));
+}
+
+d-byline {
+	font-size: var(--body-size, 0.8rem);
+	color: var(--body-color, rgba(0, 0, 0, 0.8));
+}
+
+d-byline a,
+d-article d-byline a {
+	color: var(--body-color, rgba(0, 0, 0, 0.8));
+}
+
+/*-- TABLE OF CONTENTS --*/
+.d-contents nav h3 {
+	font-size: var(--heading-size, 18px);
+}
+
+.d-contents nav a {
+	font-size: var(--contents-size, 13px);
+}
+
+/*-- APPENDIX --*/
+d-appendix h3 {
+  font-size: var(--heading-size, 15px);
+	color: var(--heading-color, rgba(0, 0, 0, 0.65));
+}
+
+d-appendix {
+  font-size: var(--text-size, 0.8em);
+	color: var(--text-color, rgba(0, 0, 0, 0.5));
+}
+
+d-appendix d-footnote-list a.footnote-backlink {
+	color: var(--text-color, rgba(0, 0, 0, 0.5));
+}
+
+/*-- WEBSITE HEADER + FOOTER --*/
+.distill-site-header .title {
+	font-size: var(--title-size, 18px);
+	font-family: var(--navbar-font), var(--heading-default);
+}
+
+.distill-site-header a,
+.nav-dropdown .nav-dropbtn {
+  font-family: var(--navbar-font), var(--heading-default);
+}
+
+.distill-site-header a:hover {
+	color: var(--hover-color, white);
+}
+
+.distill-site-header {
+	font-size: var(--text-size, 15px);
+	color: var(--text-color, rgba(255, 255, 255, 0.8));
+	background-color: var(--bkgd-color, #0F2E3D);
+}
+
+.distill-site-footer {
+	font-size: var(--text-size, 15px);
+	color: var(--text-color, rgba(255, 255, 255, 0.8));
+	background-color: var(--bkgd-color, #0F2E3D);
+}
+
+.distill-site-footer a:hover {
+	color: var(--hover-color, white);
+}</style>
+<!--/radix_placeholder_distill-->
+  <script src="../../site_libs/header-attrs-2.5/header-attrs.js"></script>
+  <link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+  <script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+  <script src="../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+  <script src="../../site_libs/anchor-4.2.2/anchor.min.js"></script>
+  <script src="../../site_libs/bowser-1.9.3/bowser.min.js"></script>
+  <script src="../../site_libs/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="../../site_libs/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+<!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"Advent of code 2020 day 8","description":"--- Day 8: Handheld Halting ---","authors":[{"author":"Philippe Massicotte","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2020-12-14T00:00:00.000-05:00","citationText":"Massicotte, 2020"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<header class="header header--fixed" role="banner">
+<nav class="distill-site-nav distill-site-header">
+<div class="nav-left">
+<a href="../../index.html" class="title">Advent of Code</a>
+<input id="distill-search" class="nav-search hidden" type="text" placeholder="Search..."/>
+</div>
+<div class="nav-right">
+<a href="../../index.html">Home</a>
+<a href="../../about.html">About</a>
+<a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
+</div>
+</nav>
+</header>
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>Advent of code 2020 day 8</h1>
+<!--radix_placeholder_categories-->
+<!--/radix_placeholder_categories-->
+<p><p>— Day 8: Handheld Halting —</p></p>
+</div>
+
+<div class="d-byline">
+  Philippe Massicotte  
+  
+<br/>12-14-2020
+</div>
+
+<div class="d-article">
+<h2 id="context">Context</h2>
+<p><a href="https://adventofcode.com/2020/day/8" class="uri">https://adventofcode.com/2020/day/8</a></p>
+<p><small> Your flight to the major airline hub reaches cruising altitude without incident. While you consider checking the in-flight menu for one of those drinks that come with a little umbrella, you are interrupted by the kid sitting next to you.</p>
+<p>Their handheld game console won’t turn on! They ask if you can take a look.</p>
+<p>You narrow the problem down to a strange infinite loop in the boot code (your puzzle input) of the device. You should be able to fix it, but first you need to be able to run the code in isolation.</p>
+<p>The boot code is represented as a text file with one instruction per line of text. Each instruction consists of an operation (acc, jmp, or nop) and an argument (a signed number like +4 or -20).</p>
+<ul>
+<li><p>acc increases or decreases a single global value called the accumulator by the value given in the argument. For example, acc +7 would increase the accumulator by 7. The accumulator starts at 0. After an acc instruction, the instruction immediately below it is executed next.</p></li>
+<li><p>jmp jumps to a new instruction relative to itself. The next instruction to execute is found using the argument as an offset from the jmp instruction; for example, jmp +2 would skip the next instruction, jmp +1 would continue to the instruction immediately below it, and jmp -20 would cause the instruction 20 lines above to be executed next.</p></li>
+<li><p>nop stands for No OPeration - it does nothing. The instruction immediately below it is executed next. For example, consider the following program:</p></li>
+</ul>
+<pre><code>nop +0
+acc +1
+jmp +4
+acc +3
+jmp -3
+acc -99
+acc +1
+jmp -4
+acc +6</code></pre>
+<p>These instructions are visited in this order:</p>
+<pre><code>nop +0  | 1
+acc +1  | 2, 8(!)
+jmp +4  | 3
+acc +3  | 6
+jmp -3  | 7
+acc -99 |
+acc +1  | 4
+jmp -4  | 5
+acc +6  |</code></pre>
+<p>First, the nop +0 does nothing. Then, the accumulator is increased from 0 to 1 (acc +1) and jmp +4 sets the next instruction to the other acc +1 near the bottom. After it increases the accumulator from 1 to 2, jmp -4 executes, setting the next instruction to the only acc +3. It sets the accumulator to 5, and jmp -3 causes the program to continue back at the first acc +1.</p>
+<p>This is an infinite loop: with this sequence of jumps, the program will run forever. The moment the program tries to run any instruction a second time, you know it will never terminate.</p>
+<p>Immediately before the program would run an instruction a second time, the value in the accumulator is 5.</p>
+<p>Run your copy of the boot code. Immediately before any instruction is executed a second time, what value is in the accumulator? </small></p>
+<h2 id="read-operations-sequence">Read operations sequence</h2>
+<p>First lets read the data and turn it into a tibble.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>file</span> <span class='op'>&lt;-</span> <span class='fu'>here</span><span class='op'>(</span><span class='st'>"data"</span>, <span class='st'>"input"</span>, <span class='st'>"day8.txt"</span><span class='op'>)</span>
+
+<span class='va'>df</span> <span class='op'>&lt;-</span> <span class='va'>file</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>read_lines</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>enframe</span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"operation_id"</span>, value <span class='op'>=</span> <span class='st'>"operation"</span><span class='op'>)</span>
+
+<span class='va'>df</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>rmarkdown</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/rmarkdown/man/paged_table.html'>paged_table</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["operation_id"],"name":[1],"type":["int"],"align":["right"]},{"label":["operation"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"1","2":"jmp +583"},{"1":"2","2":"acc +9"},{"1":"3","2":"jmp +525"},{"1":"4","2":"jmp +302"},{"1":"5","2":"jmp +287"},{"1":"6","2":"jmp +412"},{"1":"7","2":"acc -16"},{"1":"8","2":"acc -19"},{"1":"9","2":"acc -19"},{"1":"10","2":"jmp +423"},{"1":"11","2":"acc -4"},{"1":"12","2":"nop +13"},{"1":"13","2":"acc -8"},{"1":"14","2":"jmp +37"},{"1":"15","2":"acc +0"},{"1":"16","2":"acc -5"},{"1":"17","2":"acc +48"},{"1":"18","2":"acc +0"},{"1":"19","2":"jmp +232"},{"1":"20","2":"acc +39"},{"1":"21","2":"acc +5"},{"1":"22","2":"jmp +69"},{"1":"23","2":"acc +31"},{"1":"24","2":"jmp +425"},{"1":"25","2":"acc +31"},{"1":"26","2":"jmp +93"},{"1":"27","2":"nop +166"},{"1":"28","2":"acc -7"},{"1":"29","2":"jmp +192"},{"1":"30","2":"acc +1"},{"1":"31","2":"jmp +391"},{"1":"32","2":"acc +11"},{"1":"33","2":"acc +20"},{"1":"34","2":"jmp +1"},{"1":"35","2":"acc +24"},{"1":"36","2":"acc +7"},{"1":"37","2":"acc +27"},{"1":"38","2":"jmp +162"},{"1":"39","2":"jmp +580"},{"1":"40","2":"acc +9"},{"1":"41","2":"acc +39"},{"1":"42","2":"acc -18"},{"1":"43","2":"jmp +283"},{"1":"44","2":"acc +28"},{"1":"45","2":"acc -14"},{"1":"46","2":"nop +464"},{"1":"47","2":"acc -12"},{"1":"48","2":"jmp +358"},{"1":"49","2":"jmp +523"},{"1":"50","2":"jmp +212"},{"1":"51","2":"acc +16"},{"1":"52","2":"acc -13"},{"1":"53","2":"acc +10"},{"1":"54","2":"acc +46"},{"1":"55","2":"jmp +207"},{"1":"56","2":"jmp +266"},{"1":"57","2":"jmp +1"},{"1":"58","2":"acc +36"},{"1":"59","2":"jmp -19"},{"1":"60","2":"jmp -3"},{"1":"61","2":"acc -16"},{"1":"62","2":"acc +3"},{"1":"63","2":"jmp +229"},{"1":"64","2":"acc +44"},{"1":"65","2":"acc +0"},{"1":"66","2":"acc -17"},{"1":"67","2":"acc -14"},{"1":"68","2":"jmp +132"},{"1":"69","2":"acc +38"},{"1":"70","2":"nop -30"},{"1":"71","2":"acc -12"},{"1":"72","2":"jmp +506"},{"1":"73","2":"jmp +511"},{"1":"74","2":"acc -15"},{"1":"75","2":"acc +4"},{"1":"76","2":"acc +29"},{"1":"77","2":"jmp +129"},{"1":"78","2":"jmp +419"},{"1":"79","2":"jmp +1"},{"1":"80","2":"jmp +45"},{"1":"81","2":"acc +14"},{"1":"82","2":"acc +20"},{"1":"83","2":"acc +11"},{"1":"84","2":"jmp +153"},{"1":"85","2":"jmp +78"},{"1":"86","2":"acc +32"},{"1":"87","2":"nop +212"},{"1":"88","2":"acc -7"},{"1":"89","2":"acc +42"},{"1":"90","2":"jmp -65"},{"1":"91","2":"acc -17"},{"1":"92","2":"jmp +458"},{"1":"93","2":"acc +10"},{"1":"94","2":"acc +18"},{"1":"95","2":"acc -11"},{"1":"96","2":"acc +8"},{"1":"97","2":"jmp +215"},{"1":"98","2":"acc +33"},{"1":"99","2":"acc +25"},{"1":"100","2":"jmp -21"},{"1":"101","2":"nop +92"},{"1":"102","2":"acc +0"},{"1":"103","2":"nop +353"},{"1":"104","2":"jmp +188"},{"1":"105","2":"acc +43"},{"1":"106","2":"jmp +82"},{"1":"107","2":"jmp +399"},{"1":"108","2":"acc +33"},{"1":"109","2":"acc +16"},{"1":"110","2":"acc -3"},{"1":"111","2":"jmp +174"},{"1":"112","2":"acc -12"},{"1":"113","2":"acc -3"},{"1":"114","2":"nop +171"},{"1":"115","2":"jmp +73"},{"1":"116","2":"nop +362"},{"1":"117","2":"jmp -48"},{"1":"118","2":"jmp +218"},{"1":"119","2":"acc +5"},{"1":"120","2":"jmp +486"},{"1":"121","2":"acc +43"},{"1":"122","2":"acc -1"},{"1":"123","2":"acc +0"},{"1":"124","2":"jmp +476"},{"1":"125","2":"acc +21"},{"1":"126","2":"jmp +44"},{"1":"127","2":"acc +7"},{"1":"128","2":"acc -6"},{"1":"129","2":"jmp +1"},{"1":"130","2":"acc +3"},{"1":"131","2":"jmp +95"},{"1":"132","2":"acc +12"},{"1":"133","2":"acc +38"},{"1":"134","2":"jmp +202"},{"1":"135","2":"acc +17"},{"1":"136","2":"acc -12"},{"1":"137","2":"jmp +114"},{"1":"138","2":"jmp -33"},{"1":"139","2":"jmp +367"},{"1":"140","2":"acc +45"},{"1":"141","2":"acc +40"},{"1":"142","2":"jmp -81"},{"1":"143","2":"acc -5"},{"1":"144","2":"acc +27"},{"1":"145","2":"acc +6"},{"1":"146","2":"jmp +374"},{"1":"147","2":"acc -6"},{"1":"148","2":"acc +10"},{"1":"149","2":"acc +19"},{"1":"150","2":"jmp +1"},{"1":"151","2":"jmp +171"},{"1":"152","2":"acc +8"},{"1":"153","2":"acc +46"},{"1":"154","2":"acc +12"},{"1":"155","2":"jmp +234"},{"1":"156","2":"acc +45"},{"1":"157","2":"acc +28"},{"1":"158","2":"jmp +337"},{"1":"159","2":"acc +8"},{"1":"160","2":"nop +10"},{"1":"161","2":"acc +17"},{"1":"162","2":"jmp +368"},{"1":"163","2":"acc +2"},{"1":"164","2":"acc -3"},{"1":"165","2":"acc +29"},{"1":"166","2":"jmp -160"},{"1":"167","2":"acc -7"},{"1":"168","2":"acc +11"},{"1":"169","2":"jmp +174"},{"1":"170","2":"acc +48"},{"1":"171","2":"acc -3"},{"1":"172","2":"acc +33"},{"1":"173","2":"jmp +6"},{"1":"174","2":"acc +3"},{"1":"175","2":"acc -10"},{"1":"176","2":"acc +9"},{"1":"177","2":"acc -13"},{"1":"178","2":"jmp +428"},{"1":"179","2":"acc -13"},{"1":"180","2":"acc +35"},{"1":"181","2":"nop -112"},{"1":"182","2":"jmp -147"},{"1":"183","2":"acc +13"},{"1":"184","2":"acc -4"},{"1":"185","2":"acc +50"},{"1":"186","2":"acc +46"},{"1":"187","2":"jmp -118"},{"1":"188","2":"acc +38"},{"1":"189","2":"acc +36"},{"1":"190","2":"jmp +375"},{"1":"191","2":"nop -3"},{"1":"192","2":"jmp +93"},{"1":"193","2":"acc +10"},{"1":"194","2":"acc -1"},{"1":"195","2":"jmp +211"},{"1":"196","2":"acc +6"},{"1":"197","2":"acc +38"},{"1":"198","2":"acc -12"},{"1":"199","2":"jmp -6"},{"1":"200","2":"jmp +1"},{"1":"201","2":"acc +41"},{"1":"202","2":"jmp -117"},{"1":"203","2":"acc -17"},{"1":"204","2":"acc -15"},{"1":"205","2":"jmp -120"},{"1":"206","2":"acc +17"},{"1":"207","2":"acc +48"},{"1":"208","2":"acc +37"},{"1":"209","2":"acc +0"},{"1":"210","2":"jmp +139"},{"1":"211","2":"acc +7"},{"1":"212","2":"acc -12"},{"1":"213","2":"acc +0"},{"1":"214","2":"jmp +98"},{"1":"215","2":"acc +47"},{"1":"216","2":"acc +3"},{"1":"217","2":"acc -18"},{"1":"218","2":"acc +26"},{"1":"219","2":"jmp +141"},{"1":"220","2":"jmp +236"},{"1":"221","2":"acc +18"},{"1":"222","2":"jmp +275"},{"1":"223","2":"acc -10"},{"1":"224","2":"acc -11"},{"1":"225","2":"jmp +12"},{"1":"226","2":"acc -19"},{"1":"227","2":"acc +17"},{"1":"228","2":"jmp +300"},{"1":"229","2":"acc +32"},{"1":"230","2":"nop +145"},{"1":"231","2":"jmp +84"},{"1":"232","2":"jmp +34"},{"1":"233","2":"acc -17"},{"1":"234","2":"acc +12"},{"1":"235","2":"acc +37"},{"1":"236","2":"jmp +182"},{"1":"237","2":"acc -7"},{"1":"238","2":"jmp +154"},{"1":"239","2":"nop +375"},{"1":"240","2":"acc -1"},{"1":"241","2":"jmp +108"},{"1":"242","2":"jmp +1"},{"1":"243","2":"acc +16"},{"1":"244","2":"acc +49"},{"1":"245","2":"jmp +355"},{"1":"246","2":"acc -16"},{"1":"247","2":"acc -19"},{"1":"248","2":"acc +47"},{"1":"249","2":"acc +26"},{"1":"250","2":"jmp -171"},{"1":"251","2":"jmp +285"},{"1":"252","2":"jmp +84"},{"1":"253","2":"acc +28"},{"1":"254","2":"acc -11"},{"1":"255","2":"acc +6"},{"1":"256","2":"jmp -252"},{"1":"257","2":"nop +228"},{"1":"258","2":"acc +10"},{"1":"259","2":"acc -17"},{"1":"260","2":"acc +42"},{"1":"261","2":"jmp -221"},{"1":"262","2":"acc +34"},{"1":"263","2":"acc +8"},{"1":"264","2":"jmp +201"},{"1":"265","2":"jmp -225"},{"1":"266","2":"acc +45"},{"1":"267","2":"nop +125"},{"1":"268","2":"acc +25"},{"1":"269","2":"acc -7"},{"1":"270","2":"jmp +318"},{"1":"271","2":"nop +348"},{"1":"272","2":"nop +40"},{"1":"273","2":"acc +42"},{"1":"274","2":"jmp +284"},{"1":"275","2":"acc -1"},{"1":"276","2":"acc +46"},{"1":"277","2":"jmp +1"},{"1":"278","2":"acc +41"},{"1":"279","2":"jmp +231"},{"1":"280","2":"acc +30"},{"1":"281","2":"acc +45"},{"1":"282","2":"acc +10"},{"1":"283","2":"acc +45"},{"1":"284","2":"jmp -227"},{"1":"285","2":"acc +25"},{"1":"286","2":"acc +13"},{"1":"287","2":"jmp +219"},{"1":"288","2":"acc -10"},{"1":"289","2":"acc +27"},{"1":"290","2":"acc +45"},{"1":"291","2":"jmp -186"},{"1":"292","2":"acc -18"},{"1":"293","2":"acc +50"},{"1":"294","2":"acc +31"},{"1":"295","2":"acc +19"},{"1":"296","2":"jmp +89"},{"1":"297","2":"nop -240"},{"1":"298","2":"jmp +173"},{"1":"299","2":"nop +65"},{"1":"300","2":"acc -8"},{"1":"301","2":"jmp +1"},{"1":"302","2":"nop -146"},{"1":"303","2":"jmp -156"},{"1":"304","2":"acc +27"},{"1":"305","2":"jmp +106"},{"1":"306","2":"acc +4"},{"1":"307","2":"acc +45"},{"1":"308","2":"jmp +35"},{"1":"309","2":"acc +44"},{"1":"310","2":"acc +47"},{"1":"311","2":"jmp -254"},{"1":"312","2":"jmp +57"},{"1":"313","2":"acc +1"},{"1":"314","2":"jmp -274"},{"1":"315","2":"acc +32"},{"1":"316","2":"acc +6"},{"1":"317","2":"acc +1"},{"1":"318","2":"nop +179"},{"1":"319","2":"jmp +122"},{"1":"320","2":"jmp +1"},{"1":"321","2":"jmp -310"},{"1":"322","2":"jmp -273"},{"1":"323","2":"acc +46"},{"1":"324","2":"acc +9"},{"1":"325","2":"jmp -187"},{"1":"326","2":"acc +36"},{"1":"327","2":"acc +0"},{"1":"328","2":"nop +47"},{"1":"329","2":"acc +17"},{"1":"330","2":"jmp -137"},{"1":"331","2":"nop -116"},{"1":"332","2":"acc -17"},{"1":"333","2":"acc -6"},{"1":"334","2":"acc -8"},{"1":"335","2":"jmp +106"},{"1":"336","2":"acc +36"},{"1":"337","2":"acc +50"},{"1":"338","2":"acc +3"},{"1":"339","2":"acc +22"},{"1":"340","2":"jmp +190"},{"1":"341","2":"acc +48"},{"1":"342","2":"jmp -336"},{"1":"343","2":"jmp -164"},{"1":"344","2":"jmp -32"},{"1":"345","2":"acc +44"},{"1":"346","2":"nop +242"},{"1":"347","2":"jmp -215"},{"1":"348","2":"jmp +7"},{"1":"349","2":"acc +36"},{"1":"350","2":"acc +3"},{"1":"351","2":"acc +27"},{"1":"352","2":"acc +24"},{"1":"353","2":"jmp -8"},{"1":"354","2":"jmp +156"},{"1":"355","2":"acc -5"},{"1":"356","2":"acc +42"},{"1":"357","2":"nop +37"},{"1":"358","2":"jmp +107"},{"1":"359","2":"jmp +247"},{"1":"360","2":"acc +12"},{"1":"361","2":"acc +30"},{"1":"362","2":"jmp +44"},{"1":"363","2":"jmp -306"},{"1":"364","2":"acc +36"},{"1":"365","2":"jmp -354"},{"1":"366","2":"nop +192"},{"1":"367","2":"nop +153"},{"1":"368","2":"jmp -106"},{"1":"369","2":"jmp -284"},{"1":"370","2":"jmp +1"},{"1":"371","2":"acc +33"},{"1":"372","2":"acc +18"},{"1":"373","2":"acc +13"},{"1":"374","2":"jmp +232"},{"1":"375","2":"acc -4"},{"1":"376","2":"nop -64"},{"1":"377","2":"acc +38"},{"1":"378","2":"acc +29"},{"1":"379","2":"jmp -349"},{"1":"380","2":"acc -7"},{"1":"381","2":"acc +44"},{"1":"382","2":"acc +4"},{"1":"383","2":"acc +48"},{"1":"384","2":"jmp -35"},{"1":"385","2":"acc +13"},{"1":"386","2":"jmp -144"},{"1":"387","2":"acc -7"},{"1":"388","2":"jmp +196"},{"1":"389","2":"acc -8"},{"1":"390","2":"jmp -316"},{"1":"391","2":"jmp -138"},{"1":"392","2":"jmp -381"},{"1":"393","2":"jmp -156"},{"1":"394","2":"acc +21"},{"1":"395","2":"jmp +189"},{"1":"396","2":"acc +30"},{"1":"397","2":"nop -85"},{"1":"398","2":"acc +34"},{"1":"399","2":"acc -13"},{"1":"400","2":"jmp -326"},{"1":"401","2":"jmp -7"},{"1":"402","2":"jmp +1"},{"1":"403","2":"acc +2"},{"1":"404","2":"acc +24"},{"1":"405","2":"jmp -56"},{"1":"406","2":"jmp +152"},{"1":"407","2":"acc +42"},{"1":"408","2":"acc +25"},{"1":"409","2":"acc -6"},{"1":"410","2":"jmp +174"},{"1":"411","2":"jmp -96"},{"1":"412","2":"jmp -86"},{"1":"413","2":"jmp +20"},{"1":"414","2":"acc +23"},{"1":"415","2":"nop -93"},{"1":"416","2":"acc +3"},{"1":"417","2":"jmp -42"},{"1":"418","2":"acc +0"},{"1":"419","2":"acc +6"},{"1":"420","2":"jmp +100"},{"1":"421","2":"jmp +20"},{"1":"422","2":"jmp -147"},{"1":"423","2":"acc +19"},{"1":"424","2":"nop -367"},{"1":"425","2":"jmp -80"},{"1":"426","2":"nop -318"},{"1":"427","2":"nop -289"},{"1":"428","2":"acc +45"},{"1":"429","2":"jmp -321"},{"1":"430","2":"nop -4"},{"1":"431","2":"acc +13"},{"1":"432","2":"jmp +74"},{"1":"433","2":"acc +0"},{"1":"434","2":"acc +15"},{"1":"435","2":"jmp +153"},{"1":"436","2":"acc -5"},{"1":"437","2":"acc +24"},{"1":"438","2":"acc +21"},{"1":"439","2":"jmp +1"},{"1":"440","2":"jmp -48"},{"1":"441","2":"jmp -262"},{"1":"442","2":"nop -317"},{"1":"443","2":"jmp +93"},{"1":"444","2":"acc +20"},{"1":"445","2":"jmp -32"},{"1":"446","2":"acc +44"},{"1":"447","2":"acc +50"},{"1":"448","2":"jmp -350"},{"1":"449","2":"acc -19"},{"1":"450","2":"acc +46"},{"1":"451","2":"jmp -431"},{"1":"452","2":"acc -11"},{"1":"453","2":"nop -227"},{"1":"454","2":"acc +48"},{"1":"455","2":"jmp +103"},{"1":"456","2":"acc +44"},{"1":"457","2":"acc +31"},{"1":"458","2":"acc -15"},{"1":"459","2":"jmp -15"},{"1":"460","2":"acc +0"},{"1":"461","2":"acc +34"},{"1":"462","2":"acc -3"},{"1":"463","2":"acc +38"},{"1":"464","2":"jmp +108"},{"1":"465","2":"acc +28"},{"1":"466","2":"nop -60"},{"1":"467","2":"acc +28"},{"1":"468","2":"acc +26"},{"1":"469","2":"jmp -20"},{"1":"470","2":"jmp -440"},{"1":"471","2":"acc +48"},{"1":"472","2":"jmp -257"},{"1":"473","2":"acc +11"},{"1":"474","2":"acc +8"},{"1":"475","2":"acc +14"},{"1":"476","2":"acc +30"},{"1":"477","2":"jmp +8"},{"1":"478","2":"acc +47"},{"1":"479","2":"jmp -323"},{"1":"480","2":"acc +15"},{"1":"481","2":"acc +10"},{"1":"482","2":"acc -15"},{"1":"483","2":"acc +13"},{"1":"484","2":"jmp -169"},{"1":"485","2":"acc -11"},{"1":"486","2":"acc -12"},{"1":"487","2":"acc +24"},{"1":"488","2":"acc +5"},{"1":"489","2":"jmp +125"},{"1":"490","2":"acc +34"},{"1":"491","2":"acc -17"},{"1":"492","2":"acc +2"},{"1":"493","2":"acc +32"},{"1":"494","2":"jmp -83"},{"1":"495","2":"jmp -120"},{"1":"496","2":"jmp -11"},{"1":"497","2":"acc +25"},{"1":"498","2":"nop -54"},{"1":"499","2":"jmp +1"},{"1":"500","2":"jmp -29"},{"1":"501","2":"acc +13"},{"1":"502","2":"acc +17"},{"1":"503","2":"acc +6"},{"1":"504","2":"acc +31"},{"1":"505","2":"jmp -420"},{"1":"506","2":"acc +25"},{"1":"507","2":"acc +13"},{"1":"508","2":"jmp +117"},{"1":"509","2":"jmp -3"},{"1":"510","2":"nop +68"},{"1":"511","2":"acc +32"},{"1":"512","2":"acc -11"},{"1":"513","2":"acc +31"},{"1":"514","2":"jmp -374"},{"1":"515","2":"acc -4"},{"1":"516","2":"acc +34"},{"1":"517","2":"acc +38"},{"1":"518","2":"acc +23"},{"1":"519","2":"jmp -113"},{"1":"520","2":"acc -19"},{"1":"521","2":"acc +50"},{"1":"522","2":"nop -216"},{"1":"523","2":"jmp -134"},{"1":"524","2":"nop -331"},{"1":"525","2":"acc -7"},{"1":"526","2":"acc +28"},{"1":"527","2":"jmp -357"},{"1":"528","2":"jmp -216"},{"1":"529","2":"jmp -128"},{"1":"530","2":"acc +34"},{"1":"531","2":"acc +16"},{"1":"532","2":"jmp -54"},{"1":"533","2":"acc -16"},{"1":"534","2":"acc +0"},{"1":"535","2":"jmp -64"},{"1":"536","2":"acc +7"},{"1":"537","2":"nop -322"},{"1":"538","2":"jmp -306"},{"1":"539","2":"nop -414"},{"1":"540","2":"acc +38"},{"1":"541","2":"acc +15"},{"1":"542","2":"jmp +77"},{"1":"543","2":"acc +18"},{"1":"544","2":"jmp +1"},{"1":"545","2":"acc +0"},{"1":"546","2":"acc -8"},{"1":"547","2":"jmp -248"},{"1":"548","2":"acc +26"},{"1":"549","2":"jmp -6"},{"1":"550","2":"acc +17"},{"1":"551","2":"acc +21"},{"1":"552","2":"acc +30"},{"1":"553","2":"jmp -142"},{"1":"554","2":"acc -13"},{"1":"555","2":"acc -18"},{"1":"556","2":"nop -330"},{"1":"557","2":"jmp +27"},{"1":"558","2":"acc -14"},{"1":"559","2":"jmp +60"},{"1":"560","2":"acc +31"},{"1":"561","2":"acc -6"},{"1":"562","2":"acc +49"},{"1":"563","2":"acc +16"},{"1":"564","2":"jmp -289"},{"1":"565","2":"acc +11"},{"1":"566","2":"acc +0"},{"1":"567","2":"nop -141"},{"1":"568","2":"acc +19"},{"1":"569","2":"jmp -143"},{"1":"570","2":"acc +44"},{"1":"571","2":"jmp -286"},{"1":"572","2":"acc +42"},{"1":"573","2":"jmp -209"},{"1":"574","2":"acc +34"},{"1":"575","2":"acc +10"},{"1":"576","2":"acc +3"},{"1":"577","2":"jmp -461"},{"1":"578","2":"acc +2"},{"1":"579","2":"jmp -358"},{"1":"580","2":"acc +42"},{"1":"581","2":"acc +0"},{"1":"582","2":"acc +26"},{"1":"583","2":"jmp -191"},{"1":"584","2":"acc +16"},{"1":"585","2":"jmp -230"},{"1":"586","2":"acc +31"},{"1":"587","2":"jmp -244"},{"1":"588","2":"nop -456"},{"1":"589","2":"acc +16"},{"1":"590","2":"nop -196"},{"1":"591","2":"jmp -475"},{"1":"592","2":"acc +24"},{"1":"593","2":"jmp -553"},{"1":"594","2":"acc +42"},{"1":"595","2":"acc +24"},{"1":"596","2":"acc +3"},{"1":"597","2":"jmp -572"},{"1":"598","2":"acc +31"},{"1":"599","2":"jmp +7"},{"1":"600","2":"jmp -144"},{"1":"601","2":"acc +20"},{"1":"602","2":"acc +23"},{"1":"603","2":"acc -14"},{"1":"604","2":"nop -506"},{"1":"605","2":"jmp -17"},{"1":"606","2":"acc +19"},{"1":"607","2":"nop -428"},{"1":"608","2":"jmp -286"},{"1":"609","2":"acc +2"},{"1":"610","2":"acc +6"},{"1":"611","2":"acc +28"},{"1":"612","2":"acc -13"},{"1":"613","2":"jmp -291"},{"1":"614","2":"jmp -377"},{"1":"615","2":"acc -3"},{"1":"616","2":"acc +32"},{"1":"617","2":"jmp +1"},{"1":"618","2":"jmp -205"},{"1":"619","2":"acc +18"},{"1":"620","2":"acc +32"},{"1":"621","2":"nop -523"},{"1":"622","2":"jmp -79"},{"1":"623","2":"acc +32"},{"1":"624","2":"jmp -30"},{"1":"625","2":"acc +40"},{"1":"626","2":"acc -17"},{"1":"627","2":"jmp +1"},{"1":"628","2":"acc +28"},{"1":"629","2":"jmp +1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p>Then separate the <code>operation</code> column into actual operation and the associated numerical value.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='va'>df</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>separate</span><span class='op'>(</span>
+    <span class='va'>operation</span>,
+    into <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"operation"</span>, <span class='st'>"value"</span><span class='op'>)</span>,
+    sep <span class='op'>=</span> <span class='fl'>3</span>,
+    convert <span class='op'>=</span> <span class='cn'>TRUE</span>
+  <span class='op'>)</span>
+
+<span class='va'>df</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>rmarkdown</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/rmarkdown/man/paged_table.html'>paged_table</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["operation_id"],"name":[1],"type":["int"],"align":["right"]},{"label":["operation"],"name":[2],"type":["chr"],"align":["left"]},{"label":["value"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"1","2":"jmp","3":"583"},{"1":"2","2":"acc","3":"9"},{"1":"3","2":"jmp","3":"525"},{"1":"4","2":"jmp","3":"302"},{"1":"5","2":"jmp","3":"287"},{"1":"6","2":"jmp","3":"412"},{"1":"7","2":"acc","3":"-16"},{"1":"8","2":"acc","3":"-19"},{"1":"9","2":"acc","3":"-19"},{"1":"10","2":"jmp","3":"423"},{"1":"11","2":"acc","3":"-4"},{"1":"12","2":"nop","3":"13"},{"1":"13","2":"acc","3":"-8"},{"1":"14","2":"jmp","3":"37"},{"1":"15","2":"acc","3":"0"},{"1":"16","2":"acc","3":"-5"},{"1":"17","2":"acc","3":"48"},{"1":"18","2":"acc","3":"0"},{"1":"19","2":"jmp","3":"232"},{"1":"20","2":"acc","3":"39"},{"1":"21","2":"acc","3":"5"},{"1":"22","2":"jmp","3":"69"},{"1":"23","2":"acc","3":"31"},{"1":"24","2":"jmp","3":"425"},{"1":"25","2":"acc","3":"31"},{"1":"26","2":"jmp","3":"93"},{"1":"27","2":"nop","3":"166"},{"1":"28","2":"acc","3":"-7"},{"1":"29","2":"jmp","3":"192"},{"1":"30","2":"acc","3":"1"},{"1":"31","2":"jmp","3":"391"},{"1":"32","2":"acc","3":"11"},{"1":"33","2":"acc","3":"20"},{"1":"34","2":"jmp","3":"1"},{"1":"35","2":"acc","3":"24"},{"1":"36","2":"acc","3":"7"},{"1":"37","2":"acc","3":"27"},{"1":"38","2":"jmp","3":"162"},{"1":"39","2":"jmp","3":"580"},{"1":"40","2":"acc","3":"9"},{"1":"41","2":"acc","3":"39"},{"1":"42","2":"acc","3":"-18"},{"1":"43","2":"jmp","3":"283"},{"1":"44","2":"acc","3":"28"},{"1":"45","2":"acc","3":"-14"},{"1":"46","2":"nop","3":"464"},{"1":"47","2":"acc","3":"-12"},{"1":"48","2":"jmp","3":"358"},{"1":"49","2":"jmp","3":"523"},{"1":"50","2":"jmp","3":"212"},{"1":"51","2":"acc","3":"16"},{"1":"52","2":"acc","3":"-13"},{"1":"53","2":"acc","3":"10"},{"1":"54","2":"acc","3":"46"},{"1":"55","2":"jmp","3":"207"},{"1":"56","2":"jmp","3":"266"},{"1":"57","2":"jmp","3":"1"},{"1":"58","2":"acc","3":"36"},{"1":"59","2":"jmp","3":"-19"},{"1":"60","2":"jmp","3":"-3"},{"1":"61","2":"acc","3":"-16"},{"1":"62","2":"acc","3":"3"},{"1":"63","2":"jmp","3":"229"},{"1":"64","2":"acc","3":"44"},{"1":"65","2":"acc","3":"0"},{"1":"66","2":"acc","3":"-17"},{"1":"67","2":"acc","3":"-14"},{"1":"68","2":"jmp","3":"132"},{"1":"69","2":"acc","3":"38"},{"1":"70","2":"nop","3":"-30"},{"1":"71","2":"acc","3":"-12"},{"1":"72","2":"jmp","3":"506"},{"1":"73","2":"jmp","3":"511"},{"1":"74","2":"acc","3":"-15"},{"1":"75","2":"acc","3":"4"},{"1":"76","2":"acc","3":"29"},{"1":"77","2":"jmp","3":"129"},{"1":"78","2":"jmp","3":"419"},{"1":"79","2":"jmp","3":"1"},{"1":"80","2":"jmp","3":"45"},{"1":"81","2":"acc","3":"14"},{"1":"82","2":"acc","3":"20"},{"1":"83","2":"acc","3":"11"},{"1":"84","2":"jmp","3":"153"},{"1":"85","2":"jmp","3":"78"},{"1":"86","2":"acc","3":"32"},{"1":"87","2":"nop","3":"212"},{"1":"88","2":"acc","3":"-7"},{"1":"89","2":"acc","3":"42"},{"1":"90","2":"jmp","3":"-65"},{"1":"91","2":"acc","3":"-17"},{"1":"92","2":"jmp","3":"458"},{"1":"93","2":"acc","3":"10"},{"1":"94","2":"acc","3":"18"},{"1":"95","2":"acc","3":"-11"},{"1":"96","2":"acc","3":"8"},{"1":"97","2":"jmp","3":"215"},{"1":"98","2":"acc","3":"33"},{"1":"99","2":"acc","3":"25"},{"1":"100","2":"jmp","3":"-21"},{"1":"101","2":"nop","3":"92"},{"1":"102","2":"acc","3":"0"},{"1":"103","2":"nop","3":"353"},{"1":"104","2":"jmp","3":"188"},{"1":"105","2":"acc","3":"43"},{"1":"106","2":"jmp","3":"82"},{"1":"107","2":"jmp","3":"399"},{"1":"108","2":"acc","3":"33"},{"1":"109","2":"acc","3":"16"},{"1":"110","2":"acc","3":"-3"},{"1":"111","2":"jmp","3":"174"},{"1":"112","2":"acc","3":"-12"},{"1":"113","2":"acc","3":"-3"},{"1":"114","2":"nop","3":"171"},{"1":"115","2":"jmp","3":"73"},{"1":"116","2":"nop","3":"362"},{"1":"117","2":"jmp","3":"-48"},{"1":"118","2":"jmp","3":"218"},{"1":"119","2":"acc","3":"5"},{"1":"120","2":"jmp","3":"486"},{"1":"121","2":"acc","3":"43"},{"1":"122","2":"acc","3":"-1"},{"1":"123","2":"acc","3":"0"},{"1":"124","2":"jmp","3":"476"},{"1":"125","2":"acc","3":"21"},{"1":"126","2":"jmp","3":"44"},{"1":"127","2":"acc","3":"7"},{"1":"128","2":"acc","3":"-6"},{"1":"129","2":"jmp","3":"1"},{"1":"130","2":"acc","3":"3"},{"1":"131","2":"jmp","3":"95"},{"1":"132","2":"acc","3":"12"},{"1":"133","2":"acc","3":"38"},{"1":"134","2":"jmp","3":"202"},{"1":"135","2":"acc","3":"17"},{"1":"136","2":"acc","3":"-12"},{"1":"137","2":"jmp","3":"114"},{"1":"138","2":"jmp","3":"-33"},{"1":"139","2":"jmp","3":"367"},{"1":"140","2":"acc","3":"45"},{"1":"141","2":"acc","3":"40"},{"1":"142","2":"jmp","3":"-81"},{"1":"143","2":"acc","3":"-5"},{"1":"144","2":"acc","3":"27"},{"1":"145","2":"acc","3":"6"},{"1":"146","2":"jmp","3":"374"},{"1":"147","2":"acc","3":"-6"},{"1":"148","2":"acc","3":"10"},{"1":"149","2":"acc","3":"19"},{"1":"150","2":"jmp","3":"1"},{"1":"151","2":"jmp","3":"171"},{"1":"152","2":"acc","3":"8"},{"1":"153","2":"acc","3":"46"},{"1":"154","2":"acc","3":"12"},{"1":"155","2":"jmp","3":"234"},{"1":"156","2":"acc","3":"45"},{"1":"157","2":"acc","3":"28"},{"1":"158","2":"jmp","3":"337"},{"1":"159","2":"acc","3":"8"},{"1":"160","2":"nop","3":"10"},{"1":"161","2":"acc","3":"17"},{"1":"162","2":"jmp","3":"368"},{"1":"163","2":"acc","3":"2"},{"1":"164","2":"acc","3":"-3"},{"1":"165","2":"acc","3":"29"},{"1":"166","2":"jmp","3":"-160"},{"1":"167","2":"acc","3":"-7"},{"1":"168","2":"acc","3":"11"},{"1":"169","2":"jmp","3":"174"},{"1":"170","2":"acc","3":"48"},{"1":"171","2":"acc","3":"-3"},{"1":"172","2":"acc","3":"33"},{"1":"173","2":"jmp","3":"6"},{"1":"174","2":"acc","3":"3"},{"1":"175","2":"acc","3":"-10"},{"1":"176","2":"acc","3":"9"},{"1":"177","2":"acc","3":"-13"},{"1":"178","2":"jmp","3":"428"},{"1":"179","2":"acc","3":"-13"},{"1":"180","2":"acc","3":"35"},{"1":"181","2":"nop","3":"-112"},{"1":"182","2":"jmp","3":"-147"},{"1":"183","2":"acc","3":"13"},{"1":"184","2":"acc","3":"-4"},{"1":"185","2":"acc","3":"50"},{"1":"186","2":"acc","3":"46"},{"1":"187","2":"jmp","3":"-118"},{"1":"188","2":"acc","3":"38"},{"1":"189","2":"acc","3":"36"},{"1":"190","2":"jmp","3":"375"},{"1":"191","2":"nop","3":"-3"},{"1":"192","2":"jmp","3":"93"},{"1":"193","2":"acc","3":"10"},{"1":"194","2":"acc","3":"-1"},{"1":"195","2":"jmp","3":"211"},{"1":"196","2":"acc","3":"6"},{"1":"197","2":"acc","3":"38"},{"1":"198","2":"acc","3":"-12"},{"1":"199","2":"jmp","3":"-6"},{"1":"200","2":"jmp","3":"1"},{"1":"201","2":"acc","3":"41"},{"1":"202","2":"jmp","3":"-117"},{"1":"203","2":"acc","3":"-17"},{"1":"204","2":"acc","3":"-15"},{"1":"205","2":"jmp","3":"-120"},{"1":"206","2":"acc","3":"17"},{"1":"207","2":"acc","3":"48"},{"1":"208","2":"acc","3":"37"},{"1":"209","2":"acc","3":"0"},{"1":"210","2":"jmp","3":"139"},{"1":"211","2":"acc","3":"7"},{"1":"212","2":"acc","3":"-12"},{"1":"213","2":"acc","3":"0"},{"1":"214","2":"jmp","3":"98"},{"1":"215","2":"acc","3":"47"},{"1":"216","2":"acc","3":"3"},{"1":"217","2":"acc","3":"-18"},{"1":"218","2":"acc","3":"26"},{"1":"219","2":"jmp","3":"141"},{"1":"220","2":"jmp","3":"236"},{"1":"221","2":"acc","3":"18"},{"1":"222","2":"jmp","3":"275"},{"1":"223","2":"acc","3":"-10"},{"1":"224","2":"acc","3":"-11"},{"1":"225","2":"jmp","3":"12"},{"1":"226","2":"acc","3":"-19"},{"1":"227","2":"acc","3":"17"},{"1":"228","2":"jmp","3":"300"},{"1":"229","2":"acc","3":"32"},{"1":"230","2":"nop","3":"145"},{"1":"231","2":"jmp","3":"84"},{"1":"232","2":"jmp","3":"34"},{"1":"233","2":"acc","3":"-17"},{"1":"234","2":"acc","3":"12"},{"1":"235","2":"acc","3":"37"},{"1":"236","2":"jmp","3":"182"},{"1":"237","2":"acc","3":"-7"},{"1":"238","2":"jmp","3":"154"},{"1":"239","2":"nop","3":"375"},{"1":"240","2":"acc","3":"-1"},{"1":"241","2":"jmp","3":"108"},{"1":"242","2":"jmp","3":"1"},{"1":"243","2":"acc","3":"16"},{"1":"244","2":"acc","3":"49"},{"1":"245","2":"jmp","3":"355"},{"1":"246","2":"acc","3":"-16"},{"1":"247","2":"acc","3":"-19"},{"1":"248","2":"acc","3":"47"},{"1":"249","2":"acc","3":"26"},{"1":"250","2":"jmp","3":"-171"},{"1":"251","2":"jmp","3":"285"},{"1":"252","2":"jmp","3":"84"},{"1":"253","2":"acc","3":"28"},{"1":"254","2":"acc","3":"-11"},{"1":"255","2":"acc","3":"6"},{"1":"256","2":"jmp","3":"-252"},{"1":"257","2":"nop","3":"228"},{"1":"258","2":"acc","3":"10"},{"1":"259","2":"acc","3":"-17"},{"1":"260","2":"acc","3":"42"},{"1":"261","2":"jmp","3":"-221"},{"1":"262","2":"acc","3":"34"},{"1":"263","2":"acc","3":"8"},{"1":"264","2":"jmp","3":"201"},{"1":"265","2":"jmp","3":"-225"},{"1":"266","2":"acc","3":"45"},{"1":"267","2":"nop","3":"125"},{"1":"268","2":"acc","3":"25"},{"1":"269","2":"acc","3":"-7"},{"1":"270","2":"jmp","3":"318"},{"1":"271","2":"nop","3":"348"},{"1":"272","2":"nop","3":"40"},{"1":"273","2":"acc","3":"42"},{"1":"274","2":"jmp","3":"284"},{"1":"275","2":"acc","3":"-1"},{"1":"276","2":"acc","3":"46"},{"1":"277","2":"jmp","3":"1"},{"1":"278","2":"acc","3":"41"},{"1":"279","2":"jmp","3":"231"},{"1":"280","2":"acc","3":"30"},{"1":"281","2":"acc","3":"45"},{"1":"282","2":"acc","3":"10"},{"1":"283","2":"acc","3":"45"},{"1":"284","2":"jmp","3":"-227"},{"1":"285","2":"acc","3":"25"},{"1":"286","2":"acc","3":"13"},{"1":"287","2":"jmp","3":"219"},{"1":"288","2":"acc","3":"-10"},{"1":"289","2":"acc","3":"27"},{"1":"290","2":"acc","3":"45"},{"1":"291","2":"jmp","3":"-186"},{"1":"292","2":"acc","3":"-18"},{"1":"293","2":"acc","3":"50"},{"1":"294","2":"acc","3":"31"},{"1":"295","2":"acc","3":"19"},{"1":"296","2":"jmp","3":"89"},{"1":"297","2":"nop","3":"-240"},{"1":"298","2":"jmp","3":"173"},{"1":"299","2":"nop","3":"65"},{"1":"300","2":"acc","3":"-8"},{"1":"301","2":"jmp","3":"1"},{"1":"302","2":"nop","3":"-146"},{"1":"303","2":"jmp","3":"-156"},{"1":"304","2":"acc","3":"27"},{"1":"305","2":"jmp","3":"106"},{"1":"306","2":"acc","3":"4"},{"1":"307","2":"acc","3":"45"},{"1":"308","2":"jmp","3":"35"},{"1":"309","2":"acc","3":"44"},{"1":"310","2":"acc","3":"47"},{"1":"311","2":"jmp","3":"-254"},{"1":"312","2":"jmp","3":"57"},{"1":"313","2":"acc","3":"1"},{"1":"314","2":"jmp","3":"-274"},{"1":"315","2":"acc","3":"32"},{"1":"316","2":"acc","3":"6"},{"1":"317","2":"acc","3":"1"},{"1":"318","2":"nop","3":"179"},{"1":"319","2":"jmp","3":"122"},{"1":"320","2":"jmp","3":"1"},{"1":"321","2":"jmp","3":"-310"},{"1":"322","2":"jmp","3":"-273"},{"1":"323","2":"acc","3":"46"},{"1":"324","2":"acc","3":"9"},{"1":"325","2":"jmp","3":"-187"},{"1":"326","2":"acc","3":"36"},{"1":"327","2":"acc","3":"0"},{"1":"328","2":"nop","3":"47"},{"1":"329","2":"acc","3":"17"},{"1":"330","2":"jmp","3":"-137"},{"1":"331","2":"nop","3":"-116"},{"1":"332","2":"acc","3":"-17"},{"1":"333","2":"acc","3":"-6"},{"1":"334","2":"acc","3":"-8"},{"1":"335","2":"jmp","3":"106"},{"1":"336","2":"acc","3":"36"},{"1":"337","2":"acc","3":"50"},{"1":"338","2":"acc","3":"3"},{"1":"339","2":"acc","3":"22"},{"1":"340","2":"jmp","3":"190"},{"1":"341","2":"acc","3":"48"},{"1":"342","2":"jmp","3":"-336"},{"1":"343","2":"jmp","3":"-164"},{"1":"344","2":"jmp","3":"-32"},{"1":"345","2":"acc","3":"44"},{"1":"346","2":"nop","3":"242"},{"1":"347","2":"jmp","3":"-215"},{"1":"348","2":"jmp","3":"7"},{"1":"349","2":"acc","3":"36"},{"1":"350","2":"acc","3":"3"},{"1":"351","2":"acc","3":"27"},{"1":"352","2":"acc","3":"24"},{"1":"353","2":"jmp","3":"-8"},{"1":"354","2":"jmp","3":"156"},{"1":"355","2":"acc","3":"-5"},{"1":"356","2":"acc","3":"42"},{"1":"357","2":"nop","3":"37"},{"1":"358","2":"jmp","3":"107"},{"1":"359","2":"jmp","3":"247"},{"1":"360","2":"acc","3":"12"},{"1":"361","2":"acc","3":"30"},{"1":"362","2":"jmp","3":"44"},{"1":"363","2":"jmp","3":"-306"},{"1":"364","2":"acc","3":"36"},{"1":"365","2":"jmp","3":"-354"},{"1":"366","2":"nop","3":"192"},{"1":"367","2":"nop","3":"153"},{"1":"368","2":"jmp","3":"-106"},{"1":"369","2":"jmp","3":"-284"},{"1":"370","2":"jmp","3":"1"},{"1":"371","2":"acc","3":"33"},{"1":"372","2":"acc","3":"18"},{"1":"373","2":"acc","3":"13"},{"1":"374","2":"jmp","3":"232"},{"1":"375","2":"acc","3":"-4"},{"1":"376","2":"nop","3":"-64"},{"1":"377","2":"acc","3":"38"},{"1":"378","2":"acc","3":"29"},{"1":"379","2":"jmp","3":"-349"},{"1":"380","2":"acc","3":"-7"},{"1":"381","2":"acc","3":"44"},{"1":"382","2":"acc","3":"4"},{"1":"383","2":"acc","3":"48"},{"1":"384","2":"jmp","3":"-35"},{"1":"385","2":"acc","3":"13"},{"1":"386","2":"jmp","3":"-144"},{"1":"387","2":"acc","3":"-7"},{"1":"388","2":"jmp","3":"196"},{"1":"389","2":"acc","3":"-8"},{"1":"390","2":"jmp","3":"-316"},{"1":"391","2":"jmp","3":"-138"},{"1":"392","2":"jmp","3":"-381"},{"1":"393","2":"jmp","3":"-156"},{"1":"394","2":"acc","3":"21"},{"1":"395","2":"jmp","3":"189"},{"1":"396","2":"acc","3":"30"},{"1":"397","2":"nop","3":"-85"},{"1":"398","2":"acc","3":"34"},{"1":"399","2":"acc","3":"-13"},{"1":"400","2":"jmp","3":"-326"},{"1":"401","2":"jmp","3":"-7"},{"1":"402","2":"jmp","3":"1"},{"1":"403","2":"acc","3":"2"},{"1":"404","2":"acc","3":"24"},{"1":"405","2":"jmp","3":"-56"},{"1":"406","2":"jmp","3":"152"},{"1":"407","2":"acc","3":"42"},{"1":"408","2":"acc","3":"25"},{"1":"409","2":"acc","3":"-6"},{"1":"410","2":"jmp","3":"174"},{"1":"411","2":"jmp","3":"-96"},{"1":"412","2":"jmp","3":"-86"},{"1":"413","2":"jmp","3":"20"},{"1":"414","2":"acc","3":"23"},{"1":"415","2":"nop","3":"-93"},{"1":"416","2":"acc","3":"3"},{"1":"417","2":"jmp","3":"-42"},{"1":"418","2":"acc","3":"0"},{"1":"419","2":"acc","3":"6"},{"1":"420","2":"jmp","3":"100"},{"1":"421","2":"jmp","3":"20"},{"1":"422","2":"jmp","3":"-147"},{"1":"423","2":"acc","3":"19"},{"1":"424","2":"nop","3":"-367"},{"1":"425","2":"jmp","3":"-80"},{"1":"426","2":"nop","3":"-318"},{"1":"427","2":"nop","3":"-289"},{"1":"428","2":"acc","3":"45"},{"1":"429","2":"jmp","3":"-321"},{"1":"430","2":"nop","3":"-4"},{"1":"431","2":"acc","3":"13"},{"1":"432","2":"jmp","3":"74"},{"1":"433","2":"acc","3":"0"},{"1":"434","2":"acc","3":"15"},{"1":"435","2":"jmp","3":"153"},{"1":"436","2":"acc","3":"-5"},{"1":"437","2":"acc","3":"24"},{"1":"438","2":"acc","3":"21"},{"1":"439","2":"jmp","3":"1"},{"1":"440","2":"jmp","3":"-48"},{"1":"441","2":"jmp","3":"-262"},{"1":"442","2":"nop","3":"-317"},{"1":"443","2":"jmp","3":"93"},{"1":"444","2":"acc","3":"20"},{"1":"445","2":"jmp","3":"-32"},{"1":"446","2":"acc","3":"44"},{"1":"447","2":"acc","3":"50"},{"1":"448","2":"jmp","3":"-350"},{"1":"449","2":"acc","3":"-19"},{"1":"450","2":"acc","3":"46"},{"1":"451","2":"jmp","3":"-431"},{"1":"452","2":"acc","3":"-11"},{"1":"453","2":"nop","3":"-227"},{"1":"454","2":"acc","3":"48"},{"1":"455","2":"jmp","3":"103"},{"1":"456","2":"acc","3":"44"},{"1":"457","2":"acc","3":"31"},{"1":"458","2":"acc","3":"-15"},{"1":"459","2":"jmp","3":"-15"},{"1":"460","2":"acc","3":"0"},{"1":"461","2":"acc","3":"34"},{"1":"462","2":"acc","3":"-3"},{"1":"463","2":"acc","3":"38"},{"1":"464","2":"jmp","3":"108"},{"1":"465","2":"acc","3":"28"},{"1":"466","2":"nop","3":"-60"},{"1":"467","2":"acc","3":"28"},{"1":"468","2":"acc","3":"26"},{"1":"469","2":"jmp","3":"-20"},{"1":"470","2":"jmp","3":"-440"},{"1":"471","2":"acc","3":"48"},{"1":"472","2":"jmp","3":"-257"},{"1":"473","2":"acc","3":"11"},{"1":"474","2":"acc","3":"8"},{"1":"475","2":"acc","3":"14"},{"1":"476","2":"acc","3":"30"},{"1":"477","2":"jmp","3":"8"},{"1":"478","2":"acc","3":"47"},{"1":"479","2":"jmp","3":"-323"},{"1":"480","2":"acc","3":"15"},{"1":"481","2":"acc","3":"10"},{"1":"482","2":"acc","3":"-15"},{"1":"483","2":"acc","3":"13"},{"1":"484","2":"jmp","3":"-169"},{"1":"485","2":"acc","3":"-11"},{"1":"486","2":"acc","3":"-12"},{"1":"487","2":"acc","3":"24"},{"1":"488","2":"acc","3":"5"},{"1":"489","2":"jmp","3":"125"},{"1":"490","2":"acc","3":"34"},{"1":"491","2":"acc","3":"-17"},{"1":"492","2":"acc","3":"2"},{"1":"493","2":"acc","3":"32"},{"1":"494","2":"jmp","3":"-83"},{"1":"495","2":"jmp","3":"-120"},{"1":"496","2":"jmp","3":"-11"},{"1":"497","2":"acc","3":"25"},{"1":"498","2":"nop","3":"-54"},{"1":"499","2":"jmp","3":"1"},{"1":"500","2":"jmp","3":"-29"},{"1":"501","2":"acc","3":"13"},{"1":"502","2":"acc","3":"17"},{"1":"503","2":"acc","3":"6"},{"1":"504","2":"acc","3":"31"},{"1":"505","2":"jmp","3":"-420"},{"1":"506","2":"acc","3":"25"},{"1":"507","2":"acc","3":"13"},{"1":"508","2":"jmp","3":"117"},{"1":"509","2":"jmp","3":"-3"},{"1":"510","2":"nop","3":"68"},{"1":"511","2":"acc","3":"32"},{"1":"512","2":"acc","3":"-11"},{"1":"513","2":"acc","3":"31"},{"1":"514","2":"jmp","3":"-374"},{"1":"515","2":"acc","3":"-4"},{"1":"516","2":"acc","3":"34"},{"1":"517","2":"acc","3":"38"},{"1":"518","2":"acc","3":"23"},{"1":"519","2":"jmp","3":"-113"},{"1":"520","2":"acc","3":"-19"},{"1":"521","2":"acc","3":"50"},{"1":"522","2":"nop","3":"-216"},{"1":"523","2":"jmp","3":"-134"},{"1":"524","2":"nop","3":"-331"},{"1":"525","2":"acc","3":"-7"},{"1":"526","2":"acc","3":"28"},{"1":"527","2":"jmp","3":"-357"},{"1":"528","2":"jmp","3":"-216"},{"1":"529","2":"jmp","3":"-128"},{"1":"530","2":"acc","3":"34"},{"1":"531","2":"acc","3":"16"},{"1":"532","2":"jmp","3":"-54"},{"1":"533","2":"acc","3":"-16"},{"1":"534","2":"acc","3":"0"},{"1":"535","2":"jmp","3":"-64"},{"1":"536","2":"acc","3":"7"},{"1":"537","2":"nop","3":"-322"},{"1":"538","2":"jmp","3":"-306"},{"1":"539","2":"nop","3":"-414"},{"1":"540","2":"acc","3":"38"},{"1":"541","2":"acc","3":"15"},{"1":"542","2":"jmp","3":"77"},{"1":"543","2":"acc","3":"18"},{"1":"544","2":"jmp","3":"1"},{"1":"545","2":"acc","3":"0"},{"1":"546","2":"acc","3":"-8"},{"1":"547","2":"jmp","3":"-248"},{"1":"548","2":"acc","3":"26"},{"1":"549","2":"jmp","3":"-6"},{"1":"550","2":"acc","3":"17"},{"1":"551","2":"acc","3":"21"},{"1":"552","2":"acc","3":"30"},{"1":"553","2":"jmp","3":"-142"},{"1":"554","2":"acc","3":"-13"},{"1":"555","2":"acc","3":"-18"},{"1":"556","2":"nop","3":"-330"},{"1":"557","2":"jmp","3":"27"},{"1":"558","2":"acc","3":"-14"},{"1":"559","2":"jmp","3":"60"},{"1":"560","2":"acc","3":"31"},{"1":"561","2":"acc","3":"-6"},{"1":"562","2":"acc","3":"49"},{"1":"563","2":"acc","3":"16"},{"1":"564","2":"jmp","3":"-289"},{"1":"565","2":"acc","3":"11"},{"1":"566","2":"acc","3":"0"},{"1":"567","2":"nop","3":"-141"},{"1":"568","2":"acc","3":"19"},{"1":"569","2":"jmp","3":"-143"},{"1":"570","2":"acc","3":"44"},{"1":"571","2":"jmp","3":"-286"},{"1":"572","2":"acc","3":"42"},{"1":"573","2":"jmp","3":"-209"},{"1":"574","2":"acc","3":"34"},{"1":"575","2":"acc","3":"10"},{"1":"576","2":"acc","3":"3"},{"1":"577","2":"jmp","3":"-461"},{"1":"578","2":"acc","3":"2"},{"1":"579","2":"jmp","3":"-358"},{"1":"580","2":"acc","3":"42"},{"1":"581","2":"acc","3":"0"},{"1":"582","2":"acc","3":"26"},{"1":"583","2":"jmp","3":"-191"},{"1":"584","2":"acc","3":"16"},{"1":"585","2":"jmp","3":"-230"},{"1":"586","2":"acc","3":"31"},{"1":"587","2":"jmp","3":"-244"},{"1":"588","2":"nop","3":"-456"},{"1":"589","2":"acc","3":"16"},{"1":"590","2":"nop","3":"-196"},{"1":"591","2":"jmp","3":"-475"},{"1":"592","2":"acc","3":"24"},{"1":"593","2":"jmp","3":"-553"},{"1":"594","2":"acc","3":"42"},{"1":"595","2":"acc","3":"24"},{"1":"596","2":"acc","3":"3"},{"1":"597","2":"jmp","3":"-572"},{"1":"598","2":"acc","3":"31"},{"1":"599","2":"jmp","3":"7"},{"1":"600","2":"jmp","3":"-144"},{"1":"601","2":"acc","3":"20"},{"1":"602","2":"acc","3":"23"},{"1":"603","2":"acc","3":"-14"},{"1":"604","2":"nop","3":"-506"},{"1":"605","2":"jmp","3":"-17"},{"1":"606","2":"acc","3":"19"},{"1":"607","2":"nop","3":"-428"},{"1":"608","2":"jmp","3":"-286"},{"1":"609","2":"acc","3":"2"},{"1":"610","2":"acc","3":"6"},{"1":"611","2":"acc","3":"28"},{"1":"612","2":"acc","3":"-13"},{"1":"613","2":"jmp","3":"-291"},{"1":"614","2":"jmp","3":"-377"},{"1":"615","2":"acc","3":"-3"},{"1":"616","2":"acc","3":"32"},{"1":"617","2":"jmp","3":"1"},{"1":"618","2":"jmp","3":"-205"},{"1":"619","2":"acc","3":"18"},{"1":"620","2":"acc","3":"32"},{"1":"621","2":"nop","3":"-523"},{"1":"622","2":"jmp","3":"-79"},{"1":"623","2":"acc","3":"32"},{"1":"624","2":"jmp","3":"-30"},{"1":"625","2":"acc","3":"40"},{"1":"626","2":"acc","3":"-17"},{"1":"627","2":"jmp","3":"1"},{"1":"628","2":"acc","3":"28"},{"1":"629","2":"jmp","3":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<h2 id="part-1">Part 1</h2>
+<p>Add some columns to the tibble.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='va'>df</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>visited <span class='op'>=</span> <span class='cn'>FALSE</span>, .after <span class='op'>=</span> <span class='st'>"operation_id"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>accumulator <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>cur_operation_id <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='co'># accumulator &lt;- 0</span>
+<span class='co'># cur_operation_id &lt;- 1</span>
+
+<span class='va'>get_new_index</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='va'>cur_operation_id</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>$</span><span class='va'>cur_operation_id</span><span class='op'>)</span>
+  <span class='va'>operation</span> <span class='op'>&lt;-</span> <span class='va'>df</span><span class='op'>$</span><span class='va'>operation</span><span class='op'>[</span><span class='va'>cur_operation_id</span><span class='op'>]</span>
+
+
+
+  <span class='kw'>if</span> <span class='op'>(</span><span class='va'>operation</span> <span class='op'>==</span> <span class='st'>"nop"</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='va'>df</span><span class='op'>$</span><span class='va'>visited</span><span class='op'>[</span><span class='va'>cur_operation_id</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='cn'>TRUE</span>
+    <span class='va'>df</span><span class='op'>$</span><span class='va'>cur_operation_id</span> <span class='op'>&lt;-</span> <span class='va'>df</span><span class='op'>$</span><span class='va'>cur_operation_id</span> <span class='op'>+</span> <span class='fl'>1</span>
+  <span class='op'>}</span> <span class='kw'>else</span> <span class='kw'>if</span> <span class='op'>(</span><span class='va'>operation</span> <span class='op'>==</span> <span class='st'>"acc"</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='va'>df</span><span class='op'>$</span><span class='va'>accumulator</span> <span class='op'>&lt;-</span> <span class='va'>df</span><span class='op'>$</span><span class='va'>accumulator</span> <span class='op'>+</span> <span class='va'>df</span><span class='op'>$</span><span class='va'>value</span><span class='op'>[</span><span class='va'>cur_operation_id</span><span class='op'>]</span>
+    <span class='va'>df</span><span class='op'>$</span><span class='va'>visited</span><span class='op'>[</span><span class='va'>cur_operation_id</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='cn'>TRUE</span>
+    <span class='va'>df</span><span class='op'>$</span><span class='va'>cur_operation_id</span> <span class='op'>&lt;-</span> <span class='va'>df</span><span class='op'>$</span><span class='va'>cur_operation_id</span> <span class='op'>+</span> <span class='fl'>1</span>
+  <span class='op'>}</span> <span class='kw'>else</span> <span class='kw'>if</span> <span class='op'>(</span><span class='va'>operation</span> <span class='op'>==</span> <span class='st'>"jmp"</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='va'>df</span><span class='op'>$</span><span class='va'>visited</span><span class='op'>[</span><span class='va'>cur_operation_id</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='cn'>TRUE</span>
+    <span class='va'>df</span><span class='op'>$</span><span class='va'>cur_operation_id</span> <span class='op'>&lt;-</span> <span class='va'>df</span><span class='op'>$</span><span class='va'>cur_operation_id</span> <span class='op'>+</span> <span class='va'>df</span><span class='op'>$</span><span class='va'>value</span><span class='op'>[</span><span class='va'>cur_operation_id</span><span class='op'>]</span>
+  <span class='op'>}</span>
+
+  <span class='co'># If the next operation id is greater than the number of rows in the df</span>
+  <span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>$</span><span class='va'>cur_operation_id</span><span class='op'>)</span> <span class='op'>&gt;</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='va'>df</span><span class='op'>$</span><span class='va'>cur_operation_id</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span>
+    <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span>
+  <span class='op'>}</span>
+
+  <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span>
+<span class='op'>}</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='co'># debug(get_new_index)</span>
+<span class='kw'>while</span> <span class='op'>(</span><span class='op'>!</span><span class='va'>df</span><span class='op'>$</span><span class='va'>visited</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>$</span><span class='va'>cur_operation_id</span><span class='op'>)</span><span class='op'>]</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'>get_new_index</span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+<span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>$</span><span class='va'>accumulator</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 2051</code></pre>
+</div>
+<h2 id="part-2">Part 2</h2>
+<p><em>Reset</em> the tibble for the next part.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='va'>df</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>visited <span class='op'>=</span> <span class='cn'>FALSE</span>, .after <span class='op'>=</span> <span class='st'>"operation_id"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>accumulator <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>cur_operation_id <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Here I am going to use a brute force approach to find out when the last operation is executed. The number of simulations to perform corresponds to the number of <code>nop</code> and <code>jmp</code> found in the data.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>res</span> <span class='op'>&lt;-</span> <span class='va'>df</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>n <span class='op'>=</span> <span class='va'>operation_id</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>n <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>operation</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"nop"</span>, <span class='st'>"jmp"</span><span class='op'>)</span>, <span class='va'>n</span>, <span class='cn'>NA</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='co'># How many simulations have to be performed</span>
+<span class='va'>n</span> <span class='op'>&lt;-</span> <span class='va'>res</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>pull</span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/na.fail.html'>na.omit</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='va'>n</span>
+</code></pre>
+</div>
+<pre><code>[1] 278</code></pre>
+<div class="sourceCode">
+<pre><code><span class='co'># Which rows of the df that contain nop or jmp have to be swaped</span>
+<span class='va'>rows_to_modify</span> <span class='op'>&lt;-</span> <span class='va'>res</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>pull</span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/na.fail.html'>na.omit</a></span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>rows_to_modify</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1]  1  3  4  5  6 10</code></pre>
+<div class="sourceCode">
+<pre><code><span class='va'>res</span> <span class='op'>&lt;-</span> <span class='va'>res</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='va'>n</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>crossing</span><span class='op'>(</span>simulation_id <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='va'>n</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>group_nest</span><span class='op'>(</span><span class='va'>simulation_id</span>, keep <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span><span class='va'>rows_to_modify</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>data <span class='op'>=</span> <span class='fu'>map2</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>rows_to_modify</span>, <span class='kw'>function</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>rows_to_modify</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='va'>data</span><span class='op'>$</span><span class='va'>operation</span><span class='op'>[</span><span class='va'>rows_to_modify</span><span class='op'>]</span> <span class='op'>&lt;-</span>
+      <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>$</span><span class='va'>operation</span><span class='op'>[</span><span class='va'>rows_to_modify</span><span class='op'>]</span> <span class='op'>==</span> <span class='st'>"nop"</span>, <span class='st'>"jmp"</span>, <span class='st'>"nop"</span><span class='op'>)</span>
+
+    <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>
+  <span class='op'>}</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='va'>res</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>rmarkdown</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/rmarkdown/man/paged_table.html'>paged_table</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["simulation_id"],"name":[1],"type":["int"],"align":["right"]},{"label":["data"],"name":[2],"type":["list"],"align":["right"]},{"label":["rows_to_modify"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"1","2":"<tbl_df[,7]>","3":"1"},{"1":"2","2":"<tbl_df[,7]>","3":"3"},{"1":"3","2":"<tbl_df[,7]>","3":"4"},{"1":"4","2":"<tbl_df[,7]>","3":"5"},{"1":"5","2":"<tbl_df[,7]>","3":"6"},{"1":"6","2":"<tbl_df[,7]>","3":"10"},{"1":"7","2":"<tbl_df[,7]>","3":"12"},{"1":"8","2":"<tbl_df[,7]>","3":"14"},{"1":"9","2":"<tbl_df[,7]>","3":"19"},{"1":"10","2":"<tbl_df[,7]>","3":"22"},{"1":"11","2":"<tbl_df[,7]>","3":"24"},{"1":"12","2":"<tbl_df[,7]>","3":"26"},{"1":"13","2":"<tbl_df[,7]>","3":"27"},{"1":"14","2":"<tbl_df[,7]>","3":"29"},{"1":"15","2":"<tbl_df[,7]>","3":"31"},{"1":"16","2":"<tbl_df[,7]>","3":"34"},{"1":"17","2":"<tbl_df[,7]>","3":"38"},{"1":"18","2":"<tbl_df[,7]>","3":"39"},{"1":"19","2":"<tbl_df[,7]>","3":"43"},{"1":"20","2":"<tbl_df[,7]>","3":"46"},{"1":"21","2":"<tbl_df[,7]>","3":"48"},{"1":"22","2":"<tbl_df[,7]>","3":"49"},{"1":"23","2":"<tbl_df[,7]>","3":"50"},{"1":"24","2":"<tbl_df[,7]>","3":"55"},{"1":"25","2":"<tbl_df[,7]>","3":"56"},{"1":"26","2":"<tbl_df[,7]>","3":"57"},{"1":"27","2":"<tbl_df[,7]>","3":"59"},{"1":"28","2":"<tbl_df[,7]>","3":"60"},{"1":"29","2":"<tbl_df[,7]>","3":"63"},{"1":"30","2":"<tbl_df[,7]>","3":"68"},{"1":"31","2":"<tbl_df[,7]>","3":"70"},{"1":"32","2":"<tbl_df[,7]>","3":"72"},{"1":"33","2":"<tbl_df[,7]>","3":"73"},{"1":"34","2":"<tbl_df[,7]>","3":"77"},{"1":"35","2":"<tbl_df[,7]>","3":"78"},{"1":"36","2":"<tbl_df[,7]>","3":"79"},{"1":"37","2":"<tbl_df[,7]>","3":"80"},{"1":"38","2":"<tbl_df[,7]>","3":"84"},{"1":"39","2":"<tbl_df[,7]>","3":"85"},{"1":"40","2":"<tbl_df[,7]>","3":"87"},{"1":"41","2":"<tbl_df[,7]>","3":"90"},{"1":"42","2":"<tbl_df[,7]>","3":"92"},{"1":"43","2":"<tbl_df[,7]>","3":"97"},{"1":"44","2":"<tbl_df[,7]>","3":"100"},{"1":"45","2":"<tbl_df[,7]>","3":"101"},{"1":"46","2":"<tbl_df[,7]>","3":"103"},{"1":"47","2":"<tbl_df[,7]>","3":"104"},{"1":"48","2":"<tbl_df[,7]>","3":"106"},{"1":"49","2":"<tbl_df[,7]>","3":"107"},{"1":"50","2":"<tbl_df[,7]>","3":"111"},{"1":"51","2":"<tbl_df[,7]>","3":"114"},{"1":"52","2":"<tbl_df[,7]>","3":"115"},{"1":"53","2":"<tbl_df[,7]>","3":"116"},{"1":"54","2":"<tbl_df[,7]>","3":"117"},{"1":"55","2":"<tbl_df[,7]>","3":"118"},{"1":"56","2":"<tbl_df[,7]>","3":"120"},{"1":"57","2":"<tbl_df[,7]>","3":"124"},{"1":"58","2":"<tbl_df[,7]>","3":"126"},{"1":"59","2":"<tbl_df[,7]>","3":"129"},{"1":"60","2":"<tbl_df[,7]>","3":"131"},{"1":"61","2":"<tbl_df[,7]>","3":"134"},{"1":"62","2":"<tbl_df[,7]>","3":"137"},{"1":"63","2":"<tbl_df[,7]>","3":"138"},{"1":"64","2":"<tbl_df[,7]>","3":"139"},{"1":"65","2":"<tbl_df[,7]>","3":"142"},{"1":"66","2":"<tbl_df[,7]>","3":"146"},{"1":"67","2":"<tbl_df[,7]>","3":"150"},{"1":"68","2":"<tbl_df[,7]>","3":"151"},{"1":"69","2":"<tbl_df[,7]>","3":"155"},{"1":"70","2":"<tbl_df[,7]>","3":"158"},{"1":"71","2":"<tbl_df[,7]>","3":"160"},{"1":"72","2":"<tbl_df[,7]>","3":"162"},{"1":"73","2":"<tbl_df[,7]>","3":"166"},{"1":"74","2":"<tbl_df[,7]>","3":"169"},{"1":"75","2":"<tbl_df[,7]>","3":"173"},{"1":"76","2":"<tbl_df[,7]>","3":"178"},{"1":"77","2":"<tbl_df[,7]>","3":"181"},{"1":"78","2":"<tbl_df[,7]>","3":"182"},{"1":"79","2":"<tbl_df[,7]>","3":"187"},{"1":"80","2":"<tbl_df[,7]>","3":"190"},{"1":"81","2":"<tbl_df[,7]>","3":"191"},{"1":"82","2":"<tbl_df[,7]>","3":"192"},{"1":"83","2":"<tbl_df[,7]>","3":"195"},{"1":"84","2":"<tbl_df[,7]>","3":"199"},{"1":"85","2":"<tbl_df[,7]>","3":"200"},{"1":"86","2":"<tbl_df[,7]>","3":"202"},{"1":"87","2":"<tbl_df[,7]>","3":"205"},{"1":"88","2":"<tbl_df[,7]>","3":"210"},{"1":"89","2":"<tbl_df[,7]>","3":"214"},{"1":"90","2":"<tbl_df[,7]>","3":"219"},{"1":"91","2":"<tbl_df[,7]>","3":"220"},{"1":"92","2":"<tbl_df[,7]>","3":"222"},{"1":"93","2":"<tbl_df[,7]>","3":"225"},{"1":"94","2":"<tbl_df[,7]>","3":"228"},{"1":"95","2":"<tbl_df[,7]>","3":"230"},{"1":"96","2":"<tbl_df[,7]>","3":"231"},{"1":"97","2":"<tbl_df[,7]>","3":"232"},{"1":"98","2":"<tbl_df[,7]>","3":"236"},{"1":"99","2":"<tbl_df[,7]>","3":"238"},{"1":"100","2":"<tbl_df[,7]>","3":"239"},{"1":"101","2":"<tbl_df[,7]>","3":"241"},{"1":"102","2":"<tbl_df[,7]>","3":"242"},{"1":"103","2":"<tbl_df[,7]>","3":"245"},{"1":"104","2":"<tbl_df[,7]>","3":"250"},{"1":"105","2":"<tbl_df[,7]>","3":"251"},{"1":"106","2":"<tbl_df[,7]>","3":"252"},{"1":"107","2":"<tbl_df[,7]>","3":"256"},{"1":"108","2":"<tbl_df[,7]>","3":"257"},{"1":"109","2":"<tbl_df[,7]>","3":"261"},{"1":"110","2":"<tbl_df[,7]>","3":"264"},{"1":"111","2":"<tbl_df[,7]>","3":"265"},{"1":"112","2":"<tbl_df[,7]>","3":"267"},{"1":"113","2":"<tbl_df[,7]>","3":"270"},{"1":"114","2":"<tbl_df[,7]>","3":"271"},{"1":"115","2":"<tbl_df[,7]>","3":"272"},{"1":"116","2":"<tbl_df[,7]>","3":"274"},{"1":"117","2":"<tbl_df[,7]>","3":"277"},{"1":"118","2":"<tbl_df[,7]>","3":"279"},{"1":"119","2":"<tbl_df[,7]>","3":"284"},{"1":"120","2":"<tbl_df[,7]>","3":"287"},{"1":"121","2":"<tbl_df[,7]>","3":"291"},{"1":"122","2":"<tbl_df[,7]>","3":"296"},{"1":"123","2":"<tbl_df[,7]>","3":"297"},{"1":"124","2":"<tbl_df[,7]>","3":"298"},{"1":"125","2":"<tbl_df[,7]>","3":"299"},{"1":"126","2":"<tbl_df[,7]>","3":"301"},{"1":"127","2":"<tbl_df[,7]>","3":"302"},{"1":"128","2":"<tbl_df[,7]>","3":"303"},{"1":"129","2":"<tbl_df[,7]>","3":"305"},{"1":"130","2":"<tbl_df[,7]>","3":"308"},{"1":"131","2":"<tbl_df[,7]>","3":"311"},{"1":"132","2":"<tbl_df[,7]>","3":"312"},{"1":"133","2":"<tbl_df[,7]>","3":"314"},{"1":"134","2":"<tbl_df[,7]>","3":"318"},{"1":"135","2":"<tbl_df[,7]>","3":"319"},{"1":"136","2":"<tbl_df[,7]>","3":"320"},{"1":"137","2":"<tbl_df[,7]>","3":"321"},{"1":"138","2":"<tbl_df[,7]>","3":"322"},{"1":"139","2":"<tbl_df[,7]>","3":"325"},{"1":"140","2":"<tbl_df[,7]>","3":"328"},{"1":"141","2":"<tbl_df[,7]>","3":"330"},{"1":"142","2":"<tbl_df[,7]>","3":"331"},{"1":"143","2":"<tbl_df[,7]>","3":"335"},{"1":"144","2":"<tbl_df[,7]>","3":"340"},{"1":"145","2":"<tbl_df[,7]>","3":"342"},{"1":"146","2":"<tbl_df[,7]>","3":"343"},{"1":"147","2":"<tbl_df[,7]>","3":"344"},{"1":"148","2":"<tbl_df[,7]>","3":"346"},{"1":"149","2":"<tbl_df[,7]>","3":"347"},{"1":"150","2":"<tbl_df[,7]>","3":"348"},{"1":"151","2":"<tbl_df[,7]>","3":"353"},{"1":"152","2":"<tbl_df[,7]>","3":"354"},{"1":"153","2":"<tbl_df[,7]>","3":"357"},{"1":"154","2":"<tbl_df[,7]>","3":"358"},{"1":"155","2":"<tbl_df[,7]>","3":"359"},{"1":"156","2":"<tbl_df[,7]>","3":"362"},{"1":"157","2":"<tbl_df[,7]>","3":"363"},{"1":"158","2":"<tbl_df[,7]>","3":"365"},{"1":"159","2":"<tbl_df[,7]>","3":"366"},{"1":"160","2":"<tbl_df[,7]>","3":"367"},{"1":"161","2":"<tbl_df[,7]>","3":"368"},{"1":"162","2":"<tbl_df[,7]>","3":"369"},{"1":"163","2":"<tbl_df[,7]>","3":"370"},{"1":"164","2":"<tbl_df[,7]>","3":"374"},{"1":"165","2":"<tbl_df[,7]>","3":"376"},{"1":"166","2":"<tbl_df[,7]>","3":"379"},{"1":"167","2":"<tbl_df[,7]>","3":"384"},{"1":"168","2":"<tbl_df[,7]>","3":"386"},{"1":"169","2":"<tbl_df[,7]>","3":"388"},{"1":"170","2":"<tbl_df[,7]>","3":"390"},{"1":"171","2":"<tbl_df[,7]>","3":"391"},{"1":"172","2":"<tbl_df[,7]>","3":"392"},{"1":"173","2":"<tbl_df[,7]>","3":"393"},{"1":"174","2":"<tbl_df[,7]>","3":"395"},{"1":"175","2":"<tbl_df[,7]>","3":"397"},{"1":"176","2":"<tbl_df[,7]>","3":"400"},{"1":"177","2":"<tbl_df[,7]>","3":"401"},{"1":"178","2":"<tbl_df[,7]>","3":"402"},{"1":"179","2":"<tbl_df[,7]>","3":"405"},{"1":"180","2":"<tbl_df[,7]>","3":"406"},{"1":"181","2":"<tbl_df[,7]>","3":"410"},{"1":"182","2":"<tbl_df[,7]>","3":"411"},{"1":"183","2":"<tbl_df[,7]>","3":"412"},{"1":"184","2":"<tbl_df[,7]>","3":"413"},{"1":"185","2":"<tbl_df[,7]>","3":"415"},{"1":"186","2":"<tbl_df[,7]>","3":"417"},{"1":"187","2":"<tbl_df[,7]>","3":"420"},{"1":"188","2":"<tbl_df[,7]>","3":"421"},{"1":"189","2":"<tbl_df[,7]>","3":"422"},{"1":"190","2":"<tbl_df[,7]>","3":"424"},{"1":"191","2":"<tbl_df[,7]>","3":"425"},{"1":"192","2":"<tbl_df[,7]>","3":"426"},{"1":"193","2":"<tbl_df[,7]>","3":"427"},{"1":"194","2":"<tbl_df[,7]>","3":"429"},{"1":"195","2":"<tbl_df[,7]>","3":"430"},{"1":"196","2":"<tbl_df[,7]>","3":"432"},{"1":"197","2":"<tbl_df[,7]>","3":"435"},{"1":"198","2":"<tbl_df[,7]>","3":"439"},{"1":"199","2":"<tbl_df[,7]>","3":"440"},{"1":"200","2":"<tbl_df[,7]>","3":"441"},{"1":"201","2":"<tbl_df[,7]>","3":"442"},{"1":"202","2":"<tbl_df[,7]>","3":"443"},{"1":"203","2":"<tbl_df[,7]>","3":"445"},{"1":"204","2":"<tbl_df[,7]>","3":"448"},{"1":"205","2":"<tbl_df[,7]>","3":"451"},{"1":"206","2":"<tbl_df[,7]>","3":"453"},{"1":"207","2":"<tbl_df[,7]>","3":"455"},{"1":"208","2":"<tbl_df[,7]>","3":"459"},{"1":"209","2":"<tbl_df[,7]>","3":"464"},{"1":"210","2":"<tbl_df[,7]>","3":"466"},{"1":"211","2":"<tbl_df[,7]>","3":"469"},{"1":"212","2":"<tbl_df[,7]>","3":"470"},{"1":"213","2":"<tbl_df[,7]>","3":"472"},{"1":"214","2":"<tbl_df[,7]>","3":"477"},{"1":"215","2":"<tbl_df[,7]>","3":"479"},{"1":"216","2":"<tbl_df[,7]>","3":"484"},{"1":"217","2":"<tbl_df[,7]>","3":"489"},{"1":"218","2":"<tbl_df[,7]>","3":"494"},{"1":"219","2":"<tbl_df[,7]>","3":"495"},{"1":"220","2":"<tbl_df[,7]>","3":"496"},{"1":"221","2":"<tbl_df[,7]>","3":"498"},{"1":"222","2":"<tbl_df[,7]>","3":"499"},{"1":"223","2":"<tbl_df[,7]>","3":"500"},{"1":"224","2":"<tbl_df[,7]>","3":"505"},{"1":"225","2":"<tbl_df[,7]>","3":"508"},{"1":"226","2":"<tbl_df[,7]>","3":"509"},{"1":"227","2":"<tbl_df[,7]>","3":"510"},{"1":"228","2":"<tbl_df[,7]>","3":"514"},{"1":"229","2":"<tbl_df[,7]>","3":"519"},{"1":"230","2":"<tbl_df[,7]>","3":"522"},{"1":"231","2":"<tbl_df[,7]>","3":"523"},{"1":"232","2":"<tbl_df[,7]>","3":"524"},{"1":"233","2":"<tbl_df[,7]>","3":"527"},{"1":"234","2":"<tbl_df[,7]>","3":"528"},{"1":"235","2":"<tbl_df[,7]>","3":"529"},{"1":"236","2":"<tbl_df[,7]>","3":"532"},{"1":"237","2":"<tbl_df[,7]>","3":"535"},{"1":"238","2":"<tbl_df[,7]>","3":"537"},{"1":"239","2":"<tbl_df[,7]>","3":"538"},{"1":"240","2":"<tbl_df[,7]>","3":"539"},{"1":"241","2":"<tbl_df[,7]>","3":"542"},{"1":"242","2":"<tbl_df[,7]>","3":"544"},{"1":"243","2":"<tbl_df[,7]>","3":"547"},{"1":"244","2":"<tbl_df[,7]>","3":"549"},{"1":"245","2":"<tbl_df[,7]>","3":"553"},{"1":"246","2":"<tbl_df[,7]>","3":"556"},{"1":"247","2":"<tbl_df[,7]>","3":"557"},{"1":"248","2":"<tbl_df[,7]>","3":"559"},{"1":"249","2":"<tbl_df[,7]>","3":"564"},{"1":"250","2":"<tbl_df[,7]>","3":"567"},{"1":"251","2":"<tbl_df[,7]>","3":"569"},{"1":"252","2":"<tbl_df[,7]>","3":"571"},{"1":"253","2":"<tbl_df[,7]>","3":"573"},{"1":"254","2":"<tbl_df[,7]>","3":"577"},{"1":"255","2":"<tbl_df[,7]>","3":"579"},{"1":"256","2":"<tbl_df[,7]>","3":"583"},{"1":"257","2":"<tbl_df[,7]>","3":"585"},{"1":"258","2":"<tbl_df[,7]>","3":"587"},{"1":"259","2":"<tbl_df[,7]>","3":"588"},{"1":"260","2":"<tbl_df[,7]>","3":"590"},{"1":"261","2":"<tbl_df[,7]>","3":"591"},{"1":"262","2":"<tbl_df[,7]>","3":"593"},{"1":"263","2":"<tbl_df[,7]>","3":"597"},{"1":"264","2":"<tbl_df[,7]>","3":"599"},{"1":"265","2":"<tbl_df[,7]>","3":"600"},{"1":"266","2":"<tbl_df[,7]>","3":"604"},{"1":"267","2":"<tbl_df[,7]>","3":"605"},{"1":"268","2":"<tbl_df[,7]>","3":"607"},{"1":"269","2":"<tbl_df[,7]>","3":"608"},{"1":"270","2":"<tbl_df[,7]>","3":"613"},{"1":"271","2":"<tbl_df[,7]>","3":"614"},{"1":"272","2":"<tbl_df[,7]>","3":"617"},{"1":"273","2":"<tbl_df[,7]>","3":"618"},{"1":"274","2":"<tbl_df[,7]>","3":"621"},{"1":"275","2":"<tbl_df[,7]>","3":"622"},{"1":"276","2":"<tbl_df[,7]>","3":"624"},{"1":"277","2":"<tbl_df[,7]>","3":"627"},{"1":"278","2":"<tbl_df[,7]>","3":"629"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p>We can see that there are 278 simulations to be done.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>loop</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='kw'>while</span> <span class='op'>(</span><span class='op'>!</span><span class='va'>df</span><span class='op'>$</span><span class='va'>visited</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>$</span><span class='va'>cur_operation_id</span><span class='op'>)</span><span class='op'>]</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'>get_new_index</span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span>
+  <span class='op'>}</span>
+
+  <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+<span class='va'>res</span> <span class='op'>&lt;-</span> <span class='va'>res</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>res <span class='op'>=</span> <span class='fu'>map</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>loop</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>res</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='va'>simulation_id</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>unnest</span><span class='op'>(</span><span class='va'>res</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>cur_operation_id</span> <span class='op'>&gt;=</span> <span class='fl'>629</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>pull</span><span class='op'>(</span><span class='va'>accumulator</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 2304</code></pre>
+</div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>

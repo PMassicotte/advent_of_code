@@ -1,0 +1,231 @@
+---
+title: "Advent of code 2020 day 8"
+description: |
+  --- Day 8: Handheld Halting ---
+author:
+  - name: Philippe Massicotte
+date: 12-14-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(here)
+```
+
+## Context
+
+https://adventofcode.com/2020/day/8
+
+<small>
+Your flight to the major airline hub reaches cruising altitude without incident. While you consider checking the in-flight menu for one of those drinks that come with a little umbrella, you are interrupted by the kid sitting next to you.
+
+Their handheld game console won't turn on! They ask if you can take a look.
+
+You narrow the problem down to a strange infinite loop in the boot code (your puzzle input) of the device. You should be able to fix it, but first you need to be able to run the code in isolation.
+
+The boot code is represented as a text file with one instruction per line of text. Each instruction consists of an operation (acc, jmp, or nop) and an argument (a signed number like +4 or -20).
+
+- acc increases or decreases a single global value called the accumulator by the value given in the argument. For example, acc +7 would increase the accumulator by 7. The accumulator starts at 0. After an acc instruction, the instruction immediately below it is executed next.
+
+- jmp jumps to a new instruction relative to itself. The next instruction to execute is found using the argument as an offset from the jmp instruction; for example, jmp +2 would skip the next instruction, jmp +1 would continue to the instruction immediately below it, and jmp -20 would cause the instruction 20 lines above to be executed next.
+
+- nop stands for No OPeration - it does nothing. The instruction immediately below it is executed next.
+For example, consider the following program:
+
+```
+nop +0
+acc +1
+jmp +4
+acc +3
+jmp -3
+acc -99
+acc +1
+jmp -4
+acc +6
+```
+
+These instructions are visited in this order:
+
+```
+nop +0  | 1
+acc +1  | 2, 8(!)
+jmp +4  | 3
+acc +3  | 6
+jmp -3  | 7
+acc -99 |
+acc +1  | 4
+jmp -4  | 5
+acc +6  |
+```
+First, the nop +0 does nothing. Then, the accumulator is increased from 0 to 1 (acc +1) and jmp +4 sets the next instruction to the other acc +1 near the bottom. After it increases the accumulator from 1 to 2, jmp -4 executes, setting the next instruction to the only acc +3. It sets the accumulator to 5, and jmp -3 causes the program to continue back at the first acc +1.
+
+This is an infinite loop: with this sequence of jumps, the program will run forever. The moment the program tries to run any instruction a second time, you know it will never terminate.
+
+Immediately before the program would run an instruction a second time, the value in the accumulator is 5.
+
+Run your copy of the boot code. Immediately before any instruction is executed a second time, what value is in the accumulator?
+</small>
+
+## Read operations sequence
+
+First lets read the data and turn it into a tibble.
+
+```{r}
+file <- here("data", "input", "day8.txt")
+
+df <- file %>%
+  read_lines() %>%
+  enframe(name = "operation_id", value = "operation")
+
+df %>%
+  rmarkdown::paged_table()
+```
+
+Then separate the `operation` column into actual operation and the associated numerical value.
+
+```{r}
+df <- df %>%
+  separate(
+    operation,
+    into = c("operation", "value"),
+    sep = 3,
+    convert = TRUE
+  )
+
+df %>%
+  rmarkdown::paged_table()
+```
+
+## Part 1
+
+Add some columns to the tibble.
+
+```{r}
+df <- df %>%
+  mutate(visited = FALSE, .after = "operation_id") %>%
+  mutate(accumulator = 0) %>%
+  mutate(cur_operation_id = 1)
+```
+
+
+```{r}
+
+# accumulator <- 0
+# cur_operation_id <- 1
+
+get_new_index <- function(df) {
+  cur_operation_id <- unique(df$cur_operation_id)
+  operation <- df$operation[cur_operation_id]
+
+
+
+  if (operation == "nop") {
+    df$visited[cur_operation_id] <- TRUE
+    df$cur_operation_id <- df$cur_operation_id + 1
+  } else if (operation == "acc") {
+    df$accumulator <- df$accumulator + df$value[cur_operation_id]
+    df$visited[cur_operation_id] <- TRUE
+    df$cur_operation_id <- df$cur_operation_id + 1
+  } else if (operation == "jmp") {
+    df$visited[cur_operation_id] <- TRUE
+    df$cur_operation_id <- df$cur_operation_id + df$value[cur_operation_id]
+  }
+
+  # If the next operation id is greater than the number of rows in the df
+  if (unique(df$cur_operation_id) > nrow(df)) {
+    df$cur_operation_id <- nrow(df)
+    return(df)
+  }
+
+  return(df)
+}
+```
+
+
+```{r}
+
+# debug(get_new_index)
+while (!df$visited[unique(df$cur_operation_id)]) {
+  df <- get_new_index(df)
+}
+
+unique(df$accumulator)
+```
+
+## Part 2
+
+*Reset* the tibble for the next part.
+
+```{r}
+df <- df %>%
+  mutate(visited = FALSE, .after = "operation_id") %>%
+  mutate(accumulator = 0) %>%
+  mutate(cur_operation_id = 1)
+```
+
+Here I am going to use a brute force approach to find out when the last operation is executed. The number of simulations to perform corresponds to the number of `nop` and `jmp` found in the data.
+
+```{r}
+res <- df %>%
+  mutate(n = operation_id) %>%
+  mutate(n = ifelse(operation %in% c("nop", "jmp"), n, NA))
+
+# How many simulations have to be performed
+n <- res %>%
+  pull(n) %>%
+  na.omit() %>%
+  length()
+
+n
+
+# Which rows of the df that contain nop or jmp have to be swaped
+rows_to_modify <- res %>%
+  pull(n) %>%
+  na.omit()
+
+head(rows_to_modify)
+
+res <- res %>%
+  select(-n) %>%
+  crossing(simulation_id = 1:n) %>%
+  group_nest(simulation_id, keep = TRUE) %>%
+  mutate(rows_to_modify) %>%
+  mutate(data = map2(data, rows_to_modify, function(data, rows_to_modify) {
+    data$operation[rows_to_modify] <-
+      ifelse(data$operation[rows_to_modify] == "nop", "jmp", "nop")
+
+    return(data)
+  }))
+
+res %>% 
+  rmarkdown::paged_table()
+```
+
+We can see that there are `r nrow(res)` simulations to be done.
+
+```{r simulation_day08, cache=TRUE}
+loop <- function(df) {
+  while (!df$visited[unique(df$cur_operation_id)]) {
+    df <- get_new_index(df)
+  }
+
+  return(df)
+}
+
+res <- res %>%
+  mutate(res = map(data, loop))
+```
+
+```{r}
+res %>%
+  select(-simulation_id) %>%
+  unnest(res) %>%
+  filter(cur_operation_id >= 629) %>%
+  pull(accumulator) %>%
+  unique()
+```
