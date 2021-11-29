@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Open Sans');
-@import url('https://fonts.googleapis.com/css2?family=Poppins');
-@import url('https://fonts.googleapis.com/css2?family=Fira Mono');
+
+@import url('https://fonts.googleapis.com/css2?family=Source Code Pro');
 
 /* base variables */
 
@@ -14,8 +13,6 @@
 /* Optional: embed custom fonts here with `@import`          */
 /* This must remain at the top of this file.                 */
 
-
-
 html {
   /*-- Main font sizes --*/
   --title-size:      50px;
@@ -24,16 +21,21 @@ html {
   --aside-size:      12px;
   --fig-cap-size:    13px;
   /*-- Main font colors --*/
-  --title-color:     #000000;
-  --header-color:    rgba(0, 0, 0, 0.8);
-  --body-color:      rgba(0, 0, 0, 0.8);
-  --aside-color:     rgba(0, 0, 0, 0.6);
+  --title-color:     #cccccc;
+  --header-color:    #99ff99;
+  --body-color:      #cccccc;
+  --aside-color:     #cccccc;
   --fig-cap-color:   rgba(0, 0, 0, 0.6);
   /*-- Specify custom fonts ~~~ must be imported above   --*/
-  --heading-font:    Poppins;
-  --mono-font:       Fira Mono;
-  --body-font:       Open Sans;
-  --navbar-font:     sans-serif;  /* websites + blogs only */
+  --heading-font:    'Source Code Pro', monospace;
+  --mono-font:       'Source Code Pro', monospace;
+  --body-font:       'Source Code Pro', monospace;
+  --navbar-font:     'Source Code Pro', monospace;
+}
+
+
+body {
+  background: #0f0f23
 }
 
 /*-- ARTICLE METADATA --*/
@@ -63,7 +65,7 @@ d-appendix {
 
 .distill-site-header {
   --title-size:       18px;
-  --text-color:       rgba(255, 255, 255, 0.8);
+  --text-color:       #99ff99;
   --text-size:        15px;
   --hover-color:      white;
   --bkgd-color:       #0F2E3D;

@@ -7,6 +7,9 @@ navbar:
   right:
     - text: "Home"
       href: index.html
+    - text: "2020"
+      href: 2020.html
+    - text: "2021"
     - text: "About"
       href: about.html
     - icon: fa fa-twitter
