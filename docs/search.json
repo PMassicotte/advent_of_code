@@ -1,27 +1,33 @@
 {
   "articles": [
     {
-      "path": "2020.html",
-      "title": "The advent of Code 2020",
-      "description": "Just my quick attempts to solve the Advent of Code puzzles using R :)",
-      "author": [],
-      "contents": "\n\n\n\n",
-      "last_modified": "2021-11-29T18:02:35-05:00"
-    },
-    {
       "path": "about.html",
       "title": "The advent of Code",
       "description": "Just my quick attempts to solve the Advent of Code puzzles using R :)",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2021-11-29T18:02:36-05:00"
+      "last_modified": "2021-11-30T09:08:56-05:00"
+    },
+    {
+      "path": "aoc2020.html",
+      "title": "Advent of code 2020",
+      "author": [],
+      "contents": "\n\n\n\n",
+      "last_modified": "2021-11-30T09:08:56-05:00"
+    },
+    {
+      "path": "aoc2021.html",
+      "title": "Advent of code 2021",
+      "author": [],
+      "contents": "\n\n\n\n",
+      "last_modified": "2021-11-30T09:08:56-05:00"
     },
     {
       "path": "index.html",
       "title": "Advent of Code",
       "author": [],
       "contents": "\n\nSolving the Advent of Code puzzles one day at a time.\n\n\n\n",
-      "last_modified": "2021-11-29T18:02:36-05:00"
+      "last_modified": "2021-11-30T09:08:56-05:00"
     }
   ],
   "collections": ["posts/posts.json"]

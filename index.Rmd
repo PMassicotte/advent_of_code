@@ -1,9 +1,8 @@
 ---
 title: "Advent of Code"
 site: distill::distill_website
-listing: posts
 ---
 
 <br>
 
-Solving the [Advent of Code puzzles](https://adventofcode.com/) one day at a time.
+## Solving the [Advent of Code puzzles](https://adventofcode.com/) one day at a time.
