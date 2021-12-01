@@ -6,28 +6,28 @@
       "description": "Just my quick attempts to solve the Advent of Code puzzles using R :)",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2021-11-30T09:08:56-05:00"
+      "last_modified": "2021-12-01T08:18:19-05:00"
     },
     {
       "path": "aoc2020.html",
       "title": "Advent of code 2020",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2021-11-30T09:08:56-05:00"
+      "last_modified": "2021-12-01T08:18:20-05:00"
     },
     {
       "path": "aoc2021.html",
       "title": "Advent of code 2021",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2021-11-30T09:08:56-05:00"
+      "last_modified": "2021-12-01T08:18:20-05:00"
     },
     {
       "path": "index.html",
       "title": "Advent of Code",
       "author": [],
       "contents": "\n\nSolving the Advent of Code puzzles one day at a time.\n\n\n\n",
-      "last_modified": "2021-11-30T09:08:56-05:00"
+      "last_modified": "2021-12-01T08:18:20-05:00"
     }
   ],
   "collections": ["posts/posts.json"]

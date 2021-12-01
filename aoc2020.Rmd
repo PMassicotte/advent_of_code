@@ -1,7 +1,16 @@
 ---
 title: "Advent of code 2020"
-listing: 
-  posts: !expr fs::path_file(fs::dir_ls("_posts/", regexp = "2020-\\d{2}"))
+listing:
+  posts:
+  - 2020-12-10-day-01
+  - 2020-12-10-day-02
+  - 2020-12-11-day-03
+  - 2020-12-11-day-04
+  - 2020-12-11-day-05
+  - 2020-12-12-day-06
+  - 2020-12-12-day-07
+  - 2020-12-14-day-08
+  - 2020-12-15-day-09
 ---
 
 

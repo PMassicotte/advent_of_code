@@ -1,5 +1,22 @@
 [
   {
+    "path": "posts/2021-12-01-day-01/",
+    "title": "Advent of code 2021 day 1",
+    "description": "--- Day 1: Sonar Sweep ---",
+    "author": [
+      {
+        "name": "Philippe Massicotte",
+        "url": {}
+      }
+    ],
+    "date": "2021-12-01",
+    "categories": [],
+    "contents": "\nPart 1\n\n\nv <- as.integer(readLines(here(\"data\", \"input\", \"2021\", \"01\", \"01_input\")))\nhead(v)\n\n\n[1] 155 157 156 172 170 186\n\nsum(diff(v) > 0)\n\n\n[1] 1713\n\nPart 2\n\n\nsum(diff(slider::slide_dbl(v, sum, .after = 2)) > 0)\n\n\n[1] 1734\n\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-12-01T08:18:16-05:00",
+    "input_file": {}
+  },
+  {
     "path": "posts/2020-12-15-day-09/",
     "title": "Advent of code 2020 day 9",
     "description": "--- Day 9: Encoding Error ---",
