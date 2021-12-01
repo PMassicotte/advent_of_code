@@ -31,6 +31,6 @@ sum(diff(v) > 0)
 ## Part 2
 
 ```{r}
-sum(diff(slider::slide_dbl(v, sum, .after = 2)) > 0)
+sum(diff(v, 3) > 0)
 ```
 
