@@ -2,54 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" version="1.0">
   <url>
     <loc>https://pmassicotte.github.io/advent_of_code/about.html</loc>
-    <lastmod>2021-12-02T02:50:20-05:00</lastmod>
+    <lastmod>2021-11-30T07:26:41-05:00</lastmod>
   </url>
   <url>
     <loc>https://pmassicotte.github.io/advent_of_code/aoc2020.html</loc>
-    <lastmod>2021-12-02T02:50:20-05:00</lastmod>
+    <lastmod>2021-12-01T08:08:52-05:00</lastmod>
   </url>
   <url>
     <loc>https://pmassicotte.github.io/advent_of_code/aoc2021.html</loc>
-    <lastmod>2021-12-02T02:50:20-05:00</lastmod>
+    <lastmod>2021-12-01T08:15:02-05:00</lastmod>
   </url>
   <url>
     <loc>https://pmassicotte.github.io/advent_of_code/</loc>
-    <lastmod>2021-12-02T02:50:20-05:00</lastmod>
+    <lastmod>2021-11-30T09:08:52-05:00</lastmod>
+  </url>
+  <url>
+    <loc>https://pmassicotte.github.io/advent_of_code/posts/2021-12-02-day-02/</loc>
+    <lastmod>2021-12-02T09:10:05-05:00</lastmod>
   </url>
   <url>
     <loc>https://pmassicotte.github.io/advent_of_code/posts/2021-12-01-day-01/</loc>
-    <lastmod>2021-12-02T02:50:20-05:00</lastmod>
+    <lastmod>2021-12-02T08:29:41-05:00</lastmod>
   </url>
   <url>
     <loc>https://pmassicotte.github.io/advent_of_code/posts/2020-12-15-day-09/</loc>
-    <lastmod>2021-12-02T02:50:20-05:00</lastmod>
+    <lastmod>2021-11-30T07:26:41-05:00</lastmod>
   </url>
   <url>
     <loc>https://pmassicotte.github.io/advent_of_code/posts/2020-12-14-day-08/</loc>
-    <lastmod>2021-12-02T02:50:20-05:00</lastmod>
+    <lastmod>2021-11-30T07:26:41-05:00</lastmod>
   </url>
   <url>
     <loc>https://pmassicotte.github.io/advent_of_code/posts/2020-12-12-day-06/</loc>
-    <lastmod>2021-12-02T02:50:20-05:00</lastmod>
+    <lastmod>2021-11-30T07:26:41-05:00</lastmod>
   </url>
   <url>
     <loc>https://pmassicotte.github.io/advent_of_code/posts/2020-12-11-day-03/</loc>
-    <lastmod>2021-12-02T02:50:20-05:00</lastmod>
+    <lastmod>2021-11-30T07:26:41-05:00</lastmod>
   </url>
   <url>
     <loc>https://pmassicotte.github.io/advent_of_code/posts/2020-12-11-day-04/</loc>
-    <lastmod>2021-12-02T02:50:20-05:00</lastmod>
+    <lastmod>2021-11-30T07:26:41-05:00</lastmod>
   </url>
   <url>
     <loc>https://pmassicotte.github.io/advent_of_code/posts/2020-12-11-day-05/</loc>
-    <lastmod>2021-12-02T02:50:20-05:00</lastmod>
+    <lastmod>2021-11-30T07:26:41-05:00</lastmod>
   </url>
   <url>
     <loc>https://pmassicotte.github.io/advent_of_code/posts/2020-12-10-day-01/</loc>
-    <lastmod>2021-12-02T02:50:20-05:00</lastmod>
+    <lastmod>2021-11-30T07:26:41-05:00</lastmod>
   </url>
   <url>
     <loc>https://pmassicotte.github.io/advent_of_code/posts/2020-12-10-day-02/</loc>
-    <lastmod>2021-12-02T02:50:20-05:00</lastmod>
+    <lastmod>2021-11-30T07:26:41-05:00</lastmod>
   </url>
 </urlset>
