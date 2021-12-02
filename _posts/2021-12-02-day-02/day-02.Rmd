@@ -1,5 +1,5 @@
 ---
-title: "Advent of code day 2"
+title: "Advent of code 2021 day 2"
 description: |
   --- Day 2: Dive! ---
 author:

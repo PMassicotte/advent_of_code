@@ -1,7 +1,7 @@
 [
   {
     "path": "posts/2021-12-02-day-02/",
-    "title": "Advent of code day 2",
+    "title": "Advent of code 2021 day 2",
     "description": "--- Day 2: Dive! ---",
     "author": [
       {
@@ -13,7 +13,7 @@
     "categories": [],
     "contents": "\nPart 1\n\n\ndf <- read_delim(here::here(\"data/input/2021/02/01_input\"),\n    col_names = c(\"direction\", \"amount\")\n  )\n\nres <- df %>%\n  mutate(orientation = case_when(\n    direction %in% c(\"up\", \"down\") ~ \"v\",\n    direction == \"forward\" ~ \"h\"\n  )) %>%\n  mutate(amount = ifelse(direction == \"up\", -amount, amount)) %>%\n  group_by(orientation) %>%\n  summarise(total_amout = sum(amount), n = n())\n\nres\n\n\n# A tibble: 2 × 3\n  orientation total_amout     n\n  <chr>             <dbl> <int>\n1 h                  1850   377\n2 v                   927   623\n\nres %>%\n  pull(total_amout) %>%\n  prod()\n\n\n[1] 1714950\n\nPart 2\n\n\nres <- df %>%\n  mutate(orientation = case_when(\n    direction %in% c(\"up\", \"down\") ~ \"v\",\n    direction == \"forward\" ~ \"h\"\n  )) %>%\n  mutate(amount = ifelse(direction == \"up\", -amount, amount)) %>%\n  mutate(aim = case_when(\n    direction == \"down\" ~ amount,\n    direction == \"up\" ~ amount,\n    TRUE ~ 0\n  )) %>%\n  rowid_to_column() %>%\n  select(-orientation) %>%\n  pivot_wider(names_from = direction, values_from = amount) %>%\n  mutate(across(everything(), ~ replace_na(., 0))) %>%\n  mutate(depth = 0, h = 0) %>%\n  mutate(aim = cumsum(aim)) %>% \n  mutate(\n    h = h + forward,\n    depth = depth + (aim * forward)\n  )\n\nres\n\n\n# A tibble: 1,000 × 7\n   rowid   aim forward  down    up depth     h\n   <dbl> <dbl>   <dbl> <dbl> <dbl> <dbl> <dbl>\n 1     1     0       1     0     0     0     1\n 2     2     6       0     6     0     0     0\n 3     3     6       8     0     0    48     8\n 4     4     3       0     0    -3     0     0\n 5     5     4       0     1     0     0     0\n 6     6     8       0     4     0     0     0\n 7     7    15       0     7     0     0     0\n 8     8    18       0     3     0     0     0\n 9     9    24       0     6     0     0     0\n10    10    16       0     0    -8     0     0\n# … with 990 more rows\n\nres %>% \n  summarise(\n    sum_depth = sum(depth),\n    sum_h = sum(h)\n  ) %>% \n  prod()\n\n\n[1] 1281977850\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2021-12-02T09:10:05-05:00",
+    "last_modified": "2021-12-02T09:15:04-05:00",
     "input_file": {}
   },
   {
