@@ -1,0 +1,71 @@
+---
+title: "Advent of code 2021 day 3"
+description: |
+  --- Day 3: Binary Diagnostic ---
+author:
+  - name: Philippe Massicotte
+    url: {}
+date: 2021-12-03
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(readr)
+```
+
+## Part 1
+
+```{r}
+df <- read_fwf(here::here("data/input/2021/03/01_input"), fwf_widths(rep(1, 12)))
+
+bin2int <- function(v) {
+  Reduce(function(x, y) x * 2 + y, v)
+}
+
+count <- apply(df, 2, table)
+
+gamma <- apply(count, 2, which.max) - 1
+epsilon <- as.integer(!gamma)
+
+gamma <-  bin2int(gamma)
+epsilon <- bin2int(epsilon)
+
+gamma * epsilon
+```
+
+## Part 2
+
+```{r}
+rating <- function(x, col = 1, fun) {
+  # browser()
+  
+  count <- table(x[, col])
+  
+  if (all(count == count[1])) {
+    i <- fun(c(0, 1)) - 1
+  } else {
+    i <- fun(count) - 1  
+  }
+
+  x2 <- x[x[, col] == i, , drop = FALSE]
+  
+  if (nrow(x2) == 1) {
+    return(x2)
+  }
+  
+  rating(x2, col + 1, fun = fun)
+}
+
+o2 <- rating(df, fun = which.max)
+co2 <- rating(df, fun = which.min)
+
+o2 <- bin2int(o2)
+co2 <- bin2int(co2)
+
+o2 * co2
+```
+

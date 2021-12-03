@@ -1,5 +1,22 @@
 [
   {
+    "path": "posts/2021-12-03-day-03/",
+    "title": "Advent of code 2021 day 3",
+    "description": "--- Day 3: Binary Diagnostic ---",
+    "author": [
+      {
+        "name": "Philippe Massicotte",
+        "url": {}
+      }
+    ],
+    "date": "2021-12-03",
+    "categories": [],
+    "contents": "\nPart 1\n\n\ndf <- read_fwf(here::here(\"data/input/2021/03/01_input\"), fwf_widths(rep(1, 12)))\n\nbin2int <- function(v) {\n  Reduce(function(x, y) x * 2 + y, v)\n}\n\ncount <- apply(df, 2, table)\n\ngamma <- apply(count, 2, which.max) - 1\nepsilon <- as.integer(!gamma)\n\ngamma <-  bin2int(gamma)\nepsilon <- bin2int(epsilon)\n\ngamma * epsilon\n\n\n[1] 2498354\n\nPart 2\n\n\nrating <- function(x, col = 1, fun) {\n  # browser()\n  \n  count <- table(x[, col])\n  \n  if (all(count == count[1])) {\n    i <- fun(c(0, 1)) - 1\n  } else {\n    i <- fun(count) - 1  \n  }\n\n  x2 <- x[x[, col] == i, , drop = FALSE]\n  \n  if (nrow(x2) == 1) {\n    return(x2)\n  }\n  \n  rating(x2, col + 1, fun = fun)\n}\n\no2 <- rating(df, fun = which.max)\nco2 <- rating(df, fun = which.min)\n\no2 <- bin2int(o2)\nco2 <- bin2int(co2)\n\no2 * co2\n\n\n[1] 3277956\n\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-12-03T11:55:32-05:00",
+    "input_file": "day-03.knit.md"
+  },
+  {
     "path": "posts/2021-12-02-day-02/",
     "title": "Advent of code 2021 day 2",
     "description": "--- Day 2: Dive! ---",
