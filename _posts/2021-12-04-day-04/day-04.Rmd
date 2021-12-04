@@ -1,0 +1,88 @@
+---
+title: "Advent of code 2021 day 4"
+description: |
+  --- Day 4: Giant Squid ---
+author:
+  - name: Philippe Massicotte
+    url: {}
+date: 2021-12-04
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(here)
+```
+
+```{r}
+
+file <- here("data/input/2021/04/01_input")
+
+numbers <- read_lines(file, n_max = 1) %>%
+  str_split(",", simplify = TRUE) %>%
+  parse_integer()
+
+boards <- scan(file, skip = 1) %>%
+  matrix(ncol = 5, byrow = F) %>%
+  array(dim = c(5, 5, length(.) / 25)) %>%
+  apply(., 3, t, simplify = FALSE) %>%
+  unlist() %>%
+  array(dim = c(5, 5, length(.) / 25))
+
+# Check if a single board is wining
+is_wining <- function(mark) {
+  # browser()
+  to_win <- dim(mark)[1]
+
+  w <-
+    any(apply(mark, 1, sum) == to_win) |
+      any(apply(mark, 2, sum) == to_win)
+  
+  w
+}
+
+# Mark boards
+mark_board <- function(boards, marks, number) {
+  marks <- marks | (boards == number)
+}
+
+play <- function(boards, numbers, n_board_to_win) {
+  marks <- array(data = FALSE, dim = dim(boards))
+  w <- list()
+
+  for (i in numbers) {
+    marks <- mark_board(boards, marks, i)
+    # browser()
+
+    winning_board <- which(apply(marks, 3, is_wining))
+
+    w <- c(w, setdiff(winning_board, w))
+
+    if (length(winning_board) == n_board_to_win) {
+      break
+    }
+  }
+
+  w <- unlist(w)[n_board_to_win]
+
+  sum(boards[, , w][!marks[, , w]]) * i
+}
+```
+
+## Part 1
+
+```{r}
+play(boards, numbers, 1)
+```
+
+## Part 2
+
+```{r}
+play(boards, numbers, 100)
+```
+
+
