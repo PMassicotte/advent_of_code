@@ -1,5 +1,22 @@
 [
   {
+    "path": "posts/2021-12-05-day-05/",
+    "title": "Advent of code 2021 day 5",
+    "description": "--- Day 5: Hydrothermal Venture ---",
+    "author": [
+      {
+        "name": "Philippe Massicotte",
+        "url": {}
+      }
+    ],
+    "date": "2021-12-05",
+    "categories": [],
+    "contents": "\n\n\nfile <- here(\"data/input/2021/05/01_input\")\n\ndf <-\n  read_delim(file, delim = \"->\", col_names = c(\"from\", \"to\")) %>%\n  mutate(across(everything(), str_squish)) %>%\n  separate(from,\n    into = c(\"x1\", \"y1\"),\n    sep = \",\",\n    convert = TRUE\n  ) %>%\n  separate(to,\n    into = c(\"x2\", \"y2\"),\n    sep = \",\",\n    convert = TRUE\n  )\n\ndf\n\n\n# A tibble: 500 × 4\n      x1    y1    x2    y2\n   <int> <int> <int> <int>\n 1   964   133   596   133\n 2   920   215   920   976\n 3   123   528   123   661\n 4   613    13   407    13\n 5   373   876   424   876\n 6   616   326   120   326\n 7   486   335   539   388\n 8   104   947    54   947\n 9   319   241   282   204\n10   453   175   453   438\n# … with 490 more rows\n\nis_diag <- function(x1, y1, x2, y2) {\n  # browser()\n  abs(x1 - x2) == abs(y1 - y2)\n}\n\nres <- df %>%\n  rowid_to_column(var = \"line\") %>%\n  mutate(line_type = case_when(\n    x1 == x2 | y1 == y2 ~ \"hv\",\n    is_diag(x1, y1, x2, y2) ~ \"diag\"\n  )) %>%\n  pivot_longer(\n    -c(line, line_type),\n    names_to = c(\".value\", \"point\"),\n    names_pattern = \"(.)(.)\"\n  ) %>%\n  group_nest(line, line_type) %>%\n  mutate(res = map2(data, line_type, function(df, line_type) {\n    res <- df %>%\n      mutate(xy = list(tibble(x = x[1]:x[2], y = y[1]:y[2]))) %>%\n      select(-x, -y) %>%\n      slice(1) %>%\n      unnest(xy)\n  }))\n\n\n\nPart 1\n\n\n## Part 1\n\nres %>%\n  filter(line_type == \"hv\") %>%\n  unnest(res) %>%\n  unite(\"xy\", x:y) %>%\n  count(xy, sort = TRUE) %>%\n  filter(n >= 2) %>%\n  nrow()\n\n\n[1] 4745\n\nPart 2\n\n\nres %>%\n  unnest(res) %>%\n  unite(\"xy\", x:y) %>%\n  count(xy, sort = TRUE) %>%\n  filter(n >= 2) %>%\n  nrow()\n\n\n[1] 18442\n\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-12-05T14:58:13-05:00",
+    "input_file": {}
+  },
+  {
     "path": "posts/2021-12-04-day-04/",
     "title": "Advent of code 2021 day 4",
     "description": "--- Day 4: Giant Squid ---",
@@ -13,7 +30,7 @@
     "categories": [],
     "contents": "\n\n\nfile <- here(\"data/input/2021/04/01_input\")\n\nnumbers <- read_lines(file, n_max = 1) %>%\n  str_split(\",\", simplify = TRUE) %>%\n  parse_integer()\n\nboards <- scan(file, skip = 1) %>%\n  matrix(ncol = 5, byrow = F) %>%\n  array(dim = c(5, 5, length(.) / 25)) %>%\n  apply(., 3, t, simplify = FALSE) %>%\n  unlist() %>%\n  array(dim = c(5, 5, length(.) / 25))\n\n# Check if a single board is wining\nis_wining <- function(mark) {\n  # browser()\n  to_win <- dim(mark)[1]\n\n  w <-\n    any(apply(mark, 1, sum) == to_win) |\n      any(apply(mark, 2, sum) == to_win)\n  \n  w\n}\n\n# Mark boards\nmark_board <- function(boards, marks, number) {\n  marks <- marks | (boards == number)\n}\n\nplay <- function(boards, numbers, n_board_to_win) {\n  marks <- array(data = FALSE, dim = dim(boards))\n  w <- list()\n\n  for (i in numbers) {\n    marks <- mark_board(boards, marks, i)\n    # browser()\n\n    winning_board <- which(apply(marks, 3, is_wining))\n\n    w <- c(w, setdiff(winning_board, w))\n\n    if (length(winning_board) == n_board_to_win) {\n      break\n    }\n  }\n\n  w <- unlist(w)[n_board_to_win]\n\n  sum(boards[, , w][!marks[, , w]]) * i\n}\n\n\n\nPart 1\n\n\nplay(boards, numbers, 1)\n\n\n[1] 25023\n\nPart 2\n\n\nplay(boards, numbers, 100)\n\n\n[1] 2634\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2021-12-04T14:25:21-05:00",
+    "last_modified": "2021-12-04T15:27:22-05:00",
     "input_file": {}
   },
   {
@@ -47,7 +64,7 @@
     "categories": [],
     "contents": "\nPart 1\n\n\ndf <- read_delim(here::here(\"data/input/2021/02/01_input\"),\n    col_names = c(\"direction\", \"amount\")\n  )\n\nres <- df %>%\n  mutate(orientation = case_when(\n    direction %in% c(\"up\", \"down\") ~ \"v\",\n    direction == \"forward\" ~ \"h\"\n  )) %>%\n  mutate(amount = ifelse(direction == \"up\", -amount, amount)) %>%\n  group_by(orientation) %>%\n  summarise(total_amout = sum(amount), n = n())\n\nres\n\n\n# A tibble: 2 × 3\n  orientation total_amout     n\n  <chr>             <dbl> <int>\n1 h                  1850   377\n2 v                   927   623\n\nres %>%\n  pull(total_amout) %>%\n  prod()\n\n\n[1] 1714950\n\nPart 2\n\n\nres <- df %>%\n  mutate(orientation = case_when(\n    direction %in% c(\"up\", \"down\") ~ \"v\",\n    direction == \"forward\" ~ \"h\"\n  )) %>%\n  mutate(amount = ifelse(direction == \"up\", -amount, amount)) %>%\n  mutate(aim = case_when(\n    direction == \"down\" ~ amount,\n    direction == \"up\" ~ amount,\n    TRUE ~ 0\n  )) %>%\n  rowid_to_column() %>%\n  select(-orientation) %>%\n  pivot_wider(names_from = direction, values_from = amount) %>%\n  mutate(across(everything(), ~ replace_na(., 0))) %>%\n  mutate(depth = 0, h = 0) %>%\n  mutate(aim = cumsum(aim)) %>% \n  mutate(\n    h = h + forward,\n    depth = depth + (aim * forward)\n  )\n\nres\n\n\n# A tibble: 1,000 × 7\n   rowid   aim forward  down    up depth     h\n   <dbl> <dbl>   <dbl> <dbl> <dbl> <dbl> <dbl>\n 1     1     0       1     0     0     0     1\n 2     2     6       0     6     0     0     0\n 3     3     6       8     0     0    48     8\n 4     4     3       0     0    -3     0     0\n 5     5     4       0     1     0     0     0\n 6     6     8       0     4     0     0     0\n 7     7    15       0     7     0     0     0\n 8     8    18       0     3     0     0     0\n 9     9    24       0     6     0     0     0\n10    10    16       0     0    -8     0     0\n# … with 990 more rows\n\nres %>% \n  summarise(\n    sum_depth = sum(depth),\n    sum_h = sum(h)\n  ) %>% \n  prod()\n\n\n[1] 1281977850\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2021-12-04T14:20:32-05:00",
+    "last_modified": "2021-12-04T14:37:09-05:00",
     "input_file": {}
   },
   {
