@@ -1,5 +1,22 @@
 [
   {
+    "path": "posts/2021-12-06-day-06/",
+    "title": "Advent of code 2020 day 6",
+    "description": "--- Day 6: Lanternfish ---",
+    "author": [
+      {
+        "name": "Philippe Massicotte",
+        "url": {}
+      }
+    ],
+    "date": "2021-12-06",
+    "categories": [],
+    "contents": "\n\n\nreproduction <- function(ndays, fishes) {\n  for (i in seq_len(ndays)) {\n    fishes\n\n    new_fishes <- fishes[1]\n\n    fishes_next <- lead(fishes, default = 0)[-9]\n    fishes_next\n\n    fishes_next[9] <- new_fishes\n    fishes_next[7] <- new_fishes + fishes[8]\n\n    fishes_next\n\n    fishes <- fishes_next\n  }\n\n  return(fishes)\n}\n\nv <- scan(here(\"data/input/2021/06\"), what = \"integer\", sep = \",\") %>%\n  parse_integer()\n\nfishes <- rep(0, 9)\nfc <- rle(sort(v))\nfishes[fc$values + 1] <- fc$lengths\n\n\n\nPart 1\n\n\nres <- reproduction(ndays = 80, fishes)\nsum(res)\n\n\n[1] 346063\n\nPart 2\n\n\nres <- reproduction(ndays = 256, fishes)\nsum(res)\n\n\n[1] 1572358335990\n\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-12-06T17:23:58-05:00",
+    "input_file": {}
+  },
+  {
     "path": "posts/2021-12-05-day-05/",
     "title": "Advent of code 2021 day 5",
     "description": "--- Day 5: Hydrothermal Venture ---",
