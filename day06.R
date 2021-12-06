@@ -1,75 +1,44 @@
 library(tidyverse)
 library(here)
 
-v <- c(3, 4, 3, 1, 2)
+options(digits = 20)
 
-# v <- scan(here("data/input/2021/06"), what = "integer", sep = ",") %>%
-#   parse_integer()
+reproduction <- function(ndays, fishes) {
+  for (i in seq_len(ndays)) {
 
-reproduce <- function(v, day, max_day) {
-  v2 <- v - 1
+    fishes
 
-  i <- v2 < 0
-  v2[i] <- 6
+    new_fishes <- fishes[1]
 
-  v3 <- c(v2, rep(8, sum(i)))
+    fishes_next <- lead(fishes, default = 0)[-9]
+    fishes_next
 
-  if (day == max_day) {
-    return(v3)
+    fishes_next[9] <- new_fishes
+    fishes_next[7] <- new_fishes + fishes[8]
+
+    fishes_next
+
+    fishes <- fishes_next
+
+
   }
 
-  reproduce(v3, day = day + 1, max_day = max_day)
+  return(fishes)
 }
 
-res <- reproduce(v, 1, 80)
+# v <- c(3, 4, 3, 1, 2)
+v <- scan(here("data/input/2021/06"), what = "integer", sep = ",") %>%
+  parse_integer()
 
-res
+fishes <- rep(0, 9)
+fc <- rle(sort(v))
+fishes[fc$values + 1] <- fc$lengths
 
-length(res)
+## Part 1
+res <- reproduction(ndays = 80, fishes)
+sum(res)
 
-
-# Part 2 ------------------------------------------------------------------
-
-v <- c(3, 4, 3, 1, 2)
-
-count_fish <- function(v) {
-
-  fc <- rle(sort(v))
-
-  age <- fc$values
-  fish_count <- fc$lengths
-
-  fish_counts <- rep(0, 9)
-
-  fish_counts[age + 1] <- fish_count
-
-  fish_counts <- set_names(fish_counts, 0:8)
-
-}
-
-reproduce <- function(v, fish_count_current = count_fish(v), day, max_day) {
-
-  # fish_count_current <- count_fish(v)
-
-  # if(day == 3) browser()
-  v <- v - 1
-  i <- v < 0
-  v[i] <- 6
-
-  fish_count_next <- count_fish(v)
-
-  fish_count_next[7] <- fish_count_current[1] + fish_count_current[8]
-  fish_count_next[8] <- fish_count_current[7]
-  fish_count_next[9] <- fish_count_current[1]
-
-  if (day == max_day) {
-    return(fish_count_next)
-  }
-
-  reproduce(v, fish_count_next, day = day + 1, max_day = max_day)
-
-}
-
-reproduce(v, count_fish(v), 1, 5)
-
+## Part 2
+res <- reproduction(ndays = 256, fishes)
+sum(res)
 
