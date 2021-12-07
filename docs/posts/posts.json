@@ -11,9 +11,9 @@
     ],
     "date": "2021-12-07",
     "categories": [],
-    "contents": "\n\n\ncrabs <-\n  scan(here(\"data\", \"input\", \"2021\", \"07\"),\n    what = \"integer\",\n    sep = \",\"\n  ) %>%\n  parse_integer()\n\n\n\nPart 1\n\n\ntibble(crabs) %>%\n  expand_grid(max_dist = 1:1000) %>%\n  mutate(distance = abs(crabs - max_dist)) %>%\n  group_by(max_dist) %>%\n  summarise(total_tistance = sum(distance), n = n()) %>%\n  arrange(total_tistance) %>%\n  filter(total_tistance == min(total_tistance))\n\n\n# A tibble: 1 × 3\n  max_dist total_tistance     n\n     <int>          <int> <int>\n1      323         336040  1000\n\nPart 2\n\n\ntibble(crabs) %>%\n  rowid_to_column(var = \"crab_id\") %>%\n  expand_grid(max_dist = 1:1000) %>%\n  group_by(crab_id, max_dist) %>%\n  mutate(total_distance = sum(abs(crabs - crabs:max_dist))) %>%\n  group_by(max_dist) %>%\n  summarise(total_distance = sum(total_distance)) %>%\n  ungroup() %>%\n  filter(total_distance == min(total_distance))\n\n\n# A tibble: 1 × 2\n  max_dist total_distance\n     <int>          <int>\n1      463       94813675\n\n\n\n\n",
+    "contents": "\n\n\ncrabs <-\n  scan(here(\"data\", \"input\", \"2021\", \"07\"),\n    what = \"integer\",\n    sep = \",\"\n  ) %>%\n  parse_integer()\n\n\n\nPart 1\n\n\ntibble(crabs) %>%\n  expand_grid(max_dist = min(crabs):mean(crabs)) %>%\n  mutate(distance = abs(crabs - max_dist)) %>%\n  group_by(max_dist) %>%\n  summarise(total_tistance = sum(distance), n = n()) %>%\n  arrange(total_tistance) %>%\n  filter(total_tistance == min(total_tistance))\n\n\n# A tibble: 1 × 3\n  max_dist total_tistance     n\n     <int>          <int> <int>\n1      323         336040  1000\n\nPart 2\n\n\ntibble(crabs) %>%\n  rowid_to_column(var = \"crab_id\") %>%\n  expand_grid(max_dist = min(crabs):mean(crabs)) %>%\n  group_by(crab_id, max_dist) %>%\n  mutate(total_distance = sum(abs(crabs - crabs:max_dist))) %>%\n  group_by(max_dist) %>%\n  summarise(total_distance = sum(total_distance)) %>%\n  ungroup() %>%\n  filter(total_distance == min(total_distance))\n\n\n# A tibble: 1 × 2\n  max_dist total_distance\n     <int>          <int>\n1      463       94813675\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2021-12-07T09:05:08-05:00",
+    "last_modified": "2021-12-07T10:52:23-05:00",
     "input_file": {}
   },
   {

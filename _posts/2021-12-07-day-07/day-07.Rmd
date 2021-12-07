@@ -31,7 +31,7 @@ crabs <-
 
 ```{r}
 tibble(crabs) %>%
-  expand_grid(max_dist = 1:1000) %>%
+  expand_grid(max_dist = min(crabs):mean(crabs)) %>%
   mutate(distance = abs(crabs - max_dist)) %>%
   group_by(max_dist) %>%
   summarise(total_tistance = sum(distance), n = n()) %>%
@@ -44,7 +44,7 @@ tibble(crabs) %>%
 ```{r}
 tibble(crabs) %>%
   rowid_to_column(var = "crab_id") %>%
-  expand_grid(max_dist = 1:1000) %>%
+  expand_grid(max_dist = min(crabs):mean(crabs)) %>%
   group_by(crab_id, max_dist) %>%
   mutate(total_distance = sum(abs(crabs - crabs:max_dist))) %>%
   group_by(max_dist) %>%
