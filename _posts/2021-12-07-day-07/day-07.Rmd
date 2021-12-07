@@ -1,0 +1,55 @@
+---
+title: "Advent of code 2021 day 7"
+description: |
+  --- Day 7: The Treachery of Whales ---
+author:
+  - name: Philippe Massicotte
+    url: {}
+date: 2021-12-07
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(here)
+```
+
+```{r}
+crabs <-
+  scan(here("data", "input", "2021", "07"),
+    what = "integer",
+    sep = ","
+  ) %>%
+  parse_integer()
+```
+
+## Part 1
+
+```{r}
+tibble(crabs) %>%
+  expand_grid(max_dist = 1:1000) %>%
+  mutate(distance = abs(crabs - max_dist)) %>%
+  group_by(max_dist) %>%
+  summarise(total_tistance = sum(distance), n = n()) %>%
+  arrange(total_tistance) %>%
+  filter(total_tistance == min(total_tistance))
+```
+
+## Part 2
+
+```{r}
+tibble(crabs) %>%
+  rowid_to_column(var = "crab_id") %>%
+  expand_grid(max_dist = 1:1000) %>%
+  group_by(crab_id, max_dist) %>%
+  mutate(total_distance = sum(abs(crabs - crabs:max_dist))) %>%
+  group_by(max_dist) %>%
+  summarise(total_distance = sum(total_distance)) %>%
+  ungroup() %>%
+  filter(total_distance == min(total_distance))
+```
+
