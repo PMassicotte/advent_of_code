@@ -1,0 +1,30 @@
+---
+title: "Advent of code 2021 day 99"
+description: |
+  --- Day 10: Syntax Scoring ---
+author:
+  - name: Philippe Massicotte
+    url: {}
+date: "`r Sys.Date()`"
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(here)
+```
+
+```{r}
+input <- readLines(here::here("data/input/2021/99_input"))
+```
+
+
+
+## Part 1
+
+## Part 2
