@@ -1,5 +1,22 @@
 [
   {
+    "path": "posts/2021-12-10-day-10/",
+    "title": "Advent of code 2021 day 10",
+    "description": "--- Day 10: Syntax Scoring ---",
+    "author": [
+      {
+        "name": "Philippe Massicotte",
+        "url": {}
+      }
+    ],
+    "date": "2021-12-10",
+    "categories": [],
+    "contents": "\n\n\nfile <- here(\"data\", \"input\", \"2021\", \"10\")\n\ndat <- read_lines(file) %>%\n  strsplit(\"\")\n\nopen_char <- c(\"(\", \"[\", \"{\", \"<\")\nclose_char <- c(\")\", \"]\", \"}\", \">\")\n\nlut <- close_char\nlut <- set_names(lut, open_char)\n\nfind_corrupted <- function(v) {\n  open_queue <- c()\n\n  for (i in v) {\n    if (i %in% open_char) {\n      open_queue <- c(open_queue, i)\n    } else {\n      if (i == lut[tail(open_queue, 1)]) {\n        open_queue <- head(open_queue, -1)\n      } else {\n        return(tibble(open_queue = list(open_queue), corrupted_char = i))\n      }\n    }\n  }\n\n  return(tibble(open_queue = list(open_queue), corrupted_char = NA))\n}\n\nresults <- dat %>%\n  enframe(value = \"v\") %>%\n  mutate(res = map(v, find_corrupted)) %>%\n  unnest_wider(res)\n\n\n\nPart 1\n\n\npts <- set_names(c(3, 57, 1197, 25137), c(\")\", \"]\", \"}\", \">\"))\n\nresults %>%\n  drop_na() %>%\n  mutate(pts = pts[corrupted_char]) %>%\n  pull(pts) %>%\n  sum()\n\n\n[1] 345441\n\nPart 2\n\n\npts <- set_names(1:4, c(\")\", \"]\", \"}\", \">\"))\n\ndf <- results %>%\n  filter(is.na(corrupted_char))\n\nres <- df %>%\n  unnest(open_queue) %>%\n  mutate(closed_queue = map(open_queue, ~ rev(lut[.])), .after = open_queue)\n\nres %>%\n  mutate(pts = map_dbl(closed_queue, ~ reduce(pts[.], .f = ~ .x * 5 + .y))) %>%\n  filter(pts == median(pts)) %>%\n  pull(pts)\n\n\n[1] 3235371166\n\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-12-10T08:15:52-05:00",
+    "input_file": {}
+  },
+  {
     "path": "posts/2021-12-08-day-08/",
     "title": "Advent of code 2021 day 8",
     "description": "--- Day 8: Seven Segment Search ---",

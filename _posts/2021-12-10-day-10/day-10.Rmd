@@ -1,0 +1,87 @@
+---
+title: "Advent of code 2021 day 10"
+description: |
+  --- Day 10: Syntax Scoring ---
+author:
+  - name: Philippe Massicotte
+    url: {}
+date: 2021-12-10
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(here)
+```
+
+```{r}
+file <- here("data", "input", "2021", "10")
+
+dat <- read_lines(file) %>%
+  strsplit("")
+
+open_char <- c("(", "[", "{", "<")
+close_char <- c(")", "]", "}", ">")
+
+lut <- close_char
+lut <- set_names(lut, open_char)
+
+find_corrupted <- function(v) {
+  open_queue <- c()
+
+  for (i in v) {
+    if (i %in% open_char) {
+      open_queue <- c(open_queue, i)
+    } else {
+      if (i == lut[tail(open_queue, 1)]) {
+        open_queue <- head(open_queue, -1)
+      } else {
+        return(tibble(open_queue = list(open_queue), corrupted_char = i))
+      }
+    }
+  }
+
+  return(tibble(open_queue = list(open_queue), corrupted_char = NA))
+}
+
+results <- dat %>%
+  enframe(value = "v") %>%
+  mutate(res = map(v, find_corrupted)) %>%
+  unnest_wider(res)
+```
+
+## Part 1
+
+```{r}
+pts <- set_names(c(3, 57, 1197, 25137), c(")", "]", "}", ">"))
+
+results %>%
+  drop_na() %>%
+  mutate(pts = pts[corrupted_char]) %>%
+  pull(pts) %>%
+  sum()
+```
+
+
+## Part 2
+
+```{r}
+pts <- set_names(1:4, c(")", "]", "}", ">"))
+
+df <- results %>%
+  filter(is.na(corrupted_char))
+
+res <- df %>%
+  unnest(open_queue) %>%
+  mutate(closed_queue = map(open_queue, ~ rev(lut[.])), .after = open_queue)
+
+res %>%
+  mutate(pts = map_dbl(closed_queue, ~ reduce(pts[.], .f = ~ .x * 5 + .y))) %>%
+  filter(pts == median(pts)) %>%
+  pull(pts)
+```
