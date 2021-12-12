@@ -1,5 +1,22 @@
 [
   {
+    "path": "posts/2021-12-12-day-12/",
+    "title": "Advent of code 2021 day 12",
+    "description": "--- Day 12: Passage Pathing ---",
+    "author": [
+      {
+        "name": "Philippe Massicotte",
+        "url": {}
+      }
+    ],
+    "date": "2021-12-12",
+    "categories": [],
+    "contents": "\n\n\ndf <- read_lines(here(\"data/input/2021/12_input\")) %>%\n  strsplit(\"-\") %>%\n  map(., ~ if_else(.[1] == \"end\" | .[2] == \"start\", list(rev(.)), list(.))) %>%\n  flatten() %>%\n  enframe() %>%\n  unnest_wider(value) %>%\n  select(parent = 2, child = 3) %>%\n  drop_na()\n\nlut <- df %>%\n  deframe()\n\nlut2 <- lut[names(lut) != \"start\" & lut != \"end\"]\n\nlut2 <- setNames(names(lut2), lut2)\nlut <- c(lut, lut2)\n\ncheck_duplicated <- function(p, nmax = 1) {\n  lc <- p[tolower(p) == p & p != \"end\"]\n  tc <- table(lc)\n\n  any(tc > nmax) | length(tc[tc > 1]) > 1\n}\n\nbuild_path <- function(path, nmax) {\n\n  if (tail(path, 1) == \"end\") {\n    return(data.frame(path = toString(unname(path))))\n  }\n\n  if (is.na(lut[tail(path, 1)])) {\n    return()\n  }\n\n  next_points <- unname(lut[names(lut) == tail(path, 1)])\n  next_path <- map(next_points, ~ c(path, .x))\n\n  next_path <- next_path[!map_lgl(next_path, check_duplicated, nmax = nmax)]\n\n  if (length(next_path) == 0) {\n    return()\n  }\n\n  res <- map_df(unname(next_path), build_path, nmax = nmax)\n\n  return(res)\n}\n\ns <- lut[names(lut) == \"start\"]\n\n\n\nPart 1\n\n\nres <- map_df(unname(s), build_path, nmax = 1)\nnrow(res)\n\n\n[1] 3485\n\nPart 2\n\n\nres <- map_df(unname(s), build_path, nmax = 2)\nnrow(res)\n\n\n[1] 85062\n\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-12-12T16:55:53-05:00",
+    "input_file": "day-12.knit.md"
+  },
+  {
     "path": "posts/2021-12-11-day-11/",
     "title": "Advent of code 2021 day 11",
     "description": "--- Day 11: Dumbo Octopus ---",
