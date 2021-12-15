@@ -1,0 +1,32 @@
+---
+title: "Advent of code 2021 day 15"
+description: |
+  --- Day 15: Chiton ---
+author:
+  - name: Philippe Massicotte
+    url: {}
+date: "`r Sys.Date()`"
+output:
+  distill::distill_article:
+    self_contained: false
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(here)
+```
+
+```{r}
+input <- readLines(here("data/input/2021/15_input"))
+```
+
+
+
+## Part 1
+
+## Part 2

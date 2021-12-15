@@ -52,7 +52,7 @@ create_template <- function(template_file = here("inst", "template.Rmd"), year, 
 }
 
 year <- 2021
-day <- 14
+day <- 15
 
 create_template(year = year, day = day)
 get_inputs(year = year, day = day)
