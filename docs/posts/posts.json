@@ -14,6 +14,23 @@
     "contents": "\n\n\ninput <- readLines(here(\"data/input/2015/01_input\"))\n\n\n\nPart 1\n\n\ndf <- input %>% \n  str_split(\"\") %>% \n  enframe() %>% \n  unnest(value) %>% \n  mutate(direction = ifelse(value == \"(\", 1, -1))\n\nsum(df$direction)\n\n\n[1] 280\n\nPart 2\n\n\ndf %>% \n  mutate(position = cumsum(direction)) %>% \n  mutate(floor = 1:nrow(.)) %>% \n  filter(position == -1) %>% \n  slice(1) %>% \n  pull(floor)\n\n\n[1] 1797\n\n\n\n\n",
     "preview": {},
     "last_modified": "2021-12-16T12:53:42-05:00",
-    "input_file": "day-01.knit.md"
+    "input_file": {}
+  },
+  {
+    "path": "posts/aoc-2015-day-02/",
+    "title": "Advent of code 2015 day 02",
+    "description": "--- Day 2: I Was Told There Would Be No Math ---",
+    "author": [
+      {
+        "name": "Philippe Massicotte",
+        "url": {}
+      }
+    ],
+    "date": "2021-12-16",
+    "categories": [],
+    "contents": "\n\n\ninput <- read_lines(here(\"data/input/2015/02_input\"))\n\ndf <- input %>% \n  enframe() %>% \n  separate(value, into = c(\"l\", \"w\", \"h\"), sep = \"x\", convert = TRUE)\n\n\n\nPart 1\n\n\ndf <- df %>% \n  rowwise() %>% \n  mutate(sf = (2 * l * w) + (2 * w * h) + (2 * h * l) + (prod(sort(c(l, w, h))[1:2]))) %>% \n  ungroup()\n\nsum(df$sf)\n\n\n[1] 1588178\n\nPart 2\n\n\ndf <- df %>%\n  rowwise() %>%\n  mutate(ribbon = 2 * (sort(c(l, w, h))[1]) + (2 * sort(c(l, w, h))[2]) + (l * w * h)) %>% \n  ungroup()\n\nsum(df$ribbon)\n\n\n[1] 3783758\n\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-12-16T13:18:30-05:00",
+    "input_file": {}
   }
 ]

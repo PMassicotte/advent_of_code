@@ -22,7 +22,7 @@ library(here)
 ```
 
 ```{r}
-input <- readLines(here("data/input/{$year}/{$day}_input"))
+input <- read_lines(here("data/input/{$year}/{$day}_input"))
 ```
 
 ## Part 1

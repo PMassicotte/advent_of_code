@@ -21,7 +21,7 @@ get_inputs <- function(year, day) {
     dir_create(dirpath)
   }
 
-  write_lines(input, filepath)
+  write_lines(input, filepath, sep = "")
 }
 
 create_template <- function(template_file = here("inst", "template.Rmd"), year, day, overwrite = FALSE) {
@@ -51,7 +51,7 @@ create_template <- function(template_file = here("inst", "template.Rmd"), year, 
 }
 
 year <- 2015
-day <- 1
+day <- 2
 
 create_template(year = year, day = day)
 get_inputs(year = year, day = day)

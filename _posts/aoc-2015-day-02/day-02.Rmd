@@ -1,0 +1,53 @@
+---
+title: "Advent of code 2015 day 02"
+description: |
+  --- Day 2: I Was Told There Would Be No Math ---
+author:
+  - name: Philippe Massicotte
+    url: {}
+date: "`r Sys.Date()`"
+output:
+  distill::distill_article:
+    self_contained: false
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(here)
+```
+
+```{r}
+input <- read_lines(here("data/input/2015/02_input"))
+
+df <- input %>% 
+  enframe() %>% 
+  separate(value, into = c("l", "w", "h"), sep = "x", convert = TRUE)
+```
+
+## Part 1
+
+```{r}
+df <- df %>% 
+  rowwise() %>% 
+  mutate(sf = (2 * l * w) + (2 * w * h) + (2 * h * l) + (prod(sort(c(l, w, h))[1:2]))) %>% 
+  ungroup()
+
+sum(df$sf)
+```
+
+## Part 2
+
+```{r}
+df <- df %>%
+  rowwise() %>%
+  mutate(ribbon = 2 * (sort(c(l, w, h))[1]) + (2 * sort(c(l, w, h))[2]) + (l * w * h)) %>% 
+  ungroup()
+
+sum(df$ribbon)
+```
+
