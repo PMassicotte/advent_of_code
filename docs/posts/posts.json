@@ -32,5 +32,22 @@
     "preview": {},
     "last_modified": "2021-12-16T13:18:30-05:00",
     "input_file": {}
+  },
+  {
+    "path": "posts/aoc-2015-day-03/",
+    "title": "Advent of code 2015 day 03",
+    "description": "--- Day 3: Perfectly Spherical Houses in a Vacuum ---",
+    "author": [
+      {
+        "name": "Philippe Massicotte",
+        "url": {}
+      }
+    ],
+    "date": "2021-12-16",
+    "categories": [],
+    "contents": "\n\n\ninput <- read_lines(here(\"data/input/2015/03_input\"))\n\n# input <- \"^v^v^v^v^v\"\n\ndf <- input %>%\n  str_split(\"\") %>%\n  enframe(name = NULL, value = \"signal\") %>%\n  unnest(signal) %>%\n  rowid_to_column(var = \"step\") %>%\n  mutate(x = 0, y = 0) %>%\n  add_row(.before = 1, step = 0, signal = \"start\", x = 0, y = 0) %>%\n  mutate(x = ifelse(signal == \"<\", -1, x)) %>%\n  mutate(x = ifelse(signal == \">\", 1, x)) %>%\n  mutate(y = ifelse(signal == \"^\", -1, y)) %>%\n  mutate(y = ifelse(signal == \"v\", 1, y)) %>%\n  mutate(xx = cumsum(x), yy = cumsum(y))\n\n\n\nPart 1\n\n\ndf %>%\n  count(xx, yy) %>%\n  nrow()\n\n\n[1] 2572\n\nPart 2\n\n\ndf %>%\n  mutate(\n    santa = ifelse(step %% 2, \"santa\", \"robot\"),\n    .before = 1\n  ) %>%\n  add_row(\n    .after = 1,\n    santa = \"santa\",\n    step = 0,\n    signal = \"start\",\n    x = 0,\n    y = 0\n  ) %>%\n  group_by(santa) %>%\n  mutate(xx = cumsum(x), yy = cumsum(y)) %>% \n  ungroup() %>% \n  count(xx, yy) %>% \n  nrow()\n\n\n[1] 2631\n\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-12-16T17:26:53-05:00",
+    "input_file": "day-03.knit.md"
   }
 ]

@@ -1,0 +1,72 @@
+---
+title: "Advent of code 2015 day 03"
+description: |
+  --- Day 3: Perfectly Spherical Houses in a Vacuum ---
+author:
+  - name: Philippe Massicotte
+    url: {}
+date: "`r Sys.Date()`"
+output:
+  distill::distill_article:
+    self_contained: false
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(here)
+```
+
+```{r}
+input <- read_lines(here("data/input/2015/03_input"))
+
+# input <- "^v^v^v^v^v"
+
+df <- input %>%
+  str_split("") %>%
+  enframe(name = NULL, value = "signal") %>%
+  unnest(signal) %>%
+  rowid_to_column(var = "step") %>%
+  mutate(x = 0, y = 0) %>%
+  add_row(.before = 1, step = 0, signal = "start", x = 0, y = 0) %>%
+  mutate(x = ifelse(signal == "<", -1, x)) %>%
+  mutate(x = ifelse(signal == ">", 1, x)) %>%
+  mutate(y = ifelse(signal == "^", -1, y)) %>%
+  mutate(y = ifelse(signal == "v", 1, y)) %>%
+  mutate(xx = cumsum(x), yy = cumsum(y))
+```
+
+## Part 1
+
+```{r}
+df %>%
+  count(xx, yy) %>%
+  nrow()
+```
+
+## Part 2
+
+```{r}
+df %>%
+  mutate(
+    santa = ifelse(step %% 2, "santa", "robot"),
+    .before = 1
+  ) %>%
+  add_row(
+    .after = 1,
+    santa = "santa",
+    step = 0,
+    signal = "start",
+    x = 0,
+    y = 0
+  ) %>%
+  group_by(santa) %>%
+  mutate(xx = cumsum(x), yy = cumsum(y)) %>% 
+  ungroup() %>% 
+  count(xx, yy) %>% 
+  nrow()
+```

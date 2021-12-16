@@ -1,0 +1,58 @@
+---
+title: "Advent of code 2015 day 04"
+description: |
+  --- Day 4: The Ideal Stocking Stuffer ---
+author:
+  - name: Philippe Massicotte
+    url: {}
+date: "`r Sys.Date()`"
+output:
+  distill::distill_article:
+    self_contained: false
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(here)
+```
+
+```{r}
+find_hash <- function(secret, stop_criterion) {
+  cpt <- 1
+
+  repeat {
+    if (cpt %% 10000 == 0) print(cpt)
+    hash <- openssl::md5(paste0(secret, cpt))
+
+    if (all(str_sub(hash, 1, 5) == stop_criterion)) {
+      break
+    }
+
+    cpt <- cpt + 1
+  }
+
+  return(cpt)
+}
+
+secret <- "iwrupvqb"
+```
+
+## Part 1
+
+```{r}
+res1 <- find_hash(secret, "00000")
+res1
+```
+
+## Part 2
+
+```{r}
+res2 <- find_hash(secret, "000000")
+res2
+```
+
