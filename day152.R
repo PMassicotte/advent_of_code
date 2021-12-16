@@ -31,15 +31,21 @@ find_neighbor <- function(m, row, col) {
 
 }
 
-m <- read_lines(here("~/Desktop/m.txt")) %>%
+m <- read_lines(here("m.txt")) %>%
   strsplit("") %>%
   map(., as.numeric) %>%
   do.call(rbind, .)
 
-# m <- read_lines(here("data/input/2021/15_input")) %>%
-#   strsplit("") %>%
-#   map(., as.numeric) %>%
-#   do.call(rbind, .)
+m <- read_lines(here("m2.txt")) %>%
+  strsplit("") %>%
+  map(., as.numeric) %>%
+  do.call(rbind, .)
+
+
+m <- read_lines(here("data/input/2021/15_input")) %>%
+  strsplit("") %>%
+  map(., as.numeric) %>%
+  do.call(rbind, .)
 
 visited <- m == Inf
 distance <- m
@@ -48,6 +54,8 @@ distance[] <- Inf
 n_col <- ncol(m)
 n_row <- nrow(m)
 
+queue <- 1:(n_row * n_col)
+
 distance[1, 1] <- 0
 
 row <- 1
@@ -55,25 +63,34 @@ col <- 1
 
 while (!all(visited)) {
   # browser()
-  # if(row == 2 & col == 9) browser()
+  # if(row == 4 & col == 5) browser()
 
-  visited[row, col] <- TRUE
+
   current_distance <- distance[row, col]
 
   neighbors <- find_neighbor(m, row, col)
   neighbors <- matrix(neighbors[!visited[neighbors], drop = FALSE], ncol = 2)
 
-  tentative_distances <- current_distance + m[neighbors]
+  if (length(neighbors) != 0) {
 
-  i <- which(tentative_distances < distance[neighbors])
+    tentative_distances <- current_distance + m[neighbors]
 
-  distance[matrix(neighbors[i, ], ncol = 2)] <- tentative_distances[i]
+    i <- which(tentative_distances < distance[neighbors])
 
-  smallest <- which.min(distance[neighbors])
-  smallest <- neighbors[smallest, ]
+    distance[matrix(neighbors[i, ], ncol = 2)] <- tentative_distances[i]
 
-  row <- smallest[1]
-  col <- smallest[2]
+  }
+
+  visited[row, col] <- TRUE
+
+  if (all(visited)) break
+
+  smallest <- which(distance == min(distance[!visited]) & !visited, arr.ind = TRUE)
+
+  row <- smallest[1, 1]
+  col <- smallest[1, 2]
+
+
 
   cat(glue::glue("Moving to {row} and {col}"), "\n")
 
