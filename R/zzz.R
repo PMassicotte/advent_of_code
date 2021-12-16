@@ -9,7 +9,6 @@ get_inputs <- function(year, day) {
   cookie <- Sys.getenv("AOC_COOKIE")
 
   cookie <- httr::set_cookies(session = cookie)
-
   url <- glue("https://adventofcode.com/{year}/day/{day}/input")
 
   res <- httr::GET(url, config = cookie)
@@ -26,7 +25,6 @@ get_inputs <- function(year, day) {
 }
 
 create_template <- function(template_file = here("inst", "template.Rmd"), year, day, overwrite = FALSE) {
-  day <- str_pad(day, width = 2, pad = "0", side = "left")
 
   url <- glue("https://adventofcode.com/{year}/day/{day}")
 
@@ -34,8 +32,9 @@ create_template <- function(template_file = here("inst", "template.Rmd"), year, 
     html_node("h2") %>%
     html_text()
 
+  day <- str_pad(day, width = 2, pad = "0", side = "left")
 
-  dirpath <- path(here(), glue("_posts/{year}-12-{day}-day-{day}"))
+  dirpath <- path(here(), glue("_posts/aoc-{year}-day-{day}"))
   filepath <- path(dirpath, glue("day-{day}.Rmd"))
 
   if (!dir_exists(dirpath)) {
@@ -51,8 +50,8 @@ create_template <- function(template_file = here("inst", "template.Rmd"), year, 
 
 }
 
-year <- 2021
-day <- 15
+year <- 2015
+day <- 1
 
 create_template(year = year, day = day)
 get_inputs(year = year, day = day)
