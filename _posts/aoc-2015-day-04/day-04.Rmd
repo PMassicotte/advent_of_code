@@ -18,18 +18,19 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE)
 
 library(tidyverse)
-library(here)
 ```
 
 ```{r}
-find_hash <- function(secret, stop_criterion) {
-  cpt <- 1
+find_hash <- function(secret, start = 1, difficulty) {
+  cpt <- start
 
+  zeros <- paste0(rep("0", difficulty), collapse = "")
+  
   repeat {
-    if (cpt %% 10000 == 0) print(cpt)
+    # if (cpt %% 10000 == 0) print(cpt)
     hash <- openssl::md5(paste0(secret, cpt))
 
-    if (all(str_sub(hash, 1, 5) == stop_criterion)) {
+    if (all(str_sub(hash, 1, difficulty) == zeros)) {
       break
     }
 
@@ -45,14 +46,14 @@ secret <- "iwrupvqb"
 ## Part 1
 
 ```{r}
-res1 <- find_hash(secret, "00000")
+res1 <- find_hash(secret, start = 1, difficulty = 5)
 res1
 ```
 
 ## Part 2
 
 ```{r}
-res2 <- find_hash(secret, "000000")
+res2 <- find_hash(secret, start = res1, difficulty = 6)
 res2
 ```
 
