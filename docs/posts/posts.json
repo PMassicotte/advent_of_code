@@ -17,6 +17,23 @@
     "input_file": {}
   },
   {
+    "path": "posts/aoc-2015-day-05/",
+    "title": "Advent of code 2015 day 05",
+    "description": "--- Day 5: Doesn't He Have Intern-Elves For This? ---",
+    "author": [
+      {
+        "name": "Philippe Massicotte",
+        "url": {}
+      }
+    ],
+    "date": "2021-12-17",
+    "categories": [],
+    "contents": "\n\n\ninput <- read_lines(here(\"data/input/2015/05_input\"))\n\n\n\nPart 1\n\n\nis_nice <- function(s) {\n  \n  cond1 <- str_count(s, \"[aeiou]\") >= 3\n  cond2 <- str_count(s, \"(.)\\\\1\")\n  cond3 <- str_detect(s, \"ab|cd|pq|xy\")\n  \n  cond1 & cond2 & !cond3\n  \n}\n\ndf <- tibble(s = input) %>% \n  mutate(nice = is_nice(s))\n\nsum(df$nice)\n\n\n[1] 258\n\nPart 2\n\n\nis_nice <- function(s) {\n  \n  cond1 <- str_detect(s, \"(\\\\w{2}).*?(\\\\1)\")\n  cond2 <- str_detect(s, \"(\\\\w{1}).(\\\\1)\")\n\n  cond1 & cond2\n  \n}\n\ndf <- tibble(s = input) %>% \n  mutate(nice = is_nice(s))\n\nsum(df$nice)\n\n\n[1] 53\n\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-12-17T11:21:36-05:00",
+    "input_file": {}
+  },
+  {
     "path": "posts/aoc-2015-day-01/",
     "title": "Advent of code 2015 day 01",
     "description": "--- Day 1: Not Quite Lisp ---",

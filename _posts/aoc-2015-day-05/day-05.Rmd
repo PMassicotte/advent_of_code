@@ -49,13 +49,16 @@ sum(df$nice)
 ```{r}
 is_nice <- function(s) {
   
-  cond1 <- str_count(s, "(.)\\1")
-  cond3 <- str_detect(s, "ab|cd|pq|xy")
-  
-  cond1 & cond2 & !cond3
+  cond1 <- str_detect(s, "(\\w{2}).*?(\\1)")
+  cond2 <- str_detect(s, "(\\w{1}).(\\1)")
+
+  cond1 & cond2
   
 }
 
+df <- tibble(s = input) %>% 
+  mutate(nice = is_nice(s))
 
+sum(df$nice)
 ```
 
