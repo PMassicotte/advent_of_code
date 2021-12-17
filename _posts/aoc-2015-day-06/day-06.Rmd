@@ -30,29 +30,52 @@ df <- tibble(input) %>%
     regex = "(turn on|turn off|toggle) (\\d+),(\\d+) through (\\d+),(\\d+)",
     convert = TRUE
   )
-
-df %>% 
-  mutate(
-    delta_row = row_to - row_from,
-    delta_col = col_to - col_from
-  )
-
-m <- matrix(FALSE, nrow = 1000, ncol = 1000)
-
-df
-
-m[499:499, 500:501, drop = FALSE]
-
 ```
-
-```{r}
-
-
-
-```
-
-
 
 ## Part 1
 
+```{r}
+lights <- function(action, row_from, col_from, row_to, col_to) {
+  switch(action,
+    "turn off" = m[row_from:row_to, col_from:col_to] <<- FALSE,
+    "turn on" = m[row_from:row_to, col_from:col_to] <<- TRUE,
+    "toggle" = m[row_from:row_to, col_from:col_to] <<-
+      !m[row_from:row_to, col_from:col_to]
+  )
+}
+
+m <- matrix(FALSE, nrow = 1000, ncol = 1000)
+pwalk(
+  list(df$action, df$row_from, df$col_from, df$row_to, df$col_to),
+  lights
+)
+
+sum(m)
+```
+
 ## Part 2
+
+```{r}
+lights <- function(action, row_from, col_from, row_to, col_to) {
+  switch(action,
+    "turn off" = m[row_from:row_to, col_from:col_to] <<-
+      m[row_from:row_to, col_from:col_to] - 1,
+    "turn on" = m[row_from:row_to, col_from:col_to] <<-
+      m[row_from:row_to, col_from:col_to] + 1,
+    "toggle" = m[row_from:row_to, col_from:col_to] <<-
+      m[row_from:row_to, col_from:col_to] + 2
+  )
+
+  m[row_from:row_to, col_from:col_to] <<-
+    pmax(m[row_from:row_to, col_from:col_to], 0)
+}
+
+m <- matrix(0, nrow = 1000, ncol = 1000)
+
+pwalk(
+  list(df$action, df$row_from, df$col_from, df$row_to, df$col_to),
+  lights
+)
+
+sum(m)
+```
