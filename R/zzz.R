@@ -47,11 +47,13 @@ create_template <- function(template_file = here("inst", "template.Rmd"), year, 
   xfun::gsub_file(filepath, pattern = "{$day}", replacement = day, fixed = TRUE)
   xfun::gsub_file(filepath, pattern = "{$subtitle}", replacement = subtitle, fixed = TRUE)
 
-
+  return(filepath)
 }
 
 year <- 2015
-day <- 5
+day <- 6
 
-create_template(year = year, day = day)
+filepath <- create_template(year = year, day = day)
 get_inputs(year = year, day = day)
+
+rstudioapi::navigateToFile(filepath)
