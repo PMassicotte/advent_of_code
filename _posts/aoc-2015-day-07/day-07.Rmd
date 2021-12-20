@@ -49,14 +49,7 @@ make_function <- function(action) {
   )
 }
 
-eval(parse(text = make_function("AND")), list(x = 1, y = 3))
-eval(parse(text = make_function("OR")), list(x = 1, y = 3))
-eval(parse(text = make_function("RSHIFT")), list(x = 10, y = 1))
-eval(parse(text = make_function("LSHIFT")), list(x = 10, y = 1))
-eval(parse(text = make_function("NOT")), list(x = 10))
-eval(parse(text = make_function("ASSIGN")), list(x = 210))
-
-df <- tibble(input) %>%
+queue <- tibble(input) %>%
   mutate(lhs = str_match(input, "-> (.*)")[, 2]) %>%
   mutate(action = str_extract(input, "[A-Z]+")) %>%
   mutate(action = ifelse(is.na(action), "ASSIGN", action)) %>%
@@ -65,9 +58,9 @@ df <- tibble(input) %>%
   ungroup() %>%
   rowid_to_column()
 
-df
+queue
 
-df <- df %>%
+queue <- queue %>%
   mutate(input = str_remove(input, " -> .*")) %>%
   mutate(x = case_when(
     action %in% c("AND", "OR", "RSHIFT", "LSHIFT", "ASSIGN") ~ str_extract(input, "^[a-z]+|^\\d+"),
@@ -78,7 +71,7 @@ df <- df %>%
     action %in% c("AND", "OR", "RSHIFT", "LSHIFT") ~ str_extract(input, "[a-z]+$|\\d+$"),
   ))
 
-lut <- df %>%
+lut <- queue %>%
   select(lhs) %>%
   mutate(val = NA) %>%
   deframe()
@@ -86,57 +79,66 @@ lut <- df %>%
 lut <- lut[sort(names(lut))]
 ```
 
-## Part 1
-
 ```{r}
-
 `%notin%` <- Negate(`%in%`)
 
-# queue <- df %>%
-#   slice(89)
+process_queue <- function(queue, lut) {
+  while (nrow(queue) >= 1) {
+    rowid <-
+      pmap_int(
+        list(
+          queue$rowid,
+          queue$action,
+          queue$f,
+          queue$x,
+          queue$y,
+          queue$lhs
+        ),
+        .f = function(rowid, action, f, x, y, lhs) {
+          x <- ifelse(str_detect(x, "[0-9]+"), parse_integer(x), lut[x])
+          y <- ifelse(str_detect(y, "[0-9]+"), parse_integer(y), lut[y])
 
-queue <- df
+          param <- list(x = x, y = y)
 
-while (nrow(queue) >= 1) {
-  rowid <-
-    pmap_int(
-      list(
-        queue$rowid,
-        queue$action,
-        queue$f,
-        queue$x,
-        queue$y,
-        queue$lhs
-      ),
-      .f = function(rowid, action, f, x, y, lhs) {
-        x <- ifelse(str_detect(x, "[0-9]+"), parse_integer(x), lut[x])
-        y <- ifelse(str_detect(y, "[0-9]+"), parse_integer(y), lut[y])
+          if ((action %in% c("AND", "OR", "RSHIFT", "LSHIFT")) &
+            !is.na(x) & !is.na(y)) {
+            res <- eval(parse(text = f), param)
+            lut[lhs] <<- res
+            return(rowid)
+          }
 
-        param <- list(x = x, y = y)
+          if ((action %in% c("ASSIGN", "NOT")) & !is.na(x)) {
+            res <- eval(parse(text = f), param)
+            lut[lhs] <<- res
+            return(rowid)
+          }
 
-        if ((action %in% c("AND", "OR", "RSHIFT", "LSHIFT")) &
-          !is.na(x) & !is.na(y)) {
-          res <- eval(parse(text = f), param)
-          lut[lhs] <<- res
-          return(rowid)
+          return(NA_integer_)
         }
+      )
 
-        if ((action %in% c("ASSIGN", "NOT")) & !is.na(x)) {
-          res <- eval(parse(text = f), param)
-          lut[lhs] <<- res
-          return(rowid)
-        }
+    rowid <- na.omit(rowid)
+    # cat("Removing", rowid, "\n")
+    queue <- queue %>%
+      filter(rowid %notin% {{ rowid }})
+  }
 
-        return(NA_integer_)
-      }
-    )
-
-  rowid <- na.omit(rowid)
-  # cat("Removing", rowid, "\n")
-  queue <- queue %>%
-    filter(rowid %notin% {{ rowid }})
+  return(lut)
 }
 ```
 
 
+## Part 1
+
+```{r}
+res <- process_queue(queue, lut)
+res["a"]
+```
+
 ## Part 2
+
+```{r}
+lut["b"] <- res["a"]
+res <- process_queue(queue, lut)
+res["a"]
+```
