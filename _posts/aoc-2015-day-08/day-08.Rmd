@@ -1,0 +1,52 @@
+---
+title: "Advent of code 2015 day 08"
+description: |
+  --- Day 8: Matchsticks ---
+author:
+  - name: Philippe Massicotte
+    url: {}
+date: "`r Sys.Date()`"
+output:
+  distill::distill_article:
+    self_contained: false
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(here)
+```
+
+```{r}
+# input <- read_lines(here("data/input/2015/08_input"))
+input <- read_lines(here("~/Desktop/ii"))
+
+df <- tibble(str_literal = input, str_memory = stri_unescape_unicode(str_literal))
+Encoding(df$str_memory) <- "latin1"
+
+df
+```
+
+```{r}
+df
+
+Encoding(s2) <- "latin1"
+Encoding(df$s2) <- "latin1"
+
+df
+
+df %>% 
+  mutate(total_char = str_count(s) + str_count(s, "\"") + 2) %>% 
+  mutate(total_char_memory = str_count(s2)) %>% 
+  summarise(sum(total_char) - sum(total_char_memory))
+
+```
+
+
+## Part 1
+
+## Part 2
