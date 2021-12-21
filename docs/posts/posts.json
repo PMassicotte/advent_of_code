@@ -1,5 +1,22 @@
 [
   {
+    "path": "posts/aoc-2015-day-08/",
+    "title": "Advent of code 2015 day 08",
+    "description": "--- Day 8: Matchsticks ---",
+    "author": [
+      {
+        "name": "Philippe Massicotte",
+        "url": {}
+      }
+    ],
+    "date": "2021-12-21",
+    "categories": [],
+    "contents": "\n\n\ninput <- read_lines(here(\"data/input/2015/08_input\"))\n\ndf <- tibble(\n  str_literal = input,\n  str_memory = stringi::stri_unescape_unicode(str_literal)\n)\n\n\n\nPart 1\n\n\ndf %>% \n  mutate(c1 = str_count(str_literal)) %>% \n  mutate(c2 = str_count(str_memory) - 2) %>% \n  summarise(total = sum(c1) - sum(c2))\n\n\n# A tibble: 1 × 1\n  total\n  <dbl>\n1  1333\n\nPart 2\n\n\ndf %>% \n  mutate(str_encode = stringi::stri_escape_unicode(str_literal)) %>% \n  mutate(c1 = str_count(str_literal)) %>% \n  mutate(c2 = str_count(str_encode) + 2) %>% \n  summarise(total = sum(c2) - sum(c1))\n\n\n# A tibble: 1 × 1\n  total\n  <dbl>\n1  2046\n\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-12-21T12:33:48-05:00",
+    "input_file": {}
+  },
+  {
     "path": "posts/aoc-2015-day-04/",
     "title": "Advent of code 2015 day 04",
     "description": "--- Day 4: The Ideal Stocking Stuffer ---",
