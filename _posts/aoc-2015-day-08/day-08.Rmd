@@ -22,31 +22,29 @@ library(here)
 ```
 
 ```{r}
-# input <- read_lines(here("data/input/2015/08_input"))
-input <- read_lines(here("~/Desktop/ii"))
+input <- read_lines(here("data/input/2015/08_input"))
 
-df <- tibble(str_literal = input, str_memory = stri_unescape_unicode(str_literal))
-Encoding(df$str_memory) <- "latin1"
-
-df
+df <- tibble(
+  str_literal = input,
+  str_memory = stringi::stri_unescape_unicode(str_literal)
+)
 ```
-
-```{r}
-df
-
-Encoding(s2) <- "latin1"
-Encoding(df$s2) <- "latin1"
-
-df
-
-df %>% 
-  mutate(total_char = str_count(s) + str_count(s, "\"") + 2) %>% 
-  mutate(total_char_memory = str_count(s2)) %>% 
-  summarise(sum(total_char) - sum(total_char_memory))
-
-```
-
 
 ## Part 1
 
+```{r}
+df %>% 
+  mutate(c1 = str_count(str_literal)) %>% 
+  mutate(c2 = str_count(str_memory) - 2) %>% 
+  summarise(total = sum(c1) - sum(c2))
+```
+
 ## Part 2
+
+```{r}
+df %>% 
+  mutate(str_encode = stringi::stri_escape_unicode(str_literal)) %>% 
+  mutate(c1 = str_count(str_literal)) %>% 
+  mutate(c2 = str_count(str_encode) + 2) %>% 
+  summarise(total = sum(c2) - sum(c1))
+```
