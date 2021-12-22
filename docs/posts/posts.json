@@ -1,5 +1,22 @@
 [
   {
+    "path": "posts/aoc-2015-day-09/",
+    "title": "Advent of code 2015 day 09",
+    "description": "--- Day 9: All in a Single Night ---",
+    "author": [
+      {
+        "name": "Philippe Massicotte",
+        "url": {}
+      }
+    ],
+    "date": "2021-12-22",
+    "categories": [],
+    "contents": "\n\n\ninput <- read_lines(here(\"data/input/2015/09_input\"))\n\ndf <- tibble(input) %>%\n  extract(\n    input,\n    into = c(\"from\", \"to\", \"distance\"),\n    regex = \"(.*) to (.*) = (\\\\d+)\",\n    convert = TRUE\n  )\n\nlut <- df %>%\n  rowwise() %>%\n  mutate(path = list(sort(c(from, to)))) %>%\n  select(-from, -to) %>%\n  hoist(path, \"from\" = 1, \"to\" = 2)\n\ncities <- unique(c(df$from, df$to))\n\nres <-\n  gtools::permutations(length(cities), length(cities), cities) %>%\n  t() %>%\n  as.data.frame() %>%\n  as.list() %>%\n  enframe() %>%\n  slice(1:(nrow(.) / 2)) %>%\n  mutate(pairs = map(value, ~ compact(\n    slider::slide(., ~ sort(.x), .after = 1, .complete = TRUE)\n  ))) %>%\n  unnest(pairs) %>%\n  hoist(pairs, \"from\" = 1, \"to\" = 2)\n\nres <- res %>%\n  inner_join(lut) %>%\n  group_by(name) %>%\n  summarise(total_distance = sum(distance))\n\n\n\nPart 1\n\n\nres %>%\n  filter(total_distance == min(total_distance)) %>%\n  pull(total_distance)\n\n\n[1] 207\n\nPart 2\n\n\nres %>%\n  filter(total_distance == max(total_distance)) %>%\n  pull(total_distance)\n\n\n[1] 803\n\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-12-22T17:20:38-05:00",
+    "input_file": "day-09.knit.md"
+  },
+  {
     "path": "posts/aoc-2015-day-04/",
     "title": "Advent of code 2015 day 04",
     "description": "--- Day 4: The Ideal Stocking Stuffer ---",
