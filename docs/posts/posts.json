@@ -1,5 +1,22 @@
 [
   {
+    "path": "posts/aoc-2015-day-11/",
+    "title": "Advent of code 2015 day 11",
+    "description": "--- Day 11: Corporate Policy ---",
+    "author": [
+      {
+        "name": "Philippe Massicotte",
+        "url": {}
+      }
+    ],
+    "date": "2021-12-23",
+    "categories": [],
+    "contents": "\n\n\ninput <- read_lines(here(\"data/input/2015/11_input\"))\n\n\n\n\n\n# a = 97\n# z = 122\n\nstr_increment <- function(s) {\n  v <- unlist(stringi::stri_enc_toutf32(s))\n  nchar <- length(v)\n\n  i <- which(v %in% c(105, 108, 111))[1]\n  if (!is.na(i)) {\n    v[i] <- v[i] + 1\n    if (i < nchar) v[(i + 1):nchar] <- 97\n  }\n\n  last_char <- v[nchar]\n\n  if (last_char < 122) {\n    v[nchar] <- v[nchar] + 1\n    new_string <- stringi::stri_enc_fromutf32(v)\n    return(new_string)\n  } else {\n    new_string <- stringi::stri_enc_fromutf32(v[-nchar])\n    last_char <- 97\n    res <- str_increment(new_string)\n  }\n\n  return(paste0(res, stringi::stri_enc_fromutf32(last_char)))\n}\n\nis_valid_password <- function(psw) {\n  cond1 <-\n    str_detect(\n      psw,\n      \"abc|bcd|cde|def|efg|fgh|ghi|hij|ijk|jkl|klm|lmn|mno|nop|opq|pqr|qrs|rst|stu|tuv|uvw|vwx|wxy|xyz\"\n    )\n  cond2 <- str_count(psw, \"[iol]\") < 1\n  cond3 <- str_count(psw, \"(.)\\\\1\") >= 2\n\n  return(cond1 & cond2 & cond3)\n}\n\n\n\nPart 1\n\n\nwhile (!is_valid_password(input)) {\n  input <- str_increment(input)\n}\n\ninput\n\n\n[1] \"cqjxxyzz\"\n\nPart 2\n\n\ninput <- str_increment(input)\n\nwhile (!is_valid_password(input)) {\n  input <- str_increment(input)\n}\n\ninput\n\n\n[1] \"cqkaabcc\"\n\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-12-23T09:20:25-05:00",
+    "input_file": {}
+  },
+  {
     "path": "posts/aoc-2015-day-09/",
     "title": "Advent of code 2015 day 09",
     "description": "--- Day 9: All in a Single Night ---",

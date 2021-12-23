@@ -1,0 +1,90 @@
+---
+title: "Advent of code 2015 day 11"
+description: |
+  --- Day 11: Corporate Policy ---
+author:
+  - name: Philippe Massicotte
+    url: {}
+date: "`r Sys.Date()`"
+output:
+  distill::distill_article:
+    self_contained: false
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(here)
+```
+
+```{r}
+input <- read_lines(here("data/input/2015/11_input"))
+```
+
+```{r}
+# a = 97
+# z = 122
+
+str_increment <- function(s) {
+  v <- unlist(stringi::stri_enc_toutf32(s))
+  nchar <- length(v)
+
+  i <- which(v %in% c(105, 108, 111))[1]
+  if (!is.na(i)) {
+    v[i] <- v[i] + 1
+    if (i < nchar) v[(i + 1):nchar] <- 97
+  }
+
+  last_char <- v[nchar]
+
+  if (last_char < 122) {
+    v[nchar] <- v[nchar] + 1
+    new_string <- stringi::stri_enc_fromutf32(v)
+    return(new_string)
+  } else {
+    new_string <- stringi::stri_enc_fromutf32(v[-nchar])
+    last_char <- 97
+    res <- str_increment(new_string)
+  }
+
+  return(paste0(res, stringi::stri_enc_fromutf32(last_char)))
+}
+
+is_valid_password <- function(psw) {
+  cond1 <-
+    str_detect(
+      psw,
+      "abc|bcd|cde|def|efg|fgh|ghi|hij|ijk|jkl|klm|lmn|mno|nop|opq|pqr|qrs|rst|stu|tuv|uvw|vwx|wxy|xyz"
+    )
+  cond2 <- str_count(psw, "[iol]") < 1
+  cond3 <- str_count(psw, "(.)\\1") >= 2
+
+  return(cond1 & cond2 & cond3)
+}
+```
+
+## Part 1
+
+```{r}
+while (!is_valid_password(input)) {
+  input <- str_increment(input)
+}
+
+input
+```
+
+## Part 2
+
+```{r}
+input <- str_increment(input)
+
+while (!is_valid_password(input)) {
+  input <- str_increment(input)
+}
+
+input
+```
